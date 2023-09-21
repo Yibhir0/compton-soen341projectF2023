@@ -14,11 +14,11 @@
     <li>
       <a href="#description">Description</a>
       <ul>
-	<li><a href="#team">Team & Roles</a></li>
-        <li><a href="#technologies">Technologies Used</a></li>
+	<li><a href="#team-and-roles">Team & Roles</a></li>
+        <li><a href="#technologies-used">Technologies Used</a></li>
       </ul>
     </li>
-    <li><a href="#approach">Project Approach</a></li>
+    <li><a href="#project-approach">Project Approach</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -40,15 +40,32 @@ A real estate web app designed to help users buy, rent and sell residential prop
 <br/> <strong>Brokers</strong> can submit offers on behalf of their clients and track the status of the offers. They can request a visit on behalf of their clients, CRUD property listings, use system to match properties with their clients’ needs (e.g. 2 rooms, bungalow, under 500k$ etc.), manage incoming offers for properties they represent, manage booked visits (reschedule/cancel).
 	System Admin is responsible for adding/removing brokers (CRUD operations on brokers). 
 
+<!-- Team & Roles --> 
+### Team and Roles
+* Saoud Messaoudi - 40208399 - <strong>Scrum master</strong>
+* Dominic Riccio - 40125922  - <strong>Fullstack DEV</strong>
+* Steven Di Stefano - 40175474 - <strong>Backend DEV</strong>
+* Jared Latchman 40214398 - <strong>Front-end DEV</strong>
+* Michael Iadisernia - 40212429 - <strong>Front-end DEV</strong>
+* Yassine Ibhir - 40251116 - <strong>Fullstack DEV</strong>
+
 <!-- TECHNOLOGIES USED --> 
-## Technologies Used 
+### Technologies Used 
 
 The following are the major frameworks we will be using to develop the project:
 * [![React][React.js]][React-url]
-* [![Bootstrap][Bootstrap.com][Bootstrap-url]
-* [![Node.js][NodeJS][NodeJS-url]
-* [![Express.js][Express.js][Express-url]
-* [![Mongo DB][MongoDB][MongoDB-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![Node.js][NodeJS]][NodeJS-url]
+* [![Express.js][Express.js]][Express-url]
+* [![Mongo DB]][MongoDB][MongoDB-url]
+
+<!-- PROJECT APPROACH -->
+
+## Project Approach
+
+* We’re going for React JS as a front-end Framework since it is widely used for beginner to professional-level web applications. In fact, millions of libraries are available for React developers to assist them in the development of a project. Also, the development team members' skills revolve around this framework and the Javascript language which would help deliver the best possible quality. Consequently, Express JS Framework is not only based on the same language as React JS, Javascript, but it is also used worldwide as a good backend solution for web apps, which is what we are trying to accomplish. MongoDB is a NoSQL based database that is light and agile enough for our development needs.
+
+* Our main focus is to build a real estate web app that is flawless first and then add features on-top of a solid foundation depending on the time frame remaining.....
 
 
 
