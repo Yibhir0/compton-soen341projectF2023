@@ -57,7 +57,7 @@ The following are the major frameworks we will be using to develop the project:
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![Node.js][NodeJS]][NodeJS-url]
 * [![Express.js][Express.js]][Express-url]
-* [![Mongo DB]][MongoDB][MongoDB-url]
+* [![Mongo DB][MongoDB]][MongoDB-url]
 
 <!-- PROJECT APPROACH -->
 
