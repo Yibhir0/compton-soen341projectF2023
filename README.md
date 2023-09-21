@@ -14,8 +14,8 @@
     <li>
       <a href="#description">Description</a>
       <ul>
+	<li><a href="#team">Team & Roles</a></li>
         <li><a href="#technologies">Technologies Used</a></li>
-        <li><a href="#team">Team & Roles</a></li>
       </ul>
     </li>
     <li><a href="#approach">Project Approach</a></li>
@@ -45,7 +45,7 @@ A real estate web app designed to help users buy, rent and sell residential prop
 
 The following are the major frameworks we will be using to develop the project:
 * [![React][React.js]][React-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![Bootstrap][Bootstrap.com][Bootstrap-url]
 * [![Node.js][NodeJS][NodeJS-url]
 * [![Express.js][Express.js][Express-url]
 * [![Mongo DB][MongoDB][MongoDB-url]
