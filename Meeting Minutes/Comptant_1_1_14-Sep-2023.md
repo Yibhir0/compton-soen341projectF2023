@@ -31,9 +31,13 @@ Programing Skills | All member | What are each individual skills with web develo
 User Stories | All member | Created 4 epic story required for sprint 1 |
 
 ### Action
-| Completed ? | Item | Who | Due Date |
-| ---- | ---- | ---- | ---- |
-| |  |  |  |
+Action to be done: <br>
+• <br>
+• <br>
+• <br>
+• <br>
+• <br>
+• <br>
 
 ## General Notes & Information
 Next meeting on September 20 on discord
