@@ -35,7 +35,7 @@ Action to be done: <br>
 • Created issues as user stories | **On-going** | Need to clarify who owns this item <br>
 • Created new tags for user stories | **On-going** <br>
 • Created new wiki | **On-going** <br>
-• Created new wiki | **On-going** | Owner: Dominic<br>
+• Submit moodle sprint | **On-going** | Owner: Dominic<br>
 
 **Due Date for on-going item on September 28**
 
