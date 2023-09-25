@@ -31,9 +31,13 @@ Item | Who | Notes |
 
 
 ### Action
-| Completed ? | Item | Who | Due Date |
-| ---- | ---- | ---- | ---- |
-| |  |  |  |
+Action to be done: <br>
+• <br>
+• <br>
+• <br>
+• <br>
+• <br>
+• <br>
 
 ## General Notes & Information
  
