@@ -24,7 +24,7 @@
 • Created User stories <br>
 • Planned next meeting time and date <br>
 
-## Discussion
+### Discussion
 Item | Who | Notes |
 ---- | ---- | ---- |
 Programing Skills | All member | What are each individual skills with web developement |
