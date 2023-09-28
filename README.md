@@ -63,11 +63,19 @@ The following are the major frameworks we will be using to develop the project:
 
 ## Project Approach
 
-* We’re going for React JS as a front-end Framework since it is widely used for beginner to professional-level web applications. In fact, millions of libraries are available for React developers to assist them in the development of a project. Also, the development team members' skills revolve around this framework and the Javascript language which would help deliver the best possible quality. Consequently, Express JS Framework is not only based on the same language as React JS, Javascript, but it is also used worldwide as a good backend solution for web apps, which is what we are trying to accomplish. MongoDB is a NoSQL based database that is light and agile enough for our development needs.
+In this section, one can understand our project approach. In other words, why we went with certain technologies and our our design pattern
 
-* Our main focus is to build a real estate web app that is flawless first and then add features on-top of a solid foundation depending on the time frame remaining.....
+<strong>Built with</strong>
 
+* We’re going with React JS as a front-end Framework since it is widely used for beginner to professional-level web applications. In fact, millions of libraries are available for React developers to assist them in the development of a project. Also, the development team members' skills revolve around this framework and the Javascript language which would help deliver the best possible quality.
+  
+* Consequently, Express JS Framework is not only based on the same language as React JS, Javascript, but it is also used worldwide as a good backend solution for web apps, which is what we are trying to accomplish.
+  
+* MongoDB is a NoSQL based database that is light and agile enough for our development needs.
 
+<strong>Design pattern</strong>
+
+As a development team following an Agile methodology, we'll be using a Model, View & Controller (MVC) design pattern. This model not only makes it easier on larger development team since it makes it straightforward what attributes are going to be used, but it also is interchangeable when needed, which matches with our retroactive style. Our  main focus is to build a real estate web app that is flawless first and then add features on top of a solid foundation depending on the time frame remaining, this design will help us achieve that.
 
 
 
