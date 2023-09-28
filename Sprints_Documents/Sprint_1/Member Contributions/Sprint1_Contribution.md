@@ -4,7 +4,7 @@
 
 - Dominic Riccio - 40125922
 
-
+  Minutes meeting files / Meeting notes taking / Participate with Issue as a team in meetings
 
 - Saoud Messaoudi - 40208399
 
