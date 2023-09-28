@@ -2,8 +2,8 @@
 ## Information
 **Meeting Date/Time:** 28 Sep <br>
 **Meeting Purpose:**  To do list to complete sprint 1<br>
-**Meeting Location:** JMSB<br>
-**Meeting Duration:** 20 min<br>
+**Meeting Location:** Lab<br>
+**Meeting Duration:** 105 min<br>
 **Note Taker:** Dominic Riccio  <br>
 
 ## Attendance
@@ -21,6 +21,7 @@
 • Wiki<br>
 • Contribution<br>
 • Are we missing anything?<br>
+• Check-in with TA<br>
 
 ### Discussion
 Item | Who | Notes |
@@ -39,6 +40,5 @@ Action to be done: <br>
 • <br>
 
 ## General Notes & Information
- To do list to be done for sprint 1 that we need today
+ To do list to be done for sprint 1 that we need today - Sprint 1 due tomorow
 
- Next meeting, same day at lab (Sep 28)
