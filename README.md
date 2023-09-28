@@ -95,3 +95,15 @@ As a development team following an Agile methodology, we'll be using a Model, Vi
 [MongoDB]:https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]:https://www.mongodb.com/
 
+## Git Rules
+
+Rule 1: Create Repository and assign members to it
+
+Rule 2: Create a new branch for new feature
+
+Rule 3: Rview each members code.
+
+Rule 4: Engage in discussion of a review
+
+Rule 5: Use pull request to merge to the main branch
+
