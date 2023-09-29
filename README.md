@@ -95,7 +95,7 @@ As a development team following an Agile methodology, we'll be using a Model, Vi
 [MongoDB]:https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]:https://www.mongodb.com/
 
-## Git Rules
+## Basic Git Rules
 
 Rule 1: Create Repository and assign members to it
 
@@ -107,4 +107,4 @@ Rule 4: Engage in discussion of a review
 
 Rule 5: Use pull request to merge to the main branch
 
-Additional project information can found in the wiki : [Wiki](https://github.com/Yibhir0/compton-soen341projectF2023/wiki)
+Additional project information can found in the wiki : [Git Rule]([https://github.com/Yibhir0/compton-soen341projectF2023/wiki](https://github.com/Yibhir0/compton-soen341projectF2023/wiki/Appendix-D.-Git-Rule)https://github.com/Yibhir0/compton-soen341projectF2023/wiki/Appendix-D.-Git-Rule)
