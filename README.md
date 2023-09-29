@@ -107,3 +107,4 @@ Rule 4: Engage in discussion of a review
 
 Rule 5: Use pull request to merge to the main branch
 
+Additional project information can found in the wiki : https://github.com/Yibhir0/compton-soen341projectF2023/wiki
