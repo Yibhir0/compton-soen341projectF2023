@@ -3,7 +3,6 @@
 <h1>Compton Real Estate</h1>
 
 </div>
-<hr/>
 
 <!-- TABLE OF CONTENTS -->
 <details>
