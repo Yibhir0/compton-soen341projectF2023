@@ -1,7 +1,6 @@
 <div align="center"> 
   
 <h1>Compton Real Estate</h1>
-<br/>
 
 </div>
 <hr/>
@@ -58,6 +57,9 @@ The following are the major frameworks we will be using to develop the project:
 * [![Express.js][Express.js]][Express-url]
 * [![Mongo DB][MongoDB]][MongoDB-url]
 
+API we will be using to implement a feature:
+* [![Google Maps API][GoogleMaps]][GoogleMaps-url]
+
 <!-- PROJECT APPROACH -->
 
 ## Project Approach
@@ -71,6 +73,8 @@ In this section, one can understand our project approach. In other words, why we
 * Consequently, Express JS Framework is not only based on the same language as React JS, Javascript, but it is also used worldwide as a good backend solution for web apps, which is what we are trying to accomplish.
   
 * MongoDB is a NoSQL based database that is light and agile enough for our development needs.
+
+* Google Maps API provides customizable and interactive maps that can be easily embedded into our web application to improve the user's experience.
 
 <strong>Design pattern</strong>
 
@@ -93,6 +97,8 @@ As a development team following an Agile methodology, we'll be using a Model, Vi
 [NodeJS-url]:https://nodejs.org/en
 [MongoDB]:https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]:https://www.mongodb.com/
+[GoogleMaps]: https://img.shields.io/badge/Google%20Maps-black?style=for-the-badge&logo=google-maps&logoColor=aqua
+[GoogleMaps-url]: https://developers.google.com/maps
 
 ## Basic Git Rules
 
