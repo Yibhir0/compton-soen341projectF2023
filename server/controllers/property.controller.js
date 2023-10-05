@@ -8,6 +8,7 @@ const Property = require("../models/property.model");
  */
 
 const getProperties = async (req, res) => {
+    console.log("what")
   try {
     const properties = await Property.find();
     res.status(200).json(properties);
@@ -20,7 +21,7 @@ const getProperties = async (req, res) => {
  * It creates a new property and saves it to the database.
  */
 const addProperty = async (req, res) => {
-  
+    console.log(req.body)
   const property = new Property(req.body);
 
   try {
