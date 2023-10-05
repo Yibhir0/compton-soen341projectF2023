@@ -1,14 +1,17 @@
-node_modules/
+admin/
+published_content/
+resources/
+private_content/
+temp*
+*.pdf
+.lastcommit
+.vscode
+markdown_tools/
+**/node_modules/
+.env
 bundle.js
 npm-debug.log
 
 /.idea
 /public
 
-.env
-.passport.js
-.DS_Store
-
-build/
-dist/
-client/.parcel-cache
