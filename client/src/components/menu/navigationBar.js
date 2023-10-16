@@ -15,6 +15,9 @@ const Navbar=()=>{
                     <div className='navItem'>
                         <Link to="/demo" className ='navItem'>Demo</Link>
                     </div>
+                    <div className='navItem'>
+                        <Link to="/properties" className ='navItem'>Property List</Link>
+                    </div>
                 </div>
     )
 

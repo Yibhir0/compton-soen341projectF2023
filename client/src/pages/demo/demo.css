@@ -36,6 +36,10 @@ body {
     background: transparent;
     color: #fff;
   }
+
+  .app-header form input[type="checkbox"]{
+    width: 10px;
+  }
   
   .app-header form input:focus {
     outline: none;

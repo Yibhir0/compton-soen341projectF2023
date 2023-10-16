@@ -4,18 +4,49 @@ const Schema = mongoose.Schema;
 
 /* Creating a new schema for the property model. */
 const propertySchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+  brokerID: {
+    type: Number,
+    required: false,
   },
+
   address: {
     type: String,
-    required: true,
+    required: false,
+  },
+
+  city:{
+    type: String,
+    required: false,
+  },
+  
+  postalCode:{
+    type: String,
+    required: false,
   },
 
   propertyType: {
     type: String,
-    required: true,
+    required: false,
+  },
+
+  price:{
+    type: Number,
+    required: false,
+  },
+
+  numberOfBedrooms:{
+    type: Number,
+    required: false,
+  },
+
+  numberOfBathrooms:{
+    type: Number,
+    required: false,
+  },
+
+  amenities:{
+    type: Array,
+    required: false,
   },
 
 });
