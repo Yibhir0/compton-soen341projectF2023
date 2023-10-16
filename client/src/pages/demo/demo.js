@@ -2,6 +2,7 @@
 import "./demo.css"
 import React, { useState,useEffect } from 'react';
 import NavBar from "../../components/menu/navigationBar"
+import UploadWidget from "../../components/UploadWidget";
 
  function Demo() {
     
@@ -119,6 +120,10 @@ import NavBar from "../../components/menu/navigationBar"
         <label htmlFor="swimming_pool"> Swimming Pool</label>
         <input type="checkbox" id="parking" name="parking" value="Parking"/>
         <label htmlFor="parking"> Parking</label>
+      </div>
+
+      <div>
+        <UploadWidget></UploadWidget>
       </div>
 
       <button type="submit" >Create Property Listing</button>

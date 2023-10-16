@@ -6,42 +6,42 @@ const Schema = mongoose.Schema;
 const propertySchema = new Schema({
   brokerID: {
     type: Number,
-    required: true,
+    required: false,
   },
 
   address: {
     type: String,
-    required: true,
+    required: false,
   },
 
   city:{
     type: String,
-    required: true,
+    required: false,
   },
   
   postalCode:{
     type: String,
-    required: true,
+    required: false,
   },
 
   propertyType: {
     type: String,
-    required: true,
+    required: false,
   },
 
   price:{
     type: Number,
-    required: true,
+    required: false,
   },
 
   numberOfBedrooms:{
     type: Number,
-    required: true,
+    required: false,
   },
 
   numberOfBathrooms:{
     type: Number,
-    required: true,
+    required: false,
   },
 
   amenities:{
