@@ -21,14 +21,27 @@ import NavBar from "../../components/menu/navigationBar"
   const addProperty = async (event) => {
   
     event.preventDefault();
+
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const selectedAmenities = [];
+
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        selectedAmenities.push(checkbox.value);
+      }
+    });
     
     const newProperty = {
-      name: event.target.property.value,
+      brokerID: event.target.brokerID.value,
       address: event.target.address.value,
+      city: event.target.city.value,
+      postalCode: event.target.postalCode.value,
       propertyType: event.target.propertyType.value,
+      price: event.target.price.value,
+      numberOfBedrooms: event.target.numberOfBedrooms.value,
+      numberOfBathrooms: event.target.numberOfBathrooms.value,
+      amenities: selectedAmenities,
     };
-
-  
     
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/property`, {
       method: "POST",
@@ -36,16 +49,14 @@ import NavBar from "../../components/menu/navigationBar"
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newProperty),
-    });
-  
-    setProperties(oldArray => [...oldArray,newProperty] );
+    })
+      .then(response =>{
+        if(response.ok){
+          setProperties(oldArray => [...oldArray, newProperty]);
+        }
+      });
 
-  
-    
-    event.target.property.value = ""; // sets input empty after clicking submit
-    event.target.address.value = ""; 
-    event.target.propertyType.value = "";// sets input empty after clicking submit
-    // window.location.reload(); // reloads the window after sending request
+      event.target.reset();
     };
   return (
     <div className="app">
@@ -58,37 +69,78 @@ import NavBar from "../../components/menu/navigationBar"
     
     <form onSubmit={addProperty}>
       <div>
-        <label htmlFor="property">Property Name:</label>
-        <input
-          type="text"
-          id="property"
-          name="property"
-          autoComplete="off"
-        />
+        <label htmlFor="property">Broker ID (get broker ID):</label>
+        <input type="text" id="brokerID" name="brokerID" autoComplete="off"/>
       </div>
+
       <div>
         <label htmlFor="address">Address:</label>
         <input type="address" id="address" name="address" autoComplete="off" />
       </div>
+
       <div>
-        <label htmlFor="propertyType">Type:</label>
-        <input type="propertyType" id="propertyType" name="propertyType" autoComplete="off" />
+        <label htmlFor="city">City:</label>
+        <input type="text" id="city" name="city" autoComplete="off" />
       </div>
-      <button type="submit" >Add</button>
+
+      <div>
+        <label htmlFor="postalCode">PostalCode:</label>
+        <input type="text" id="postalCode" name="postalCode" autoComplete="off" />
+      </div>
+
+      <div>
+        <label htmlFor="propertyType">Property Type</label>
+        <select name="propertyType" id="propertyType">
+          <option value ="Sale">For Sale</option>
+          <option value ="Rent">For Rent</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="price">Price:</label>
+        <input type="text" id="price" name="price" autoComplete="off" />
+      </div>
+
+      <div>
+        <label htmlFor="numberOfBedrooms">Number of bedrooms:</label>
+        <input type="number" id="numberOfBedrooms" name="numberOfBedrooms" min="1" max="15" autoComplete="off" />
+      </div>
+
+      <div>
+        <label htmlFor="numberOfBathrooms">Number of bathrooms:</label>
+        <input type="number" id="numberOfBathrooms" name="numberOfBathrooms" min="1" max="15" autoComplete="off" />
+      </div>
+
+      <div>
+        <label htmlFor="amenities">Amenities:</label><br></br>
+        <input type="checkbox" id="pet_friendly" name="pet_friendly" value="Pet Friendly"/>
+        <label htmlFor="pet_friendly"> Pet friendly</label>
+        <input type="checkbox" id="swimming_pool" name="swimming_pool" value="Swimming Pool"/>
+        <label htmlFor="swimming_pool"> Swimming Pool</label>
+        <input type="checkbox" id="parking" name="parking" value="Parking"/>
+        <label htmlFor="parking"> Parking</label>
+      </div>
+
+      <button type="submit" >Create Property Listing</button>
+      
     </form>
+
+    
+    
   </header>
  
 <main className="app-main">
 <h2>Properties</h2>
 
 {properties && properties.length > 0 ? (
-  <ol>
+  <ul>
     {properties.map((property) => (
       <li key={property._id}>
-        {property.name} - {property.address} -  {property.propertyType}
+        {property.brokerID} - {property.address} -  {property.city} -  {property.postalCode} -  {property.propertyType} - {property.price} - {property.numberOfBedrooms}  
+        - {property.numberOfBathrooms} - {property.amenities.join(', ')}
       </li>
     ))}
-  </ol>
+  </ul>
 ) : (
   <p>No properties yet</p>
 )}

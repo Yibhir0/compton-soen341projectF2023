@@ -45,8 +45,8 @@ const propertySchema = new Schema({
   },
 
   amenities:{
-    type: String,
-    required: true,
+    type: Array,
+    required: false,
   },
 
 });
