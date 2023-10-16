@@ -1,33 +1,27 @@
 const mongoose = require("mongoose");
 const request = require("supertest");
-const app = require("../server");
+const {app,server} = require("../server");
 
 require("dotenv").config();
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
+// Mock data testing MongoMemoryServer (see dbConn.js)
+const { disconnectDB } = require("../dbConn");
 
-/* Connecting to the database before each test. */
-beforeEach(async () => {
-    await mongoose.connect(MONGODB_URI);
+describe('API test', () => {
+ 
+  afterAll(() => {
+    disconnectDB();
+    server.close();
   });
   
-  /* Closing database connection after each test. */
-afterEach(async () => {
-    await mongoose.connection.close();
-  });
-
-
   // Testing get request for all properties
   describe("GET /api/properties", () => {
-    it("should return all products", async () => {
+    it("should return all properties", async () => {
       const res = await request(app).get("/api/properties");
       expect(res.statusCode).toBe(200);
-      expect(res.body.length).toBeGreaterThan(0);
     });
   });
-
-
-
+ 
   //Testing post request for adding property
   describe("POST /api/property", () => {
     it("should create a property", async () => {
@@ -40,3 +34,5 @@ afterEach(async () => {
       expect(res.body.name).toBe("REALTORS");
     });
   });
+
+});

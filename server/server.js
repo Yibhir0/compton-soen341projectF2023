@@ -1,13 +1,15 @@
 
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+
+const { connectDB, disconnectDB } = require("./dbConn");
 
 const app = express();
 
 // Loading the environment variables from the .env file.
 require("dotenv").config();
+
 
 /* Allowing the frontend to access the backend. */
 app.use(cors());
@@ -22,7 +24,7 @@ app.use(
 
 
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
+//const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
 
 const PropertyRouter = require("./routes/property.route");
 
@@ -38,14 +40,31 @@ app.get("/", (req, res) => {
 });
 
 
-// We don't want to run the server if we don't connect to database.
-mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true })
-  .then(() => {
-    app.listen(PORT, console.log("Server stated on port 5000"));
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+(async () => {
+  try {
+      
+    // Connect to database
+    await connectDB()
+    
+  } catch (e) {
+    console.error("could not connect");
+    console.error(e.message);
+    process.exit();
+  }
+  
+})();
 
-  module.exports = app;
+const server = app.listen(
+  PORT,
+  console.log(`Server started on port ${PORT}...`)
+);
+//We don't want to run the server if we don't connect to database.
+// connectDB()
+//   .then(() => {
+//     app.listen(PORT, console.log("Server started on port 5000"));
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+  module.exports = {app,server};

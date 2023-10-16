@@ -5,19 +5,16 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        mongodb-version: ['4.2', '4.4', '5.0', '6.0']
-  
+    runs-on: ubuntu-latest  
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v2 
-      - uses: supercharge/mongodb-github-action@1.10.0
-        with:
-          mongodb-version: ${{ matrix.mongodb-version }}
+      
       - run: |
               cd server
+              touch .env
+              echo NODE_ENV=${{ vars.NODE_ENV }} >> .env
               npm install
               npm run build --if-present
-              npm run test --if-present
+              npm run test  --if-present
+      
