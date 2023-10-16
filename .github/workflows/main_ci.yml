@@ -1,0 +1,28 @@
+image: node:latest
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - cd server && npm install && cd ../client && npm install
+  cache:
+    paths:
+      - server/node_modules/
+      - client/node_modules/
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+    paths:
+      - server/node_modules/
+      - client/node_modules/
+
+test:
+  stage: test
+  dependencies:
+    - build
+  script:
+    - cd server && npm run test
+
