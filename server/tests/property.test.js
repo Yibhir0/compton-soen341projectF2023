@@ -4,9 +4,11 @@ const app = require("../server");
 
 require("dotenv").config();
 
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
+
 /* Connecting to the database before each test. */
 beforeEach(async () => {
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(MONGODB_URI);
   });
   
   /* Closing database connection after each test. */

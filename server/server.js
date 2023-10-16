@@ -22,7 +22,7 @@ app.use(
 
 
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/comptan";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
 
 const PropertyRouter = require("./routes/property.route");
 

@@ -1,28 +1,23 @@
-image: node:latest
+name: Node.js CI
 
-stages:
-  - build
-  - test
+on: [push]
 
-build:
-  stage: build
-  script:
-    - cd server && npm install && cd ../client && npm install
-  cache:
-    paths:
-      - server/node_modules/
-      - client/node_modules/
-  artifacts:
-    expire_in: 1 days
-    when: on_success
-    paths:
-      - server/node_modules/
-      - client/node_modules/
+jobs:
+  build:
 
-test:
-  stage: test
-  dependencies:
-    - build
-  script:
-    - cd server && npm run test
-
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mongodb-version: ['4.2', '4.4', '5.0', '6.0']
+  
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v2 
+      - uses: supercharge/mongodb-github-action@1.10.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+      - run: |
+              cd server
+              npm install
+              npm run build --if-present
+              npm run test --if-present
