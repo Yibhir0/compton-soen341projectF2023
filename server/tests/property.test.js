@@ -26,12 +26,12 @@ describe('API test', () => {
   describe("POST /api/property", () => {
     it("should create a property", async () => {
       const res = await request(app).post("/api/property").send({
-        name: "REALTORS",
+        brokerID: "22",
         address:"2004 rue mackay",
         propertyType: "house",
       });
       expect(res.statusCode).toBe(201);
-      expect(res.body.name).toBe("REALTORS");
+      expect(res.body.propertyType).toBe("house");
     });
   });
 
