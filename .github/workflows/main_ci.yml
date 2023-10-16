@@ -12,7 +12,9 @@ jobs:
       
       - run: |
               cd server
+              touch .env
+              echo NODE_ENV=${{ vars.NODE_ENV }} >> .env
               npm install
               npm run build --if-present
-
+              npm run test  --if-present
       

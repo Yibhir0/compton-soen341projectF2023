@@ -1,13 +1,15 @@
 
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+
+const { connectDB, disconnectDB } = require("./dbConn");
 
 const app = express();
 
 // Loading the environment variables from the .env file.
 require("dotenv").config();
+
 
 /* Allowing the frontend to access the backend. */
 app.use(cors());
@@ -22,7 +24,7 @@ app.use(
 
 
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
+//const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
 
 const PropertyRouter = require("./routes/property.route");
 
@@ -37,10 +39,8 @@ app.get("/", (req, res) => {
   res.send("Comptan Real Estate");
 });
 
-
-// We don't want to run the server if we don't connect to database.
-mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true })
+//We don't want to run the server if we don't connect to database.
+connectDB()
   .then(() => {
     app.listen(PORT, console.log("Server stated on port 5000"));
   })
@@ -48,4 +48,4 @@ mongoose
     console.log(err);
   });
 
-  module.exports = app;
+  module.exports = {app};
