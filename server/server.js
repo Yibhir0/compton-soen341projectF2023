@@ -39,13 +39,32 @@ app.get("/", (req, res) => {
   res.send("Comptan Real Estate");
 });
 
-//We don't want to run the server if we don't connect to database.
-connectDB()
-  .then(() => {
-    app.listen(PORT, console.log("Server stated on port 5000"));
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
-  module.exports = {app};
+(async () => {
+  try {
+      
+    // Connect to database
+    await connectDB()
+    
+  } catch (e) {
+    console.error("could not connect");
+    console.error(e.message);
+    process.exit();
+  }
+  
+})();
+
+const server = app.listen(
+  PORT,
+  console.log(`Server started on port ${PORT}...`)
+);
+//We don't want to run the server if we don't connect to database.
+// connectDB()
+//   .then(() => {
+//     app.listen(PORT, console.log("Server started on port 5000"));
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+  module.exports = {app,server};
