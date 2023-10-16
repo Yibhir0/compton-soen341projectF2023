@@ -12,5 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: 'npm'
-      - run: npm install
-      - run: npm test
+      - run: |
+              cd server
+              npm install
+      - run: |
+            npm test
