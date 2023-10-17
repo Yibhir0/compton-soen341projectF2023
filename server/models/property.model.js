@@ -49,6 +49,11 @@ const propertySchema = new Schema({
     required: false,
   },
 
+  images:{
+    type: Array,
+    required: false,
+  },
+
 });
 
 module.exports = mongoose.model("Property", propertySchema);
