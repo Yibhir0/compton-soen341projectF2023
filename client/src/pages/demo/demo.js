@@ -1,12 +1,29 @@
 
 import "./demo.css"
-import React, { useState,useEffect } from 'react';
-import NavBar from "../../components/menu/navigationBar"
-import UploadWidget from "../../components/UploadWidget";
+import React, { useState,useEffect, useRef } from 'react';
+import NavBar from "../../components/menu/navigationBar";
 
  function Demo() {
-    
-    const [properties, setProperties] = useState([]);
+
+  const cloudinaryRef = useRef();
+  const widgetRef = useRef();
+  const [uploadedImageIDs, setUploadedImageIDs] = useState([]);
+
+    useEffect(()=> {
+        cloudinaryRef.current = window.cloudinary;
+        widgetRef.current = cloudinaryRef.current.createUploadWidget({
+            cloudName:'dbhsjm5a2',
+            uploadPreset: 'zm8dul6u'
+        }, function(error,result){
+            if (!error && result && result.event === 'success') {
+                // provides url to uploaded image with format
+                const image_public_ID = result.info.public_id + "." + result.info.format;
+                setUploadedImageIDs((prevIDs) => [...prevIDs, image_public_ID]);
+            }
+        });
+    }, [])
+
+  const [properties, setProperties] = useState([]);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +59,7 @@ import UploadWidget from "../../components/UploadWidget";
       numberOfBedrooms: event.target.numberOfBedrooms.value,
       numberOfBathrooms: event.target.numberOfBathrooms.value,
       amenities: selectedAmenities,
+      images: uploadedImageIDs,
     };
     
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/property`, {
@@ -56,7 +74,8 @@ import UploadWidget from "../../components/UploadWidget";
           setProperties(oldArray => [...oldArray, newProperty]);
         }
       });
-
+      
+      setUploadedImageIDs([]);
       event.target.reset();
     };
   return (
@@ -123,14 +142,23 @@ import UploadWidget from "../../components/UploadWidget";
       </div>
 
       <div>
-        <UploadWidget></UploadWidget>
+          <button type = "button" onClick={() => widgetRef.current.open()}>Upload</button>
+          
+          {uploadedImageIDs && (
+            <div>
+              <p>Images:</p>
+              <div className="card" style={{ width: '15rem' }}>
+                {uploadedImageIDs.map((image) => (
+                  <img className="img-thumbnail" src={"https://res.cloudinary.com/dbhsjm5a2/image/upload/v1697488900/" + image} alt="Uploaded" />
+                ))}
+              </div>
+            </div>
+          )}
       </div>
 
-      <button type="submit" >Create Property Listing</button>
+      <button type="submit">Create Property Listing</button>
       
     </form>
-
-    
     
   </header>
  
@@ -142,7 +170,7 @@ import UploadWidget from "../../components/UploadWidget";
     {properties.map((property) => (
       <li key={property._id}>
         {property.brokerID} - {property.address} -  {property.city} -  {property.postalCode} -  {property.propertyType} - {property.price} - {property.numberOfBedrooms}  
-        - {property.numberOfBathrooms} - {property.amenities.join(', ')}
+        - {property.numberOfBathrooms} - {property.amenities.join(', ')} - {property.images.join(', ')}
       </li>
     ))}
   </ul>
