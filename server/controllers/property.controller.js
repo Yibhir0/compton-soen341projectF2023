@@ -17,7 +17,7 @@ const getProperties = async (req, res) => {
 };
 
 /**
- * It creates a new property and saves it to the database.
+ * Creates a new property and saves it to the database.
  */
 const addProperty = async (req, res) => {
   const property = new Property(req.body);
@@ -48,7 +48,7 @@ const getProperty = async(req, res) => {
 
 /**
  * Updates a property listing if it exists and returns
- * the updates property listing.
+ * the updated property listing.
  */
 const updateProperty = async (req, res) =>{
   try {
@@ -64,11 +64,29 @@ const updateProperty = async (req, res) =>{
   }
 }
 
-// to Do (delete,edit..etc)
+/**
+ * Deletes a property listing from the database
+ * if it exists and returns the updated
+ * property listing that was removed.
+ */
+const deleteProperty = async (req, res) =>{
+  try{
+    const {id} = req.params;
+    const property = await Property.findByIdAndDelete(id);
+    if(!property){
+      return res.status(404).json({message: "Cannot find any property with id " + id + " to delete."})
+    }
+    res.status(200).json(property);
+  }
+  catch(err){
+    res.status(500).json({ message: err.message });
+  }
+}
 
 module.exports = {
   getProperties,
   addProperty,
   getProperty,
   updateProperty,
+  deleteProperty,
  };
