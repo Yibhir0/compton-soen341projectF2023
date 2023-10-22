@@ -7,9 +7,9 @@ const { connectDB, disconnectDB } = require("./dbConn");
 
 const app = express();
 
+
 // Loading the environment variables from the .env file.
 require("dotenv").config();
-
 
 /* Allowing the frontend to access the backend. */
 app.use(cors());
@@ -23,16 +23,20 @@ app.use(
 );
 
 
+
 const PORT = process.env.PORT || 5000;
 //const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
 
 const PropertyRouter = require("./routes/property.route");
+const registerLoginRouter = require("./routes/register.login.route");
 
 
 app.use(express.json());
 
+
 /* Telling the application to use the PropertyRouter for any requests that start with "/api". */
 app.use("/api", PropertyRouter);
+app.use("/api", registerLoginRouter);
 
 // Router listening for root and responding with  Comptan real estate
 app.get("/", (req, res) => {
