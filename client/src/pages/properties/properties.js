@@ -1,9 +1,13 @@
 import React, { useState,useEffect } from 'react';
 import NavBar from "../../components/menu/navigationBar"
-
+import SearchForm from "../../components/form/searchform";
 function Properties(){
 
   const [properties, setProperties] = useState([]);
+  
+  function handleState(myProperties) {
+    setProperties(myProperties);
+ }
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
@@ -24,16 +28,18 @@ function Properties(){
         <div>
         <NavBar/>
         </div>
+        <SearchForm change = {handleState}/>
       </div>
 
       <main className="app-main">
+
           <h2>Properties</h2>
           {properties && properties.length > 0 ? (
 
           <div className="card" style={{ width: '30rem' }}>
-            {properties.map((property) => (
+            {properties.map((property,i) => (
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">{property._id} - {property.brokerID} - {property.address}<button type="button" class="btn btn-danger btn-sm">Delete listing</button></li>
+                <li key={i} class="list-group-item">{property._id} - {property.brokerID} - {property.address}<button type="button" class="btn btn-danger btn-sm">Delete listing</button></li>
               </ul>
             ))}
           </div>

@@ -3,6 +3,7 @@ import "./demo.css"
 import React, { useState,useEffect, useRef } from 'react';
 import NavBar from "../../components/menu/navigationBar";
 
+
  function Demo() {
 
   const cloudinaryRef = useRef();
@@ -80,6 +81,7 @@ import NavBar from "../../components/menu/navigationBar";
     };
   return (
     <div className="app">
+
       <div>
       <NavBar/>
       </div>

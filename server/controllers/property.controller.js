@@ -36,6 +36,7 @@ const addProperty = async (req, res) => {
  * find properties with filter criteria
  */
 const getFilteredProperties = async(req,res) =>{
+  console.log(req.query.city);
   // Dynamiccaly set the filter conditions
   const filters = {};
   filters['$and'] = [];
@@ -45,6 +46,7 @@ const getFilteredProperties = async(req,res) =>{
   if(req.query.postalCode) filters['$and'].push({ postalCode: req.query.postalCode});
   if(req.query.propertyType) filters['$and'].push({ propertyType: req.query.propertyType});
   const price={};
+  
   if(req.query.minPrice){
     price["$gte"] = parseInt(req.query.minPrice);
   } 
@@ -57,7 +59,7 @@ const getFilteredProperties = async(req,res) =>{
   if(req.query.numberOfBedrooms)filters['$and'].push({ numberOfBedrooms: req.query.numberOfBedrooms});
   if(req.query.numberOfBathrooms) filters['$and'].push({ numberOfBathrooms: req.query.numberOfBathrooms});
   if(req.query.amenities) filters['$and'].push({ amenities:{$all : req.query.amenities} });
-
+  console.log(filters);
   // Build the query with where clause
   const query = Property.where(filters); 
 

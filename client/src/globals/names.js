@@ -5,4 +5,9 @@ const STUDENTS = ["Dominic Riccio - 40125922",
 "Jared Latchman 40214398",
 "Michael Iadisernia - 40212429",
 "Yassine Ibhir - 40251116"]  ;
-export { STUDENTS };
+
+
+
+const AMENITIES = ["Parking","Pet friendly","Swimming Pool"];
+
+export { STUDENTS,AMENITIES };
