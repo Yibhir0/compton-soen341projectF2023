@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const brokerSchema = new Schema({
+const userSchema = new Schema({
     email:{
         type: String,
         required: true,
@@ -10,7 +10,12 @@ const brokerSchema = new Schema({
     password:{
         type: String,
         required: true,
-    }
+    },
+    accountType:{
+        type:String,
+        default:"broker",
+        required:false,
+    },
 })
 
-module.exports = mongoose.model("Broker", brokerSchema);
+module.exports = mongoose.model("User", userSchema);
