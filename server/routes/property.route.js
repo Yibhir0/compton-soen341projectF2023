@@ -16,7 +16,7 @@ router.get("/properties", getProperties);
 /* Creating a route for the post request. */
 router.post("/property", addProperty);
 // Creating route for get properties with filtering
-router.get("/properties/:filter",  getFilteredProperties);
+router.get("/properties/filter",  getFilteredProperties);
 /* Creating a route for the get request. */
 router.get("/properties/:id", getProperty);
 /* Creating a route for the put request. */

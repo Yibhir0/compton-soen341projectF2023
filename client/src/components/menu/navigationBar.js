@@ -21,6 +21,9 @@ const Navbar = () => {
       <div className='navItem'>
         <Link to="/about" className='navItem'>About</Link>
       </div>
+      <div className='navItem'>
+        <Link to="/properties" className='navItem'>Properties</Link>
+      </div>
     </>
   );
 
@@ -30,9 +33,11 @@ const Navbar = () => {
       <div className='navItem'>
         <Link to="/create" className='navItem'>Create Property Listing</Link>
       </div>
+
       <div className='navItem'>
         <Link to="/properties" className='navItem'>My Properties</Link>
       </div>
+      
       <div>
         <Link to="/" onClick={handleSignout} className='navItem'>Sign out</Link>
       </div>
