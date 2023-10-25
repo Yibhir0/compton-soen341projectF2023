@@ -12,7 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 function SearchForm({change}) {
   const [fields, setFields] = useState({
-    city: " ",
+    city: "",
     open: false,
   });
 

@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import NavBar from "../../components/menu/navigationBar"
-
+import SearchForm from "../../components/form/searchform"
 function Properties(){
 
   const [properties, setProperties] = useState([]);
@@ -16,6 +16,11 @@ function Properties(){
   }, []);
 
 
+  // Change the state when search is trigered
+  const handleSearchState = (myproperties) =>{
+    setProperties(myproperties)
+  }
+
   return (
     <div>
 
@@ -27,6 +32,7 @@ function Properties(){
       </div>
 
       <header className="app-header">
+          <SearchForm change={handleSearchState}/>
           <h1>My listed properties</h1>
           <br></br>
           {properties && properties.length > 0 ? (
