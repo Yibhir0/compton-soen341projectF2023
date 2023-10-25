@@ -31,8 +31,71 @@ const addProperty = async (req, res) => {
 };
 
 /**
- * Fetches a single property listing by its id (per request param).
+ * find properties with filter criteria
  */
+const getFilteredProperties = async(req,res) =>{
+  // Dynamically build the query.
+  let filters = {};
+  
+  const data = req.query;
+  let and_conds = [];
+  const price={};
+  
+  for (const field in data) {
+   
+    if(field === "amenities"){
+      and_conds.push({ [field]:{$all : data[field]} });
+    }
+    else if(field === "numberOfBedrooms" || field ==="numberOfBathrooms"){
+      let p = parseInt(data[field]);
+      if(p>3){
+        and_conds.push({[field]: { $gte: p }});
+      }
+      else{
+        and_conds.push({[field]: p });
+      }
+    }
+    else if( field=== "minPrice"){
+      let p = parseInt(data[field]);
+      price["$gte"] = p;
+
+    }
+    else if( field=== "maxPrice"){
+      let p = parseInt(data[field]);
+      price["$lte"] = p;
+    }
+    else{
+      let val = new RegExp(data[field]);
+      and_conds.push({[field]: { $regex: val, $options: "i" }});
+    }
+    
+  }
+  if(Object.keys(price).length>0) and_conds.push({price:price});
+  filters["$and"] = and_conds;
+
+
+  let query;
+  // check if user put  filter values
+  if(filters['$and'].length>0){
+    // Build the query with where clause
+    query = Property.where(filters); 
+  }
+  else{
+    // No query, fetch all properties
+    query = Property;
+  }
+
+  // Fetch from mongo
+    try{
+    const properties = await query.find();
+   
+    res.status(200).json(properties);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  }
+//  Fetches a single property listing by its id (per request param).
+ 
 const getProperty = async(req, res) => {
   try{
     const {id} = req.params;
@@ -84,9 +147,10 @@ const deleteProperty = async (req, res) =>{
 }
 
 module.exports = {
-  getProperties,
-  addProperty,
-  getProperty,
-  updateProperty,
-  deleteProperty,
- };
+ getProperties,
+ addProperty,
+ getFilteredProperties,
+ getProperty,
+updateProperty,
+deleteProperty,
+};

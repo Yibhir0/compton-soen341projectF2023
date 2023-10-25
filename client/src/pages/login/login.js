@@ -17,13 +17,14 @@ function Login(){
             return;
         }
         try{
-          const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/login', credentials);
+          const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/auth/login', credentials);
           const token = response.data.token;
           console.log(response.data);
           setCredentials({ email: '', password: '' });
+           localStorage.setItem('token',token);
           navigate('/');
           window.location.reload()
-          localStorage.setItem('token',token);
+         
         }catch(e){
           alert("Incorrect email or password");
         }

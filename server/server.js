@@ -34,7 +34,7 @@ app.use(express.json());
 
 /* Telling the application to use the PropertyRouter for any requests that start with "/api". */
 app.use("/api", PropertyRouter);
-app.use("/api", authRouter);
+app.use("/api/auth", authRouter);
 
 // Router listening for root and responding with  Comptan real estate
 app.get("/", (req, res) => {
