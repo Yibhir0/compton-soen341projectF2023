@@ -2,7 +2,7 @@ const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
-const SECRET_KEY = 'secretkey'
+const secretKey = process.env.SECRET_KEY;
 
 const register = async(req, res) =>{
     try{
@@ -33,7 +33,7 @@ const login = async(req, res) =>{
         if(!isPasswordValid){
             return res.status(401).json({error: "Invalid password."})
         }
-        const token = jwt.sign({brokerId: user._id}, SECRET_KEY, {expiresIn: '1hr'});
+        const token = jwt.sign({brokerId: user._id}, secretKey, {expiresIn: '1hr'});
         res.json({message:"Login successful", token: token})
     }catch(error){
         res.status(500).json({error: "Error logging in"})

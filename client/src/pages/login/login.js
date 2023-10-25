@@ -5,25 +5,23 @@ import { useNavigate } from 'react-router-dom';
 
 function Login(){
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [credentials, setCredentials] = useState({ email: '', password: '' });
     const navigate = useNavigate();
 
 
     const handleLogin = async (event) =>{
         event.preventDefault();
 
-        if(!password || !email){
+        if (!credentials.password || !credentials.email){
             console.log("Password and email cannot be empty");
             return;
         }
         try{
-          const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/login', {email,password});
+          const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/login', credentials);
           const token = response.data.token;
           console.log(response.data);
-          setEmail('')
-          setPassword('')
-          navigate('/')
+          setCredentials({ email: '', password: '' });
+          navigate('/');
           window.location.reload()
           localStorage.setItem('token',token);
         }catch(e){
@@ -44,10 +42,10 @@ function Login(){
         <div className="mb-3 w-25">
             <br></br>
             <label htmlFor="email" className="form-label">Email address</label>
-            <input onChange={(e) => setEmail(e.target.value)} value = {email} type="email" className="form-control" id="email" aria-describedby="emailHelp"></input>
+            <input onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value = {credentials.email} type="email" className="form-control" id="email" aria-describedby="emailHelp"></input>
             <br></br>
             <label htmlFor="password" className="form-label">Password</label>
-            <input onChange={(e) => setPassword(e.target.value)} value = {password} type="password" className="form-control " id="password"></input>
+            <input onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} value = {credentials.password} type="password" className="form-control " id="password"></input>
             <br></br>
             <div className='form-row text-center'>
                 <button type='submit' className="btn btn-info">Login</button>
