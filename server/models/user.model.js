@@ -12,6 +12,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+//token to reset password
+    resetToken: String,
+    resetTokenExpiry: Date,
+
     accountType:{
         type:String,
         default:"broker",

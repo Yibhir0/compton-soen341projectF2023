@@ -51,6 +51,7 @@ function Login(){
             <div className='form-row text-center'>
                 <button type='submit' className="btn btn-info">Login</button>
             </div>
+                <a href="/resetPassword">Forgot password , Reset password</a>
         </div>
         </form>
 
