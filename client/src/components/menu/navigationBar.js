@@ -48,7 +48,7 @@ const Navbar = () => {
         <Link to="/register" className='navItem'>Register</Link>
       </div>
       <div>
-        <Link to="/resetPassword" className='navItem'>Reset Password</Link>
+        <Link to="/passwordReset" className='navItem'>Reset Password</Link>
       </div>
     </>
   );

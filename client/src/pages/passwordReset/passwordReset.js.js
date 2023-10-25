@@ -1,42 +1,58 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, {useState} from 'react'
+import NavBar from "../../components/menu/navigationBar"
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
-function PasswordReset() {
-  const [email, setEmail] = useState('');
-  const [resetStatus, setResetStatus] = useState('');
+function PasswordReset(){
 
-  const handleReset = () => {
-    axios.post('/api/resetPassword', { email })
-      .then(response => {
-        setResetStatus('Password reset email sent');
-      })
-      .catch(error => {
-        setResetStatus('Error: ' + error.message);
-      });
-  };
+    const [credentials, setCredentials] = useState({ email: '' });
+    const navigate = useNavigate();
 
-  return (
+
+    const handleLogin = async (event) =>{
+        event.preventDefault();
+
+        if (!credentials.email){
+            console.log("email cannot be empty");
+            return;
+        }
+        try{
+          const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/auth/login', credentials);
+          const token = response.data.token;
+          console.log(response.data);
+          setCredentials({ email: '' });
+           localStorage.setItem('token',token);
+          navigate('/');
+          window.location.reload()
+         
+        }catch(e){
+          alert("Incorrect email");
+        }
+    }
+
+    return (
     <div className="app">
-    <header className="app-header">
-    <NavBar/>
-        <h1>Forgot Password</h1>
-    </header>
-
-    <form className='h-100 d-flex align-items-center justify-content-center'>
-    <div className="mb-3 w-25">
-        <br></br>
-        <label htmlFor="email" className="form-label">Email address</label>
-        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <br></br>
-        <div className='form-row text-center'>
-        <br></br>
-          <button onClick={handleReset}type='submit' className="btn btn-info">Reset Password</button>
-          <p>{resetStatus}</p>
+        <div>
+            <NavBar/>
         </div>
-      </div>
-    </form>
+        <header className="app-header">
+            <h1>Password Reset</h1>
+        </header>
+
+        <form onSubmit = {handleLogin} className='h-100 d-flex align-items-center justify-content-center'>
+        <div className="mb-3 w-25">
+            <br></br>
+            <label htmlFor="email" className="form-label">Email address</label>
+            <input onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value = {credentials.email} type="email" className="form-control" id="email" aria-describedby="emailHelp"></input>
+            <br></br>
+            <div className='form-row text-center'>
+                <button type='submit' className="btn btn-info">Reset</button>
+            </div>
+        </div>
+        </form>
 
     </div>
-  );
+    
+      )
 }
 export default PasswordReset;
