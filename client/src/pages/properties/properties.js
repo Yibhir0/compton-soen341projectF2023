@@ -1,6 +1,11 @@
 import React, { useState,useEffect } from 'react';
 import NavBar from "../../components/menu/navigationBar"
+<<<<<<< HEAD
 import SearchForm from "../../components/form/searchform"
+=======
+import { Link } from 'react-router-dom';
+
+>>>>>>> 7fef4235361b67ba4d5e3963d1450eeabef72971
 function Properties(){
 
   const [properties, setProperties] = useState([]);
@@ -47,9 +52,7 @@ function Properties(){
                       <p className="card-text"> For {property.propertyType}</p>
                       <p className="card-text">{property.address}</p>
                       <div className='align-items-center justify-content-center text-center'>
-                        <a href="" className="btn btn-primary m-2">View details</a>
-                        <a href="" className="btn btn-warning m-2">Edit</a>
-                        <a href="" className="btn btn-danger m-2">Delete</a>  
+                      <Link to={`/properties/${property._id}`} className="btn btn-primary m-2">View details</Link>
                       </div>
                     </div>
                   </div>
