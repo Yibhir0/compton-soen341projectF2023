@@ -9,7 +9,7 @@ const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
 const resetPassword = async(req, res) =>{
-    
+    //to do
 }
 
 

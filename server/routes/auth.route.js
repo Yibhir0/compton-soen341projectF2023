@@ -9,8 +9,8 @@ const{
 
 const router = express.Router();
 
+router.post("/resetPassword", resetPassword);
 router.post("/register", register);
 router.post("/login", login);
-router.post("/resetPassword", resetPassword);
 
 module.exports = router;
