@@ -13,16 +13,10 @@
     "axios": "^1.5.1",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-numeric-input": "^2.2.3",
-    "react-scripts": "5.0.1",
-    "react-select": "^5.7.7",
-=======
-    "react-scripts": "^5.0.1",
->>>>>>> 0ea0115f348cd2681d5c3833a9353417011ce2f2
-    "web-vitals": "^2.1.4"
-  },
+    "react-dom": "^18.2.0", 
+    "web-vitals": "^2.1.4",
+    "react-scripts": "^5.0.1"
+    },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

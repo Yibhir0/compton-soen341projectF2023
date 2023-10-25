@@ -16,7 +16,7 @@ function Register(){
             return;
         }
         axios
-        .post(process.env.REACT_APP_BACKEND_URL + '/register', credentials)
+        .post(process.env.REACT_APP_BACKEND_URL + '/auth/register/', credentials)
         .then(()=>{
             alert('Registration Successful')
             setCredentials({ email: '', password: '' });

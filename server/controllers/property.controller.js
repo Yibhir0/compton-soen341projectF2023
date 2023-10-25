@@ -42,7 +42,7 @@ const getFilteredProperties = async(req,res) =>{
   const price={};
   
   for (const field in data) {
-  
+   
     if(field === "amenities"){
       and_conds.push({ [field]:{$all : data[field]} });
     }
@@ -73,7 +73,7 @@ const getFilteredProperties = async(req,res) =>{
   if(Object.keys(price).length>0) and_conds.push({price:price});
   filters["$and"] = and_conds;
 
-  
+
   let query;
   // check if user put  filter values
   if(filters['$and'].length>0){
@@ -88,6 +88,7 @@ const getFilteredProperties = async(req,res) =>{
   // Fetch from mongo
     try{
     const properties = await query.find();
+   
     res.status(200).json(properties);
     } catch (err) {
       res.status(500).json({ message: err.message });
