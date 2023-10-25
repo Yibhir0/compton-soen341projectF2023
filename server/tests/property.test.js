@@ -22,7 +22,7 @@ describe('API test', () => {
     });
   });
  
-  //Testing post request for adding property
+  //Testing post request for adding property ()
   describe("POST /api/property", () => {
     it("should create a property", async () => {
       const res = await request(app).post("/api/property").send({
@@ -34,5 +34,23 @@ describe('API test', () => {
       expect(res.body.propertyType).toBe("house");
     });
   });
+
+    //Testing get request for properties filter
+    describe("GET /api/properties/:filter", () => {
+      it("should return properties with filter conditions", async () => {
+        const p1 = await request(app).post("/api/property").send({
+          brokerID: "22",
+          address:"2004 rue mackay",
+          propertyType: "Rent",
+          city:"Montreal",
+          amenities:[ "Parking"]
+        });
+      
+        const res = await request(app).get("/api/properties/:filter?address=2004 rue mackay&city=Montreal&propertyType=Rent&amenities[]=Parking");
+        expect(res.statusCode).toBe(200);
+        expect(res.body.propertyType).toBe(p1.propertyType);
+
+      });
+    });
 
 });
