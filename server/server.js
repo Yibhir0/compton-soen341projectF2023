@@ -22,13 +22,11 @@ app.use(
   }),
 );
 
-
-
 const PORT = process.env.PORT || 5000;
 //const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
 
 const PropertyRouter = require("./routes/property.route");
-const registerLoginRouter = require("./routes/register.login.route");
+const authRouter = require("./routes/auth.route");
 
 
 app.use(express.json());
@@ -36,7 +34,7 @@ app.use(express.json());
 
 /* Telling the application to use the PropertyRouter for any requests that start with "/api". */
 app.use("/api", PropertyRouter);
-app.use("/api", registerLoginRouter);
+app.use("/api", authRouter);
 
 // Router listening for root and responding with  Comptan real estate
 app.get("/", (req, res) => {
