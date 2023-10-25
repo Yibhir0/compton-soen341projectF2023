@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
+const {server} = require("./server");
+
 let mongod = null;
 
 require("dotenv").config();
@@ -26,6 +28,7 @@ const connectDB = async () => {
     console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (err) {
     console.log(err);
+    server.close();
     process.exit(1);
   }
 };

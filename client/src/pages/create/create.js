@@ -5,6 +5,7 @@ import NavBar from "../../components/menu/navigationBar";
 import jwtDecode from 'jwt-decode';
 
 
+
  function Demo() {
 
   const cloudinaryRef = useRef();
@@ -88,6 +89,7 @@ import jwtDecode from 'jwt-decode';
     };
   return (
     <div className="app">
+
       <div>
       <NavBar/>
       </div>
