@@ -28,7 +28,7 @@ const Navbar = () => {
   const brokerNavigation = isBrokerSignedIn ? (
     <>
       <div className='navItem'>
-        <Link to="/create-property-listing" className='navItem'>Create Property Listing</Link>
+        <Link to="/create" className='navItem'>Create Property Listing</Link>
       </div>
       <div className='navItem'>
         <Link to="/properties" className='navItem'>My Properties</Link>

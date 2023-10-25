@@ -95,7 +95,7 @@ import jwtDecode from 'jwt-decode';
       </div>
      
   <header className="app-header">
-    <h1>Real Estate</h1>
+    <h1>Create Property Listing</h1>
     
     <form onSubmit={addProperty}>
 
@@ -110,7 +110,7 @@ import jwtDecode from 'jwt-decode';
       </div>
 
       <div>
-        <label htmlFor="postalCode">PostalCode:</label>
+        <label htmlFor="postalCode">Postal Code:</label>
         <input type="text" id="postalCode" name="postalCode" autoComplete="off" />
       </div>
 
@@ -162,13 +162,13 @@ import jwtDecode from 'jwt-decode';
           )}
       </div>
 
-      <button type="submit">Create Property Listing</button>
+      <button type="submit">Create</button>
       
     </form>
     
   </header>
  
-<main className="app-main">
+{/* <main className="app-main">
 <h2>Properties</h2>
 
 {properties && properties.length > 0 ? (
@@ -183,7 +183,7 @@ import jwtDecode from 'jwt-decode';
 ) : (
   <p>No properties yet</p>
 )}
-</main>
+</main> */}
 </div>
   );
 }
