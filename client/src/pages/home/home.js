@@ -5,8 +5,8 @@ function Home()  {
   console.log("hoem");
   return (
     <div>
-      <div>Welcome to the home page of Compton Real Estate</div>
     <NavBar/>
+      <div>Welcome to the home page of Compton Real Estate</div>
     </div>
     
   )

@@ -2,12 +2,15 @@
 import "./demo.css"
 import React, { useState,useEffect, useRef } from 'react';
 import NavBar from "../../components/menu/navigationBar";
+import jwtDecode from 'jwt-decode';
+
 
  function Demo() {
 
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
   const [uploadedImageIDs, setUploadedImageIDs] = useState([]);
+  
 
     useEffect(()=> {
         cloudinaryRef.current = window.cloudinary;
@@ -48,9 +51,13 @@ import NavBar from "../../components/menu/navigationBar";
         selectedAmenities.push(checkbox.value);
       }
     });
+
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
+
     
     const newProperty = {
-      brokerID: event.target.brokerID.value,
+      brokerID: decodedToken.brokerId,
       address: event.target.address.value,
       city: event.target.city.value,
       postalCode: event.target.postalCode.value,
@@ -61,6 +68,7 @@ import NavBar from "../../components/menu/navigationBar";
       amenities: selectedAmenities,
       images: uploadedImageIDs,
     };
+
     
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/property`, {
       method: "POST",
@@ -88,10 +96,6 @@ import NavBar from "../../components/menu/navigationBar";
     <h1>Real Estate</h1>
     
     <form onSubmit={addProperty}>
-      <div>
-        <label htmlFor="property">Broker ID (get broker ID):</label>
-        <input type="text" id="brokerID" name="brokerID" autoComplete="off"/>
-      </div>
 
       <div>
         <label htmlFor="address">Address:</label>
