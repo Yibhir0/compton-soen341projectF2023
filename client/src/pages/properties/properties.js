@@ -1,11 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import NavBar from "../../components/menu/navigationBar"
-<<<<<<< HEAD
 import SearchForm from "../../components/form/searchform"
-=======
 import { Link } from 'react-router-dom';
 
->>>>>>> 7fef4235361b67ba4d5e3963d1450eeabef72971
 function Properties(){
 
   const [properties, setProperties] = useState([]);
