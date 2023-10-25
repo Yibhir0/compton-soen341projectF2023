@@ -1,4 +1,3 @@
-
 import "./demo.css"
 import React, { useState,useEffect, useRef } from 'react';
 import NavBar from "../../components/menu/navigationBar";

@@ -14,9 +14,8 @@ function App() {
 
   const isBrokerSignedIn = !!localStorage.getItem('token');
   return (
-    <div className="App">
-
-
+    
+  <div className="App">
   <Routes>
   <Route path="/login" element={<Login />}></Route>
   <Route path="/about" element={<About />}></Route>
