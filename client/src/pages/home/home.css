@@ -1,0 +1,61 @@
+.home-page {
+    margin: auto;
+}
+
+.mainContent {
+    max-width: 1440px;
+    margin: auto;
+
+    
+}
+
+.window-1 {
+    align-content: center;
+  
+}
+
+.box {
+
+}
+
+.background{
+    filter: brightness(72.5%);
+}
+
+
+.label {
+    height: 240px;
+    width: 625px;
+    position: relative;
+    bottom: 850px;
+    left: 100px;
+    
+}
+
+.label .label-welcome {
+    color: #fcfcfc;
+    font-family: "DMSans-Bold", Helvetica;
+    font-size: 100px;
+    font-weight: 700;
+    left: 0;
+    letter-spacing: -2.01px;
+    line-height: 95px;
+    position: absolute;
+    top: 0;
+    
+}
+
+.label-subtext {
+
+    color: #fcfcfc;
+    font-family: "DMSans-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: -0.5px;
+    line-height: 28px;
+    opacity: 0.6;
+    position: relative;
+    top: 300px;
+    width: 428px;
+}
