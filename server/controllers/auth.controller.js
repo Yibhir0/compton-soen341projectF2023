@@ -4,6 +4,15 @@ const jwt = require('jsonwebtoken');
 
 const secretKey = process.env.SECRET_KEY;
 
+
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+
+const resetPassword = async(req, res) =>{
+    
+}
+
+
 const register = async(req, res) =>{
     try{
         
@@ -45,4 +54,5 @@ const login = async(req, res) =>{
 module.exports = {
     register,
     login,
+    resetPassword,
 };
