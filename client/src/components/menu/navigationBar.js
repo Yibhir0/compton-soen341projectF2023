@@ -1,24 +1,34 @@
-import {Link} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './navigationBar.css';
 const Navbar=()=>{
     return (    
-                <div className='navBar'>
-                    <div >
-                        <Link to="/" className ='navItem'>Home</Link>
-                    </div>
-                    <div >
-                        <Link to="/login" className ='navItem'>Login</Link>
-                    </div>
-                    <div className='navItem'>
-                        <Link to="/about" className ='navItem'>About</Link>
-                    </div>
-                    <div className='navItem'>
-                        <Link to="/demo" className ='navItem'>Demo</Link>
-                    </div>
-                    <div className='navItem'>
-                        <Link to="/properties" className ='navItem'>Property List</Link>
-                    </div>
-                </div>
+            <nav className="navbar"> 
+                        <div className="container">                                                  
+                                <div className="nav-elements">
+                                        <ul>
+                                            <li>
+                                            <img className="logo-realestate" alt="Logo Real Estate" src={require('../../assets/images/placeholder_logo.png')}/>
+                                            </li>
+                                                    <li>
+                                                    <NavLink to="/">Home</NavLink>
+                                                    </li>
+                                                    <li> 
+                                                    <NavLink to="/login">Login</NavLink>
+                                                    </li>
+                                                    <li>
+                                                    <NavLink to="/about">About</NavLink>
+                                                    </li>
+                                                    <li>
+                                                    <NavLink to="/demo">Demo</NavLink>
+                                                    </li>
+                                                    <li>
+                                                    <NavLink to="/properties">Property Listings</NavLink>
+                                                    </li>
+                                        </ul>      
+                                </div>     
+                         </div>        
+            </nav>
     )
 
 }

@@ -4,9 +4,9 @@ function Login (){
   console.log("hello")
   return (
     <div>
-
+    <NavBar/>
        <div>Welcome to the login page</div>
-      <NavBar/>
+    
     </div>
 
   )
