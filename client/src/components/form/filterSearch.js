@@ -9,7 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Select from '@mui/material/Select';
 
-import { AMENITIES } from '../../globals/names';
+import { AMENITIES, RENT_PRICE} from '../../globals/names';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -33,36 +33,47 @@ function FilterSearch({change,handleModal}) {
         maxPrice:"",
         numberOfBedrooms:"",
         numberOfBathrooms:"",
-        propertyType:""
-
+        propertyType:"",
     });
-    const handleState =async () => {
 
+    /**
+     * Fetch with search conditions
+     * Update the parent state
+     */
+    const handleState =async () => {
       let searchUrl = buildUrl();
       const result = await fetch(searchUrl);
       const data = await result.json();
       clearFields();
       change(data);
       handleModal();
-      console.log(searchUrl);
     }
 
-
+    /**
+     * Build url with search params
+     * @returns url as string
+     */
     function buildUrl(){
       const url = new URL(`${process.env.REACT_APP_BACKEND_URL}/properties/filter?` );
       if(searchFields.address.length>0) url.searchParams.append('address', searchFields.address);
       if(searchFields.city.length>0 ) url.searchParams.append('city', searchFields.city);
       if(searchFields.postalCode.length>0) url.searchParams.append('postalCode', searchFields.postalCode);
-      if(searchFields.numberOfBedrooms.length>0) url.searchParams.append('numberOfBedrooms',searchFields.numberOfBedrooms);
-      if(searchFields.numberOfBathrooms.length>0) url.searchParams.append('numberOfBathrooms',searchFields.numberOfBathrooms);
-      if(searchFields.minPrice.length>0) url.searchParams.append('minPrice',parseInt( searchFields.minPrice) );
-      if(searchFields.maxPrice.length>0) url.searchParams.append('maxPrice',parseInt( searchFields.maxPrice) );
+      if(searchFields.numberOfBedrooms.length>0 && searchFields.numberOfBedrooms !=="Any"  ) 
+      url.searchParams.append('numberOfBedrooms',searchFields.numberOfBedrooms);
+      if(searchFields.numberOfBathrooms.length>0 && searchFields.numberOfBathrooms !=="Any" ) 
+      url.searchParams.append('numberOfBathrooms',searchFields.numberOfBathrooms);
+      if(searchFields.minPrice.length>0 && searchFields.minPrice !=="Any") url.searchParams.append('minPrice',searchFields.minPrice );
+      if(searchFields.maxPrice.length>0 && searchFields.maxPrice !=="Any") url.searchParams.append('maxPrice',searchFields.maxPrice);
       if(searchFields.propertyType.length>0) url.searchParams.append('propertyType',searchFields.propertyType );
       let search = new URLSearchParams(searchFields.amenities?.map(a=>['amenities',a]))
       let urlSearch = url.toString()+"&"+search.toString();
       
       return urlSearch;
     }
+
+    /**
+     * Clear input fields
+     */
     function clearFields(){
       setSearchFields({
         address:"",  
@@ -73,17 +84,16 @@ function FilterSearch({change,handleModal}) {
         maxPrice:"",
         numberOfBedrooms:"",
         numberOfBathrooms:"",
-        propertyType:""
+        propertyType:"",
       })
     }
     
     const handleChange = (evt) => {
-       const value = evt.target.value;
-       console.log(value)
-       setSearchFields({
-        ...searchFields,
-        [evt.target.name]: value
-      });
+        const value = evt.target.value;
+        setSearchFields({
+          ...searchFields,
+          [evt.target.name]: value,
+        });
       };  
   return (
     <Box sx={style}>
@@ -114,23 +124,49 @@ function FilterSearch({change,handleModal}) {
         </FormControl>
         <FormControl fullWidth sx={{ m: 1,width: '25ch' }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">Minimum Price</InputLabel>
-          <FilledInput name="minPrice"  value={searchFields.minPrice}  onChange={handleChange}
+          <Select  
+            value={searchFields.minPrice}
+            onChange={handleChange}
+            name="minPrice"
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          />
+            >
+
+            {RENT_PRICE.map((price) => (
+            <MenuItem
+              key={price}
+              value={price}
+            >
+              {price}
+            </MenuItem>
+            ))};
+        </Select>
+
         </FormControl>
         
         <FormControl fullWidth sx={{ m: 1,width: '25ch' }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">Maximum price</InputLabel>
-          <FilledInput name="maxPrice" value={searchFields.maxPrice}    onChange={handleChange}
+          <Select  
+            value={searchFields.maxPrice}
+            onChange={handleChange}
+            name="maxPrice"
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          />
+            >
+            {RENT_PRICE.map((price) => (
+            <MenuItem
+              key={price}
+              value={price}
+            >
+              {price}
+            </MenuItem>
+            ))};
+        </Select>
         </FormControl>
 
         <FormControl fullWidth sx={{ m: 1,width: '25ch' }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">Number Of Bedrooms</InputLabel>
           <Select name="numberOfBedrooms"  value={searchFields.numberOfBedrooms}
           onChange={handleChange}>
-            <MenuItem value="Any">Any</MenuItem>    
+        <MenuItem value="Any">Any</MenuItem>    
         <MenuItem value="1">1</MenuItem>
         <MenuItem value="2">2</MenuItem>
         <MenuItem value="3">3</MenuItem>

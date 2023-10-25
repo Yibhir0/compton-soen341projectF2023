@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import NavBar from "../../components/menu/navigationBar"
 import SearchForm from "../../components/form/searchform";
+
+
 function Properties(){
 
   const [properties, setProperties] = useState([]);

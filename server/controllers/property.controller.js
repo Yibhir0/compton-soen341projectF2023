@@ -36,32 +36,56 @@ const addProperty = async (req, res) => {
  * find properties with filter criteria
  */
 const getFilteredProperties = async(req,res) =>{
-  console.log(req.query.city);
-  // Dynamiccaly set the filter conditions
-  const filters = {};
-  filters['$and'] = [];
-
-  if(req.query.address) filters['$and'].push({ address: req.query.address});
-  if(req.query.city) filters['$and'].push({ city: req.query.city});
-  if(req.query.postalCode) filters['$and'].push({ postalCode: req.query.postalCode});
-  if(req.query.propertyType) filters['$and'].push({ propertyType: req.query.propertyType});
+  // Dynamically build the query.
+  let filters = {};
+  
+  const data = req.query;
+  let and_conds = [];
   const price={};
   
-  if(req.query.minPrice){
-    price["$gte"] = parseInt(req.query.minPrice);
-  } 
-  if(req.query.maxPrice){
-    price["$lte"] = parseInt(req.query.maxPrice);
+  for (const field in data) {
+  
+    if(field === "amenities"){
+      and_conds.push({ [field]:{$all : data[field]} });
+    }
+    else if(field === "numberOfBedrooms" || field ==="numberOfBathrooms"){
+      let p = parseInt(data[field]);
+      if(p>3){
+        and_conds.push({[field]: { $gte: p }});
+      }
+      else{
+        and_conds.push({[field]: p });
+      }
+    }
+    else if( field=== "minPrice"){
+      let p = parseInt(data[field]);
+      price["$gte"] = p;
+
+    }
+    else if( field=== "maxPrice"){
+      let p = parseInt(data[field]);
+      price["$lte"] = p;
+    }
+    else{
+      let val = new RegExp(data[field]);
+      and_conds.push({[field]: { $regex: val, $options: "i" }});
+    }
+    
   }
-  if(Object.keys(price).length>0){
-    filters["$and"].push({price:price});
+  if(Object.keys(price).length>0) and_conds.push({price:price});
+  filters["$and"] = and_conds;
+
+  
+  let query;
+  // check if user put  filter values
+  if(filters['$and'].length>0){
+    // Build the query with where clause
+    query = Property.where(filters); 
   }
-  if(req.query.numberOfBedrooms)filters['$and'].push({ numberOfBedrooms: req.query.numberOfBedrooms});
-  if(req.query.numberOfBathrooms) filters['$and'].push({ numberOfBathrooms: req.query.numberOfBathrooms});
-  if(req.query.amenities) filters['$and'].push({ amenities:{$all : req.query.amenities} });
-  console.log(filters);
-  // Build the query with where clause
-  const query = Property.where(filters); 
+  else{
+    // No query, fetch all properties
+    query = Property;
+  }
 
   // Fetch from mongo
     try{
@@ -71,8 +95,6 @@ const getFilteredProperties = async(req,res) =>{
     res.status(500).json({ message: err.message });
   }
 }
-
-// to Do (delete,edit..etc)
 
 module.exports = {
  getProperties,
