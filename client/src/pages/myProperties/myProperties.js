@@ -34,8 +34,7 @@ function Properties(){
       </div>
 
       <main className="app-main">
-
-          <h2>Properties</h2>
+          <h2>Property listings</h2>
           {properties && properties.length > 0 ? (
 
           <div className="card" style={{ width: '30rem' }}>

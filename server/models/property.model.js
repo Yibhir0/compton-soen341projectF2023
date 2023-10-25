@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 /* Creating a new schema for the property model. */
 const propertySchema = new Schema({
   brokerID: {
-    type: Number,
+    type: String,
     required: false,
   },
 
