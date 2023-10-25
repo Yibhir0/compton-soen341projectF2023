@@ -28,9 +28,9 @@ function SearchForm({change}) {
   const handleSearch= async (evt) => {
     
     let value = fields.city;
-    let searchUrl =  `${process.env.REACT_APP_BACKEND_URL}/properties/`
+    let searchUrl =`${process.env.REACT_APP_BACKEND_URL}/properties/`
     +"filter?" +
-    "city=" + value;
+    "city=" +value;
     const result = await fetch(searchUrl);
     const data = await result.json();
     change(data);
