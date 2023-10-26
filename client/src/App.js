@@ -8,7 +8,7 @@ import About from "./pages/about/about";
 import Login from "./pages/login/login";
 import MyProperties from "./pages/myProperties/myProperties";
 import Register from "./pages/register/register";
-
+import PasswordReset from "./pages/login/passwordReset"
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
 
 
   <Routes>
+  <Route path="/passwordReset" element={<PasswordReset />}></Route>
   <Route path="/login" element={<Login />}></Route>
   <Route path="/about" element={<About />}></Route>
   {isBrokerSignedIn && <Route path="/properties" element={<MyProperties />}></Route>}
