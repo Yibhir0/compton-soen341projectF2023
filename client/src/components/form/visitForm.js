@@ -19,7 +19,7 @@ const style = {
     p: 4,
   };
 
-const VisitForm = (property) => {
+const VisitForm = ({property}) => {
  
     const [visit, setVisit] = useState({
         email:"",
@@ -29,11 +29,12 @@ const VisitForm = (property) => {
 
     const handleState = async  () => {
         
+        console.log(property)
         const visitBody = {
             email:visit.email,
             message:visit.message,
             brokerId:property.brokerId,
-            propertyId: property.propertyId
+            propertyId: property._id
 
         };
 
@@ -103,12 +104,12 @@ const VisitForm = (property) => {
       <div>
         <FormControl fullWidth sx={{ m: 1,width: '25ch' }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">Email</InputLabel>
-          <FilledInput name="address" onChange={handleChange} value={visit.email}
+          <FilledInput name="email" onChange={handleChange} value={visit.email}
           />
         </FormControl>
         <FormControl fullWidth sx={{ m: 1,width: '25ch' }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">Message</InputLabel>
-          <FilledInput multiline name="city" onChange={handleChange} value={visit.message}
+          <FilledInput multiline name="message" onChange={handleChange} value={visit.message}
           />
         </FormControl>
         
