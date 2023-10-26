@@ -66,8 +66,17 @@
     display: flex;
     position: relative;
     bottom: 500px;
+    justify-content: center;
+    align-content: center;
 
 }
+
+.searchbar {
+    scale: 1.5;
+    filter: drop-shadow(0 0 0.75rem rgba(200, 193, 195, 0.902));
+
+}
+
 
 .recentlyViewedListings {
     position: relative;
