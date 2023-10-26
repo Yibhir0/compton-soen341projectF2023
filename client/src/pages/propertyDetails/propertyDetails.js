@@ -119,9 +119,7 @@ function PropertyView(){
                     ))}
                     
                     
-                </div>
-
-                
+                </div>  
               )}
               </div>
          
