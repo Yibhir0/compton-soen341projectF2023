@@ -146,6 +146,20 @@ const deleteProperty = async (req, res) =>{
   }
 }
 
+/**
+ * Fetches by brokerID and returns all properties belonging to
+ * a specific broker.
+ */
+const getBrokerProperties = async(req,res) =>{
+  try {
+    const {id} = req.params;
+    const properties = await Property.find({ brokerID: id });
+    res.status(200).json(properties);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
+
 module.exports = {
  getProperties,
  addProperty,
@@ -153,4 +167,5 @@ module.exports = {
  getProperty,
 updateProperty,
 deleteProperty,
+getBrokerProperties,
 };

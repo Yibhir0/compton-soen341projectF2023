@@ -7,6 +7,7 @@ const {
   getProperty,
   updateProperty,
   deleteProperty,
+  getBrokerProperties,
 } = require("../controllers/property.controller");
 
 const router = express.Router();
@@ -23,5 +24,7 @@ router.get("/properties/:id", getProperty);
 router.put("/properties/:id", updateProperty);
 /* Creating a route for the delete request. */
 router.delete("/properties/:id", deleteProperty);
+
+router.get("/brokerproperties/:id", getBrokerProperties);
 
 module.exports = router;
