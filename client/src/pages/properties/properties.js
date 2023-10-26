@@ -25,8 +25,11 @@ function Properties(){
   return (
     <div>
       <header className="app-header">
-          <SearchForm change={handleSearchState}/>
-          <h1>My listed properties</h1>
+      <div className="d-flex align-items-center justify-content-center text-center">
+        <SearchForm change={handleSearchState} />
+      </div>
+          
+          <h1>Properties</h1>
           <br></br>
           {properties && properties.length > 0 ? (
             <div className="mx-auto" style={{ maxWidth: "1300px" }}>

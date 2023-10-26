@@ -47,7 +47,7 @@ describe('API Property test', () => {
           amenities:[ "Parking"]
         });
       
-        const res = await request(app).get("/api/properties/:filter?address=2004 rue mackay&city=Montreal&propertyType=Rent&amenities[]=Parking");
+        const res = await request(app).get("/api/properties/filter?address=2004 rue mackay&city=Montreal&propertyType=Rent&amenities[]=Parking");
         expect(res.statusCode).toBe(200);
         expect(res.body.propertyType).toBe(p1.propertyType);
 
