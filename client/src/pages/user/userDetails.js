@@ -7,9 +7,6 @@ const UserDetail = () => {
   
     const location = useLocation();
     const {state} = location;
-    console.log(state);
-
-
   return (
     <div>
         <h1 style={{textAlign:"center"}}>Broker Details</h1>
@@ -32,7 +29,7 @@ const UserDetail = () => {
       </Box>
 
       <h4>Visits</h4>
-      
+
 
       
 
