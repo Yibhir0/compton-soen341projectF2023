@@ -1,6 +1,6 @@
 import React from 'react';
 import  { Box } from '@mui/material';
-import NavBar from "../../components/menu/navigationBar"
+import Navbar from "../../components/menu/navigationBar"
 import './home.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -8,17 +8,14 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 
-import FilterSearch from '../../components/form/filterSearch';
+import SearchForm from '../../components/form/searchform';
 
 function Home()  {
   console.log("home");
   return (
-    
     <div className="home-page">
-                         <div>
-                          <NavBar/>
-                          </div>
-                          
+          <Navbar/> 
+        
       <div className="mainContent">                   
         <div className="window-1">
                         <div className="background">
@@ -41,7 +38,7 @@ function Home()  {
 
                       <div className="searchbar-container">
                           <div className="searchbar">
-                            <FilterSearch/>
+                            <SearchForm/>
                           </div>
                       </div>        
 
@@ -92,10 +89,8 @@ function Home()  {
 
                               </Swiper>
 
-                              </div>
-                                                        
-
-                         
+                              </div>  
+                                       
         </div>  
       </div>                
     </div>
