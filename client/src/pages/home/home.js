@@ -7,16 +7,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 
-import FilterSearch from '../../components/form/filterSearch';
+import SearchForm from '../../components/form/searchform';
 
 function Home()  {
   console.log("home");
   return (
-    
     <div className="home-page">
-                         <div>
-                          <NavBar/>
-                          </div>
+                  
                           
 
       <div className="mainContent">                   
@@ -41,7 +38,7 @@ function Home()  {
 
                       <div className="searchbar-container">
                           <div className="searchbar">
-                            <FilterSearch/>
+                            <SearchForm/>
                           </div>
                       </div>        
 
@@ -92,10 +89,8 @@ function Home()  {
 
                               </Swiper>
 
-                              </div>
-                                                        
-
-                         
+                              </div>  
+                                       
         </div>  
       </div>                
     </div>

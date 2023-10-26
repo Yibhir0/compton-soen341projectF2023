@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import UserList from '../../components/list/UserList';
 
 function Users(){
 
@@ -17,21 +18,13 @@ function Users(){
 
   return (
     <div>
-        <h1>Brokers List</h1>
+        <h1 style={{textAlign:"center"}} >Brokers</h1>
         {users.length > 0 ? (
-            <div className="mx-auto" style={{ maxWidth: "1300px" }}>
-            <div className="row">
-              {users.map((user, index) => (
-                
-                <li key={index} >{user.email}</li>
-                
-              ))}
-            </div>
-          </div>
+            <UserList users={users}/>
             
           ) : (
             <div className="mx-auto" style={{ maxWidth: "1300px" }}>
-            <p>No users yet</p>
+            <p>No Brokers yet</p>
             </div>
           )}
     </div>
