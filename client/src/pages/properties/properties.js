@@ -24,7 +24,6 @@ function Properties(){
 
   return (
     <div>
-      <header className="app-header">
       <div className="d-flex align-items-center justify-content-center text-center">
         <SearchForm change={handleSearchState} />
       </div>
@@ -40,8 +39,6 @@ function Properties(){
             <p>No properties yet</p>
             </div>
           )}
-        </header>
-
     </div>
 
   )
