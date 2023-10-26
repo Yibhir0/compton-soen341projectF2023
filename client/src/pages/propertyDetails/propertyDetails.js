@@ -21,9 +21,6 @@ function PropertyView(){
     return(
         <div className="app">
         <div>
-        <NavBar/>
-        </div>
-        <div>
         <header className="app-header">
           <h1>Property Details</h1>
           <div className="d-flex align-items-center justify-content-center text-center">

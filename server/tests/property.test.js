@@ -7,11 +7,12 @@ require("dotenv").config();
 // Mock data testing MongoMemoryServer (see dbConn.js)
 const { disconnectDB } = require("../dbConn");
 
-describe('API test', () => {
- 
+describe('API Property test', () => {
+  
   afterAll(() => {
     disconnectDB();
     server.close();
+ 
   });
   
   // Testing get request for all properties

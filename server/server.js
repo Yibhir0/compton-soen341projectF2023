@@ -27,6 +27,7 @@ const PORT = process.env.PORT || 5000;
 
 const PropertyRouter = require("./routes/property.route");
 const authRouter = require("./routes/auth.route");
+const userRouter = require("./routes/user.route");
 
 
 app.use(express.json());
@@ -35,6 +36,8 @@ app.use(express.json());
 /* Telling the application to use the PropertyRouter for any requests that start with "/api". */
 app.use("/api", PropertyRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
+
 
 // Router listening for root and responding with  Comptan real estate
 app.get("/", (req, res) => {

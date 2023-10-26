@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import NavBar from "../../components/menu/navigationBar"
 import SearchForm from "../../components/form/searchform"
 import { Link } from 'react-router-dom';
 
@@ -25,14 +24,6 @@ function Properties(){
 
   return (
     <div>
-
-    
-      <div className="app">
-        <div>
-        <NavBar/>
-        </div>
-      </div>
-
       <header className="app-header">
       <div className="d-flex align-items-center justify-content-center text-center">
         <SearchForm change={handleSearchState} />
