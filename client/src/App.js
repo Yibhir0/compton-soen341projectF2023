@@ -6,9 +6,16 @@ import Home from "./pages/home/home";
 import CreateListing from "./pages/create/create";
 import About from "./pages/about/about";
 import Login from "./pages/login/login";
-import MyProperties from "./pages/properties/properties";
+import Properties from "./pages/properties/properties";
 import Register from "./pages/register/register";
-import PropertyDetails from "./pages/propertyDetails/propertyDetails";
+import  UserDetail from "./pages/user/userDetails"
+import MyProperties from "./pages/properties/my-properties"
+import Profile from "./pages/user/profile";
+import NavBar from "./components/menu/navigationBar";
+import PropertyDetails from './pages/propertyDetails/propertyDetails'
+
+import PropertyEdit from "./pages/propertyEdit/propertyEdit"
+
 
 function App() {
 
@@ -16,14 +23,24 @@ function App() {
   return (
     
   <div className="App">
+  <NavBar/>
   <Routes>
   <Route path="/login" element={<Login />}></Route>
   <Route path="/about" element={<About />}></Route>
-  {isBrokerSignedIn && <Route path="/properties" element={<MyProperties />}></Route>}
+  <Route path="/properties" element={<Properties />}></Route>
   <Route path="/" element={<Home />}></Route>
   <Route path="/register" element={<Register />}></Route>
   {isBrokerSignedIn && <Route path="/create" element={<CreateListing />}></Route>}
-  {isBrokerSignedIn && <Route path="/properties/:id" element={<PropertyDetails />} /> }
+
+  {isBrokerSignedIn && <Route path="/my-properties" element={<MyProperties />}></Route>}
+
+  {isBrokerSignedIn && <Route path="/users/user/:id" element={<Profile  />} /> }
+
+  {isBrokerSignedIn && <Route path="/users/user/view/:id" element={<UserDetail  />} /> }
+
+  {isBrokerSignedIn && <Route path="/edit/:id" element={<PropertyEdit />}></Route>}
+
+  <Route path="/properties/:id" element={<PropertyDetails />}></Route>
   
 </Routes>
 </div>

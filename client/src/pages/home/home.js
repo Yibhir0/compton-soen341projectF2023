@@ -1,6 +1,5 @@
 import React from 'react';
 import  { Box } from '@mui/material';
-import Navbar from "../../components/menu/navigationBar"
 import './home.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -14,8 +13,9 @@ function Home()  {
   console.log("home");
   return (
     <div className="home-page">
-          <Navbar/> 
-        
+                  
+                          
+
       <div className="mainContent">                   
         <div className="window-1">
                         <div className="background">

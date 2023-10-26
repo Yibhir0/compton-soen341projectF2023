@@ -1,6 +1,5 @@
 import "./demo.css"
 import React, { useState,useEffect, useRef } from 'react';
-import NavBar from "../../components/menu/navigationBar";
 import jwtDecode from 'jwt-decode';
 
 
@@ -24,20 +23,7 @@ import jwtDecode from 'jwt-decode';
                 setUploadedImageIDs((prevIDs) => [...prevIDs, image_public_ID]);
             }
         });
-    }, [])
-
-  const [properties, setProperties] = useState([]);
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/properties`
-      );
-      const data = await result.json();
-      setProperties(data);
-    };
-    fetchData();
-  }, []);
+    }, []);
   
   const addProperty = async (event) => {
   
@@ -79,7 +65,7 @@ import jwtDecode from 'jwt-decode';
     })
       .then(response =>{
         if(response.ok){
-          setProperties(oldArray => [...oldArray, newProperty]);
+          
         }
       });
       
@@ -88,10 +74,6 @@ import jwtDecode from 'jwt-decode';
     };
   return (
     <div className="app">
-
-      <div>
-      <NavBar/>
-      </div>
      
   <header className="app-header">
     <h1>Create Property Listing</h1>
@@ -167,22 +149,7 @@ import jwtDecode from 'jwt-decode';
     
   </header>
  
-{/* <main className="app-main">
-<h2>Properties</h2>
 
-{properties && properties.length > 0 ? (
-  <ul>
-    {properties.map((property) => (
-      <li key={property._id}>
-        {property.brokerID} - {property.address} -  {property.city} -  {property.postalCode} -  {property.propertyType} - {property.price} - {property.numberOfBedrooms}  
-        - {property.numberOfBathrooms} - {property.amenities.join(', ')} - {property.images.join(', ')}
-      </li>
-    ))}
-  </ul>
-) : (
-  <p>No properties yet</p>
-)}
-</main> */}
 </div>
   );
 }
