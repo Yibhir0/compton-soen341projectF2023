@@ -56,17 +56,34 @@ function Home()  {
                                            <div className="recentproperty-card">
                                               <Box sx={{height: 400, width: 325, border: '1px dashed'}}></Box> 
                                                 <div className="recentproperty-card header">
-      
-
                                                 </div>
-                                              
-                                             
                                               <p>Slide 1</p>
                                             </div>
                                         </SwiperSlide>
-                                        <SwiperSlide>Slide 2</SwiperSlide>
-                                        <SwiperSlide>Slide 3</SwiperSlide>
-                                        <SwiperSlide>Slide 4</SwiperSlide>
+                                        <SwiperSlide>
+                                           <div className="recentproperty-card">
+                                              <Box sx={{height: 400, width: 325, border: '1px dashed'}}></Box> 
+                                                <div className="recentproperty-card header">
+                                                </div>
+                                              <p>Slide 2</p>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                           <div className="recentproperty-card">
+                                              <Box sx={{height: 400, width: 325, border: '1px dashed'}}></Box> 
+                                                <div className="recentproperty-card header">
+                                                </div>
+                                              <p>Slide 3</p>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                           <div className="recentproperty-card">
+                                              <Box sx={{height: 400, width: 325, border: '1px dashed'}}></Box> 
+                                                <div className="recentproperty-card header">
+                                                </div>
+                                              <p>Slide 4</p>
+                                            </div>
+                                        </SwiperSlide>
                                         
                                         <swiper-navigation>
                                           <swiper-button-prev></swiper-button-prev>
