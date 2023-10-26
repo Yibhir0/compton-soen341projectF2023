@@ -21,18 +21,20 @@ function PasswordReset() {
 
   return (
     <div className="app">
-      <div>
-          <NavBar/>
-      </div>
       <header className="app-header">
           <h1>Password Reset</h1>
-      </header>  
-        <div>
-          <label htmlFor="email" className="form-label">Email address</label>
+      </header> 
+
+      <div className='h-100 d-flex align-items-center justify-content-center'> 
+        <div className="mb-3 w-25">
+        <br></br>
+          <label htmlFor="email" className="form-label align-items-center">Email address</label>
           <br></br>
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="email" aria-describedby="emailHelp" />
           <br></br>
+          <div className='form-row text-center'>
           <button onClick={handleResetPassword} className="btn btn-info">Send Reset Code</button>
+          </div>
           {code && (
             <div className='form-row text-center'>
               <input type="text" placeholder="Code" value={code} onChange={(e) => setCode(e.target.value)} className="form-control" id="email" aria-describedby="emailHelp"/>
@@ -42,7 +44,8 @@ function PasswordReset() {
           )}
           <p>{message}</p>
         </div>
-      </div>    
+      </div>  
+      </div>  
     );
   
 /*
