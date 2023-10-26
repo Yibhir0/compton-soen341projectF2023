@@ -18,19 +18,12 @@ const VisibleBtn = ({user})=> {
     }   
 
   return (
-    // <Link 
-    // to={{
-    //     pathname: `/users/user/view/${user._id}`,
-    //      state: user
-
-    //   }}
-    // >
+  
     <Tooltip title="Visit User">
     <IconButton onClick={handleClick} >
       <VisibilityIcon sx={{ color: "#15D32C",fontSize:"xx-large"  }}  />
     </IconButton>
     </Tooltip>
-// </Link>
   )
 }
 

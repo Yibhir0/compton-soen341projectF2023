@@ -30,6 +30,7 @@ const authRouter = require("./routes/auth.route");
 const userRouter = require("./routes/user.route");
 const passwordResetRouter = require('./routes/passwordReset.route');
 
+const visitRouter = require("./routes/visit.route");
 
 app.use(express.json());
 
@@ -40,6 +41,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 
 app.use('/api/password-reset', passwordResetRouter);
+app.use("/api/visit",visitRouter)
 
 // Router listening for root and responding with  Comptan real estate
 app.get("/", (req, res) => {

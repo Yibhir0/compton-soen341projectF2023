@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams} from 'react-router-dom';
 import { useNavigate  } from "react-router-dom";
 import jwtDecode from 'jwt-decode';
+import VisitForm from '../../components/form/visitForm';
 
 
 function PropertyView(){
@@ -61,6 +62,7 @@ function PropertyView(){
         <div>
         <header className="app-header">
           <h1>Property Details</h1>
+          <VisitForm  property={property}/>
           <div className="d-flex justify-content-center text-center font-weight-bold">
           <button onClick={() => navigate(-1)} className="btn btn-dark"> Back </button>
           </div>
@@ -105,6 +107,7 @@ function PropertyView(){
                 <div className="d-flex align-items-center justify-content-center text-center font-weight-bold">
                       Property Images
                 </div>
+            
               {property.images.length > 0 && (
                 <div className="d-flex align-items-center justify-content-center text-center">
                   <br></br>
@@ -121,7 +124,7 @@ function PropertyView(){
                 
               )}
               </div>
-              
+         
               {isBrokerSignedIn && property.brokerID === decodedToken.brokerId && (
                 <div className="d-flex align-items-center justify-content-center text-center font-weight-bold m-5">
                   <button onClick={deleteListing} className="btn btn-danger m-2">Delete</button>
@@ -132,7 +135,7 @@ function PropertyView(){
             </div>
           ) : (
             <div>
-
+                 
             </div>
           )}
         </header>
