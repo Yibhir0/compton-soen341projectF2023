@@ -9,24 +9,15 @@ function PasswordReset(){
     const navigate = useNavigate();
 
 
-    const handleLogin = async (event) =>{
+    const handlePasswordReset = async (event) =>{
         event.preventDefault();
 
         if (!credentials.email){
             console.log("email cannot be empty");
             return;
         }
-        try{
-          const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/auth/login', credentials);
-          const token = response.data.token;
-          console.log(response.data);
-          setCredentials({ email: '' });
-           localStorage.setItem('token',token);
-          navigate('/');
-          window.location.reload()
-         
-        }catch(e){
-          alert("Incorrect email");
+        else{
+          console.log("If an account with the corresponding email, an email will be sent");
         }
     }
 
@@ -39,7 +30,7 @@ function PasswordReset(){
             <h1>Password Reset</h1>
         </header>
 
-        <form onSubmit = {handleLogin} className='h-100 d-flex align-items-center justify-content-center'>
+        <form onSubmit = {handlePasswordReset} className='h-100 d-flex align-items-center justify-content-center'>
         <div className="mb-3 w-25">
             <br></br>
             <label htmlFor="email" className="form-label">Email address</label>
@@ -55,4 +46,5 @@ function PasswordReset(){
     
       )
 }
+
 export default PasswordReset;
