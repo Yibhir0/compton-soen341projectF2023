@@ -2,7 +2,7 @@ import React from 'react';
 import  { Box } from '@mui/material';
 import './home.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -13,8 +13,6 @@ function Home()  {
   console.log("home");
   return (
     <div className="home-page">
-                  
-                          
 
       <div className="mainContent">                   
         <div className="window-1">
@@ -47,7 +45,7 @@ function Home()  {
                         <p className="recentlyViewedText">Recently Viewed</p>
                       </div>       
                               <div className="recent-listings">
-                              <Swiper  slides-per-view="3" spaceBetween={30} navigation={true} modules={[Navigation]} className="mySwiper">
+                              <Swiper  slides-per-view={3} spaceBetween={30} navigation={true} freeMode={true} modules={[Navigation, FreeMode]} className="mySwiper">
 
                                         <SwiperSlide>
                                            <div className="recentproperty-card">
