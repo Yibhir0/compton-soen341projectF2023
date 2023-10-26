@@ -13,11 +13,7 @@ function Home()  {
   console.log("home");
   return (
     
-    <div className="home-page">
-                         <div>
-                          <NavBar/>
-                          </div>
-                          
+    <div className="home-page">                    
 
       <div className="mainContent">                   
         <div className="window-1">
