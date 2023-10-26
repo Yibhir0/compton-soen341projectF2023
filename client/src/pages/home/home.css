@@ -11,6 +11,8 @@
 
 .window-1 {
     align-content: center;
+    height: 982px;
+    width: 1440px;
   
 }
 
@@ -49,13 +51,87 @@
 
     color: #fcfcfc;
     font-family: "DMSans-Regular", Helvetica;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 400;
     left: 0;
     letter-spacing: -0.5px;
     line-height: 28px;
-    opacity: 0.6;
+    opacity: 0.7;
     position: relative;
     top: 300px;
     width: 428px;
+}
+
+.searchbar-container {
+    display: flex;
+    position: relative;
+    bottom: 500px;
+
+}
+
+.recentlyViewedListings {
+    position: relative;
+    bottom: 225px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.recentlyViewedText {
+    color: #4d4d4d;
+    font-family: "DMSans-Regular", Helvetica;
+    font-size: 40px;
+    font-weight: 400;
+    padding: 15px; 
+    justify-content: center;
+    letter-spacing: -0.5px;
+    line-height: 70px;
+    opacity: 0.8;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.recent-listings{
+    position: relative;
+    align-content: center;
+    padding-bottom: 50px;
+    bottom: 205px;
+    display: flex;
+
+}
+
+
+.swiper {
+    width: 50%;
+    height: 50%;
+  
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 30px;
+    background: #ffffff00;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+ }
+     
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+ }
+
+.recentproperty-card {
+    object-fit: cover;
+
 }
