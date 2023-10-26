@@ -11,9 +11,6 @@ function PropertyView(){
 
     return(
         <div className="app">
-        <div>
-        <NavBar/>
-        </div>
       </div>
     )
 }

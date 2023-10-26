@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import NavBar from "../../components/menu/navigationBar"
 import SearchForm from "../../components/form/searchform"
 import { Link } from 'react-router-dom';
 
@@ -25,14 +24,6 @@ function Properties(){
 
   return (
     <div>
-
-    
-      <div className="app">
-        <div>
-        <NavBar/>
-        </div>
-      </div>
-
       <header className="app-header">
           <SearchForm change={handleSearchState}/>
           <h1>My listed properties</h1>

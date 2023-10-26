@@ -89,9 +89,9 @@ import jwtDecode from 'jwt-decode';
   return (
     <div className="app">
 
-      <div>
+      {/* <div>
       <NavBar/>
-      </div>
+      </div> */}
      
   <header className="app-header">
     <h1>Create Property Listing</h1>
