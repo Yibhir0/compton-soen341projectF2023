@@ -12,6 +12,11 @@ function PasswordReset() {
     //to do
     // request server to send a reset code to the user's email.
     // errors or success messages 
+    if (!email){
+      console.log("Password and email cannot be empty");
+      return;
+  }
+
   };
 
   const handlePasswordChange = async () => {
@@ -47,27 +52,6 @@ function PasswordReset() {
       </div>  
       </div>  
     );
-  
-/*
-  <form onSubmit = {handleLogin} className='h-100 d-flex align-items-center justify-content-center'>
-        <div className="mb-3 w-25">
-            <br></br>
-            <label htmlFor="email" className="form-label">Email address</label>
-            <input onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value = {credentials.email} type="email" className="form-control" id="email" aria-describedby="emailHelp"></input>
-            <br></br>
-            <label htmlFor="password" className="form-label">Password</label>
-            <input onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} value = {credentials.password} type="password" className="form-control " id="password"></input>
-            <br></br>
-            <div className='form-row text-center'>
-                <button type='submit' className="btn btn-info">Login</button>
-            </div>
-            <br></br>
-            <div className='form-row text-center'>
-            <p>Forgot password?: <a href="/passwordReset">Reset Password</a></p>
-            </div>
-        </div>
-        </form>
-        );*/
 }
 
 export default PasswordReset;
