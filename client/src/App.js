@@ -16,6 +16,7 @@ import PropertyDetails from './pages/propertyDetails/propertyDetails'
 
 import PropertyEdit from "./pages/propertyEdit/propertyEdit"
 
+import PasswordReset from "./pages/login/passwordReset"
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
   <div className="App">
   <NavBar/>
   <Routes>
+  <Route path="/passwordReset" element={<PasswordReset />}></Route>
   <Route path="/login" element={<Login />}></Route>
   <Route path="/about" element={<About />}></Route>
   <Route path="/properties" element={<Properties />}></Route>
