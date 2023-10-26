@@ -1,6 +1,5 @@
 import "./demo.css"
 import React, { useState,useEffect, useRef } from 'react';
-import NavBar from "../../components/menu/navigationBar";
 import jwtDecode from 'jwt-decode';
 
 
@@ -75,10 +74,6 @@ import jwtDecode from 'jwt-decode';
     };
   return (
     <div className="app">
-
-      {/* <div>
-      <NavBar/>
-      </div> */}
      
   <header className="app-header">
     <h1>Create Property Listing</h1>

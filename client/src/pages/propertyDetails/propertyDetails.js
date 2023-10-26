@@ -1,4 +1,3 @@
-import NavBar from "../../components/menu/navigationBar"
 import React, { useEffect, useState } from 'react';
 import { useParams} from 'react-router-dom';
 import { useNavigate  } from "react-router-dom";
@@ -21,7 +20,7 @@ function PropertyView(){
       });
     },[id]);
 
-
+    
 
     const deleteListing = async (event) => {
       event.preventDefault();
@@ -42,12 +41,19 @@ function PropertyView(){
       }
     }
 
+    
+
     const isBrokerSignedIn = !!localStorage.getItem('token');
     let decodedToken = "";
     if(isBrokerSignedIn){
       const token = localStorage.getItem('token');
       decodedToken = jwtDecode(token);
     }
+
+    const editListing = () => {
+        navigate(`/edit/${id}`);
+      
+    };
     
 
     return(
@@ -119,7 +125,7 @@ function PropertyView(){
               {isBrokerSignedIn && property.brokerID === decodedToken.brokerId && (
                 <div className="d-flex align-items-center justify-content-center text-center font-weight-bold m-5">
                   <button onClick={deleteListing} className="btn btn-danger m-2">Delete</button>
-                  <button className="btn btn-warning">Edit</button>
+                  <button onClick={editListing} className="btn btn-warning">Edit</button>
                 </div>
               )}
 

@@ -14,6 +14,8 @@ import Profile from "./pages/user/profile";
 import NavBar from "./components/menu/navigationBar";
 import PropertyDetails from './pages/propertyDetails/propertyDetails'
 
+import PropertyEdit from "./pages/propertyEdit/propertyEdit"
+
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
   {isBrokerSignedIn && <Route path="/my-properties" element={<MyProperties />}></Route>}
 
   {isBrokerSignedIn && <Route path="/users/user/:id" element={<Profile  />} /> }
+
+  {isBrokerSignedIn && <Route path="/edit/:id" element={<PropertyEdit />}></Route>}
 
   <Route path="/properties/:id" element={<PropertyDetails />}></Route>
   
