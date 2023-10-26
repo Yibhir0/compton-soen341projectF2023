@@ -1,50 +1,51 @@
-import React, {useState} from 'react'
-import NavBar from "../../components/menu/navigationBar"
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
-function PasswordReset(){
+function PasswordReset() {
+  const [email, setEmail] = useState('');
+  const [code, setCode] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-    const [credentials, setCredentials] = useState({ email: '' });
-    const navigate = useNavigate();
+  const handleResetPassword = async () => {
+    // Send a request to your server to send a reset code to the user's email.
+    // Handle any errors or success messages here.
+  };
 
+  const handlePasswordChange = async () => {
+    // Send a request to your server to change the password.
+    // Handle any errors or success messages here.
+  };
 
-    const handlePasswordReset = async (event) =>{
-        event.preventDefault();
-
-        if (!credentials.email){
-            console.log("email cannot be empty");
-            return;
-        }
-        else{
-          console.log("If an account with the corresponding email, an email will be sent");
-        }
-    }
-
-    return (
-    <div className="app">
+  return (
+    <div>
+      <h1>Password Reset</h1>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <button onClick={handleResetPassword}>Send Reset Code</button>
+      {code && (
         <div>
-            <NavBar/>
+          <input
+            type="text"
+            placeholder="Code"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="New Password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+          />
+          <button onClick={handlePasswordChange}>Reset Password</button>
         </div>
-        <header className="app-header">
-            <h1>Password Reset</h1>
-        </header>
-
-        <form onSubmit = {handlePasswordReset} className='h-100 d-flex align-items-center justify-content-center'>
-        <div className="mb-3 w-25">
-            <br></br>
-            <label htmlFor="email" className="form-label">Email address</label>
-            <input onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value = {credentials.email} type="email" className="form-control" id="email" aria-describedby="emailHelp"></input>
-            <br></br>
-            <div className='form-row text-center'>
-                <button type='submit' className="btn btn-info">Reset</button>
-            </div>
-        </div>
-        </form>
-
+      )}
+      <p>{message}</p>
     </div>
-    
-      )
+  );
 }
 
 export default PasswordReset;

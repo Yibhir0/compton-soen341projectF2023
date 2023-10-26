@@ -12,10 +12,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-//token to reset password
-    resetToken: String,
-    resetTokenExpiry: Date,
-
+    //user code for email password reset
+    resetCode:{
+        type: String,
+    },
     accountType:{
         type:String,
         default:"broker",

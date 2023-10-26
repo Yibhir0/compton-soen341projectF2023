@@ -1,11 +1,11 @@
-const express = require("express");
-
-const{
-    passwordReset
-} = require("../controllers/passwordReset.controller");
-
+const express = require('express');
 const router = express.Router();
+const passwordResetController = require('../controllers/passwordReset.controller');
 
-router.post("/passwordReset",passwordReset);
+// Route - reset code to user email
+router.post('/sendResetCode', passwordResetController.sendResetCode);
+
+// Route  -  reset password
+router.post('/resetPassword', passwordResetController.resetPassword);
 
 module.exports = router;
