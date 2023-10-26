@@ -7,8 +7,6 @@ import VisibleBtn from '../button/visibleBtn';
 
 
 const UserCard = ({user}) => {
-
-    console.log(user);
     const [userInfo, setUserInfo] = useState(
         user
       );

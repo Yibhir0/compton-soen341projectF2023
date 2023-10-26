@@ -4,22 +4,33 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from '@mui/material/IconButton';
 import { Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const VisibleBtn = ({user})=> {
 
+    const navigate = useNavigate();
+
+
+    const handleClick = () => {
+      console.log(user)
+         // Navigate to the new location with state
+        navigate(`/users/user/view/${user._id}`, { state: user });
+    }   
+
   return (
-    <Link 
-    to={{
-        pathname: `/users/user/view/${user._id}`,
-        state: { user: user }
-      }}
-    >
+    // <Link 
+    // to={{
+    //     pathname: `/users/user/view/${user._id}`,
+    //      state: user
+
+    //   }}
+    // >
     <Tooltip title="Visit User">
-    <IconButton >
+    <IconButton onClick={handleClick} >
       <VisibilityIcon sx={{ color: "#15D32C",fontSize:"xx-large"  }}  />
     </IconButton>
     </Tooltip>
-</Link>
+// </Link>
   )
 }
 
