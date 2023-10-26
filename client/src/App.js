@@ -8,7 +8,7 @@ import About from "./pages/about/about";
 import Login from "./pages/login/login";
 import Properties from "./pages/properties/properties";
 import Register from "./pages/register/register";
-
+import  UserDetail from "./pages/user/userDetails"
 import MyProperties from "./pages/properties/my-properties"
 import Profile from "./pages/user/profile";
 import NavBar from "./components/menu/navigationBar";
@@ -35,6 +35,8 @@ function App() {
   {isBrokerSignedIn && <Route path="/my-properties" element={<MyProperties />}></Route>}
 
   {isBrokerSignedIn && <Route path="/users/user/:id" element={<Profile  />} /> }
+
+  {isBrokerSignedIn && <Route path="/users/user/view/:id" element={<UserDetail  />} /> }
 
   {isBrokerSignedIn && <Route path="/edit/:id" element={<PropertyEdit />}></Route>}
 
