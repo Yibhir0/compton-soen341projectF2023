@@ -8,7 +8,8 @@
   }
 
 .container {
-    justify-content: center;  
+    justify-content: center; 
+   
 }
 
   .logo-realestate {
@@ -30,11 +31,13 @@
     height: 46px;
     margin-top: 25px;
     justify-content: space-between;
+    
+    
   }
   
   .nav-elements ul {
     display: flex;
-    
+    align-content: center;
     list-style-type: none;
     position: static;    
 
