@@ -13,10 +13,15 @@ function PasswordReset() {
     // request server to send a reset code to the user's email.
     // errors or success messages 
     if (!email){
-      console.log("Password and email cannot be empty");
+      alert("Email cannot be empty");
       return;
-  }
-
+    }
+    try{
+      
+    }
+    catch(error){
+      alert("Incorrect email")
+    }
   };
 
   const handlePasswordChange = async () => {

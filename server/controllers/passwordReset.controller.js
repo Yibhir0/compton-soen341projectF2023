@@ -67,7 +67,6 @@ exports.resetPassword = async (req, res) => {
       }
   
       // Update the user's password with the new password
-      // You should hash the new password for security before saving it
       user.password = newPassword;
       await user.save();
   
