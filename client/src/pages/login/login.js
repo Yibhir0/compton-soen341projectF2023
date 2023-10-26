@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import NavBar from "../../components/menu/navigationBar"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
@@ -18,10 +17,13 @@ function Login(){
         }
         try{
           const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/auth/login', credentials);
-          const token = response.data.token;
-          console.log(response.data);
+          const token = await response.data.token;
+        
+          localStorage.setItem('token',token);
+          localStorage.setItem('id', response.data.id);
           setCredentials({ email: '', password: '' });
-           localStorage.setItem('token',token);
+        
+          
           navigate('/');
           window.location.reload()
          
@@ -32,9 +34,7 @@ function Login(){
 
     return (
     <div className="app">
-        <div>
-            <NavBar/>
-        </div>
+
         <header className="app-header">
             <h1>Login</h1>
         </header>
