@@ -17,14 +17,30 @@ const getUsers = async(req, res) =>{
 const getUser = async(req, res) => {
     try{
       const id = req.params.id;
-     
       const user = await User.findById(id);
-      console.log(user);
       res.status(200).json(user);
     } catch(err){
-      console.log("hell");
       res.status(500).json({ message: err.message });
     }
   };
 
-module.exports = {getUsers,getUser};
+
+  
+/**
+ * Deletes a user
+ */
+const deleteUser= async (req, res) =>{
+  try{
+    const {id} = req.params;
+    const user = await User.findByIdAndDelete(id);
+    if(!user){
+      return res.status(404).json({message: "Cannot find any user with id " + id + " to delete."})
+    }
+    res.status(200).json(user);
+  }
+  catch(err){
+    res.status(500).json({ message: err.message });
+  }
+}
+
+module.exports = {getUsers,getUser,deleteUser};
