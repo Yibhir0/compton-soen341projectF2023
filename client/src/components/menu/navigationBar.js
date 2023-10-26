@@ -12,6 +12,8 @@ const Navbar = () => {
     navigate('/');
   }
 
+ 
+
   // Available navbar links for both logged-in and non-logged-in users.
   const navigation = (
     <>
@@ -40,6 +42,10 @@ const Navbar = () => {
       </li>
         <Link to="/" onClick={handleSignout} className='navItem'>Sign out</Link>
       </li>
+      <li>
+        <Link to="/users/user/:id"  className='navItem'>Profile</Link>
+      </li>
+
 
     </>
   ) : (

@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import NavBar from "../../components/menu/navigationBar"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
@@ -29,9 +28,7 @@ function Register(){
 
     return (
     <div className="app">
-        <div>
-            <NavBar/>
-        </div>
+    
         <header className="app-header">
             <h1>Register</h1>
         </header>

@@ -1,15 +1,12 @@
 import React from 'react';
 import  { Box } from '@mui/material';
-import NavBar from "../../components/menu/navigationBar"
 import './home.css';
 
 function Home()  {
   console.log("home");
   return (
     <div className="home-page">
-                         <div>
-                          <NavBar/>
-                          </div>
+              
       <div className="mainContent">                   
         <div className="window-1">
                         <div className="background">

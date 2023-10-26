@@ -51,11 +51,8 @@ function PropertyView(){
     
 
     return(
-      <div className="app">
-      <div>
-        <NavBar />
-      </div>
-      <div>
+        <div className="app">
+        <div>
         <header className="app-header">
           <h1>Property Details</h1>
           <div className="d-flex justify-content-center text-center font-weight-bold">
