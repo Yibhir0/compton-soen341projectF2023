@@ -1,4 +1,4 @@
-import NavBar from "../../components/menu/navigationBar"
+
 import jwtDecode from 'jwt-decode';
 import React, { useState,useEffect } from 'react';
 import PropertyList from "../../components/list/PropertyList";
@@ -24,12 +24,6 @@ function MyProperties(){
 
     return(
         <div>
-            <div className="app">
-                <div>
-                    <NavBar/>
-                </div>
-            </div>
-
             
             <header className="app-header">
                 <h1>My Properties</h1>
