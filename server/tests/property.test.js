@@ -38,7 +38,7 @@ describe('API Property test', () => {
 
   describe("GET /api/properties/:id", () => {
     it("should return a specific property by ID", async () => {
-      const propertyId = "653be06e1d4f810f3e69468b"; 
+      const propertyId = "65354b48d9a037cf1612ea90"; 
       const res = await request(app).get(`/api/properties/${propertyId}`);
       expect(res.statusCode).toBe(200);
     });
