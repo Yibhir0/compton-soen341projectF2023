@@ -37,6 +37,12 @@ describe('API Property test', () => {
   });
 
   describe("GET /api/properties/:id", () => {
+    it("should return a specific property by ID", async () => {
+      const propertyId = "653be06e1d4f810f3e69468b"; 
+      const res = await request(app).get(`/api/properties/${propertyId}`);
+      expect(res.statusCode).toBe(200);
+    });
+  
     it("should return a 404 status code for a non-existent property ID", async () => {
       const nonExistentId = "6538b651a7ce4a04da76488f";
       const res = await request(app).get(`/api/properties/${nonExistentId}`);
@@ -45,7 +51,7 @@ describe('API Property test', () => {
   });
 
     //Testing get request for properties filter
-    describe("GET /api/properties/:filter", () => {
+    describe("GET /api/properties/filter", () => {
       it("should return properties with filter conditions", async () => {
         const p1 = await request(app).post("/api/property").send({
           brokerID: "22",
