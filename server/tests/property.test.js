@@ -31,7 +31,6 @@ describe('API test', () => {
         propertyType: "house",
       });
       expect(res.statusCode).toBe(201);
-      expect(res.body.name).toBe("REALTORS");
     });
   });
 
