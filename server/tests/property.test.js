@@ -44,7 +44,7 @@ describe('API Property test', () => {
     });
   
     it("should return a 404 status code for a non-existent property ID", async () => {
-      const nonExistentId = "6538b651a7ce4a04da76488f";
+      const nonExistentId = "65399c5d505867d15099a3e6";
       const res = await request(app).get(`/api/properties/${nonExistentId}`);
       expect(res.statusCode).toBe(404);
     });
