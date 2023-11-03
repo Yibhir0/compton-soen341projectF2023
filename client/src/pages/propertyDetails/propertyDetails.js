@@ -62,9 +62,10 @@ function PropertyView(){
         <div>
         <header className="app-header">
           <h1>Property Details</h1>
-          <VisitForm  property={property}/>
+       
           <div className="d-flex justify-content-center text-center font-weight-bold">
           <button onClick={() => navigate(-1)} className="btn btn-dark"> Back </button>
+          <VisitForm  property={property} />
           </div>
           <br></br>
           {property !== null ? (

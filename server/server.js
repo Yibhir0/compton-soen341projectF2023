@@ -37,7 +37,7 @@ app.use(express.json());
 app.use("/api", PropertyRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
-app.use("/api/visit",visitRouter)
+app.use("/api/visit", visitRouter)
 
 // Router listening for root and responding with  Comptan real estate
 app.get("/", (req, res) => {
@@ -47,16 +47,16 @@ app.get("/", (req, res) => {
 
 (async () => {
   try {
-      
+
     // Connect to database
     await connectDB()
-    
+
   } catch (e) {
     console.error("could not connect");
     console.error(e.message);
     process.exit();
   }
-  
+
 })();
 
 const server = app.listen(
@@ -72,4 +72,4 @@ const server = app.listen(
 //     console.log(err);
 //   });
 
-  module.exports = {app,server};
+module.exports = { app, server };
