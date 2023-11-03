@@ -8,11 +8,12 @@ import About from "./pages/about/about";
 import Login from "./pages/login/login";
 import Properties from "./pages/properties/properties";
 import Register from "./pages/register/register";
-import  UserDetail from "./pages/user/userDetails"
+import UserDetail from "./pages/user/userDetails"
 import MyProperties from "./pages/properties/my-properties"
 import Profile from "./pages/user/profile";
 import NavBar from "./components/menu/navigationBar";
 import PropertyDetails from './pages/propertyDetails/propertyDetails'
+import Visits from './pages/visit/visits'
 
 import PropertyEdit from "./pages/propertyEdit/propertyEdit"
 
@@ -21,30 +22,32 @@ function App() {
 
   const isBrokerSignedIn = !!localStorage.getItem('token');
   return (
-    
-  <div className="App">
-  <NavBar/>
-  <Routes>
-  <Route path="/login" element={<Login />}></Route>
-  <Route path="/about" element={<About />}></Route>
-  <Route path="/properties" element={<Properties />}></Route>
-  <Route path="/" element={<Home />}></Route>
-  <Route path="/register" element={<Register />}></Route>
-  {isBrokerSignedIn && <Route path="/create" element={<CreateListing />}></Route>}
 
-  {isBrokerSignedIn && <Route path="/my-properties" element={<MyProperties />}></Route>}
+    <div className="App">
+      <NavBar />
+      <Routes>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/properties" element={<Properties />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        {isBrokerSignedIn && <Route path="/create" element={<CreateListing />}></Route>}
 
-  {isBrokerSignedIn && <Route path="/users/user/:id" element={<Profile  />} /> }
+        {isBrokerSignedIn && <Route path="/my-properties" element={<MyProperties />}></Route>}
 
-  {isBrokerSignedIn && <Route path="/users/user/view/:id" element={<UserDetail  />} /> }
+        {isBrokerSignedIn && <Route path="/users/user/:id" element={<Profile />} />}
 
-  {isBrokerSignedIn && <Route path="/edit/:id" element={<PropertyEdit />}></Route>}
+        {isBrokerSignedIn && <Route path="/users/user/view/:id" element={<UserDetail />} />}
 
-  <Route path="/properties/:id" element={<PropertyDetails />}></Route>
-  
-</Routes>
-</div>
-);
+        {isBrokerSignedIn && <Route path="/edit/:id" element={<PropertyEdit />}></Route>}
+
+        {isBrokerSignedIn && <Route path="/visits" element={<Visits />}></Route>}
+
+        <Route path="/properties/:id" element={<PropertyDetails />}></Route>
+
+      </Routes>
+    </div>
+  );
 
 }
 
