@@ -14,6 +14,7 @@ import Profile from "./pages/user/profile";
 import NavBar from "./components/menu/navigationBar";
 import PropertyDetails from './pages/propertyDetails/propertyDetails'
 import Visits from './pages/visit/visits'
+import Verify from './pages/verify/verify'
 
 import PropertyEdit from "./pages/propertyEdit/propertyEdit"
 
@@ -31,6 +32,9 @@ function App() {
         <Route path="/properties" element={<Properties />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        
+        {isBrokerSignedIn && <Route path ="/verify" element={<Verify />}></Route>}
+        
         {isBrokerSignedIn && <Route path="/create" element={<CreateListing />}></Route>}
 
         {isBrokerSignedIn && <Route path="/my-properties" element={<MyProperties />}></Route>}

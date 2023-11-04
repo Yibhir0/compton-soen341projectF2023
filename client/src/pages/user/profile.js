@@ -55,6 +55,9 @@ function Profile() {
               <span>
                 <Link to="/register" className='navItem'>Add user</Link>
               </span>
+              <span>
+                <Link to="/verify" className='navItem'>Verify Brokers</Link>
+              </span>
             </Box>
             <Users />
           </Box >

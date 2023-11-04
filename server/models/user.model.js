@@ -17,6 +17,11 @@ const userSchema = new Schema({
         default: "broker",
         required: false,
     },
+    accountVerified:{
+        type: Boolean,
+        default: false,
+        required:false,
+    },
 })
 
 module.exports = mongoose.model("User", userSchema);

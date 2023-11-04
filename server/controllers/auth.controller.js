@@ -34,6 +34,9 @@ const login = async(req, res) =>{
             return res.status(401).json({error: "Invalid password."})
         }
        
+        if(user.accountVerified == false){
+            return res.status(401).json({error: "Account not verified."})
+        }
         const token = jwt.sign({brokerId: user._id}, secretKey, {expiresIn: '1hr'});
 
     
