@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import DeleteBtn from '../button/deleteBtn';
-import VisibleBtn from '../button/visibleBtn';
-import VerifiedIcon from '@mui/icons-material/Verified';
-import Tooltip from "@mui/material/Tooltip";
+import VerifyBtn from '../button/verifyBtn';
 
 
-const UserCard = ({ user }) => {
+const VerifyCard = ({ user }) => {
   const [userInfo, setUserInfo] = useState(
     user
   );
@@ -31,6 +29,23 @@ const UserCard = ({ user }) => {
         })
         .catch(error => {
           console.error('Failed to delete user', error);
+        });
+    }
+  }
+
+  const verifyUser = async(event) =>{
+    event.preventDefault();
+    const confirmed = window.confirm('Confirm broker verification.');
+    if(confirmed){
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/user/users/${_id}`, { method: 'PUT' })
+        .then((response) => {
+          if (response.ok) {
+            alert('User verified successfully');
+            setUserInfo({ user: null })
+          }
+        })
+        .catch(error => {
+          console.error('Failed to verify user', error);
         });
     }
   }
@@ -60,8 +75,7 @@ const UserCard = ({ user }) => {
 
             }}>
             
-            
-            <VisibleBtn user={user} />
+            <VerifyBtn handleVerify={verifyUser}/>
             <DeleteBtn handleDelete={deleteUser} />
           </Box>
 
@@ -71,9 +85,6 @@ const UserCard = ({ user }) => {
           />
           <h6 className="b-text-font">{email}</h6>
           <h6 className="b-text-font">{accountType}</h6>
-          <Tooltip title="Verified">
-                  <VerifiedIcon sx={{ color: "#40dced", fontSize: "xx-large" }} />
-          </Tooltip>
         </Box>
 
       }
@@ -82,4 +93,4 @@ const UserCard = ({ user }) => {
   )
 }
 
-export default UserCard;
+export default VerifyCard;
