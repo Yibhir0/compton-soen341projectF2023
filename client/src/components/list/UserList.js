@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 
 const UserList = ({ users }) => {
   const verifiedUsers = users.filter((user) => user.accountVerified === true);
-  console.log(verifiedUsers);
 
   if (verifiedUsers.length > 0)
     return (

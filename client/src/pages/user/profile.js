@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import MyProperties from "../properties/my-properties";
 import Users from "../user/users";
 import { Link } from 'react-router-dom';
+import CreateBrokerForm from '../../components/form/createBrokerForm';
+
 function Profile() {
 
   const id = localStorage.getItem('id');
@@ -53,7 +55,8 @@ function Profile() {
             <Box
               sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
               <span>
-                <Link to="/register" className='navItem'>Add user</Link>
+                {/* <Link to="/register" className='navItem'>Create Broker Account</Link> */}
+                <CreateBrokerForm></CreateBrokerForm>
               </span>
               <span>
                 <Link to="/verify" className='navItem'>Verify Brokers</Link>

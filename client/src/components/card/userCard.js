@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import DeleteBtn from '../button/deleteBtn';
-import ThumbBtn from '../button/thumbBtn';
 import VisibleBtn from '../button/visibleBtn';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import Tooltip from "@mui/material/Tooltip";
 
 
 const UserCard = ({ user }) => {
@@ -58,7 +59,8 @@ const UserCard = ({ user }) => {
               justifyContent: 'space-between',
 
             }}>
-            <ThumbBtn />
+            
+            
             <VisibleBtn user={user} />
             <DeleteBtn handleDelete={deleteUser} />
           </Box>
@@ -69,6 +71,9 @@ const UserCard = ({ user }) => {
           />
           <h6 className="b-text-font">{email}</h6>
           <h6 className="b-text-font">{accountType}</h6>
+          <Tooltip title="Verified">
+                  <VerifiedIcon sx={{ color: "#40dced", fontSize: "xx-large" }} />
+          </Tooltip>
         </Box>
 
       }
