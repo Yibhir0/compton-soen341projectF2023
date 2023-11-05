@@ -3,6 +3,7 @@ import { useParams} from 'react-router-dom';
 import { useNavigate  } from "react-router-dom";
 import jwtDecode from 'jwt-decode';
 import VisitForm from '../../components/form/visitForm';
+import OfferForm from '../../components/form/offersForm';
 
 
 function PropertyView(){
@@ -66,6 +67,7 @@ function PropertyView(){
           <div className="d-flex justify-content-center text-center font-weight-bold">
           <button onClick={() => navigate(-1)} className="btn btn-dark"> Back </button>
           <VisitForm  property={property} />
+          <OfferForm  property={property} />
           </div>
           <br></br>
           {property !== null ? (
