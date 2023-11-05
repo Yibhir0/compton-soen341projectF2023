@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-//import VisitList from '../../components/list/VisitList';
+import OfferList from '../../components/list/OfferList';
 import jwtDecode from 'jwt-decode';
 
 function Offers() {
@@ -9,10 +9,10 @@ function Offers() {
     useEffect(() => {
         const fetchData = async () => {
             const result = await fetch(
-                `${process.env.REACT_APP_BACKEND_URL}/visit/visits?brokerId=${decodedToken.brokerId}`
+                `${process.env.REACT_APP_BACKEND_URL}/offer/offers?brokerId=${decodedToken.brokerId}`
             );
             const data = await result.json();
-            setVisits(data);
+            setOffer(data);
         };
         fetchData();
     }, []);
@@ -22,7 +22,7 @@ function Offers() {
         <div>
             <h1 style={{ textAlign: "center" }} >Offers</h1>
             {offers.length > 0 ? (
-                <OffersList offers={offers} />
+                <OfferList offers={offers} />
             ) : (
                 <div className="mx-auto" style={{ maxWidth: "1300px" }}>
                     <p>No Offers Yet</p>
