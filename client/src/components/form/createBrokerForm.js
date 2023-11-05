@@ -26,7 +26,7 @@ const style = {
 const CreateBrokerForm = ({}) =>{
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [credentials, setCredentials] = useState({ email: '', password: '' });
+    const [credentials, setCredentials] = useState({ email: '', password: '', accountType:'broker' });
 
     const openModal = () => {
         setIsModalOpen(true);

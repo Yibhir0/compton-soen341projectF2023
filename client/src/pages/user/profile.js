@@ -34,7 +34,7 @@ function Profile() {
       <p>{user.accountType}</p>
     </Box >
       {
-        user.accountType === "broker" ?
+        user.accountType === "broker" ? (
           <Box>
             <Box
               sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
@@ -51,12 +51,15 @@ function Profile() {
             </Box>
           </Box>
 
-          :
+        ): user.accountType === "homebuyer" ? (
+          <Box  sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
+            Homebuyer profile page
+          </Box>
+        ):(
           <Box>
             <Box
               sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
               <span>
-                {/* <Link to="/register" className='navItem'>Create Broker Account</Link> */}
                 <CreateBrokerForm></CreateBrokerForm>
               </span>
               <span>
@@ -65,7 +68,7 @@ function Profile() {
             </Box>
             <Users />
           </Box >
-      }
+      )}
 
     
     </div>

@@ -14,8 +14,8 @@ const userSchema = new Schema({
     },
     accountType: {
         type: String,
-        default: "broker",
-        required: false,
+        default: "homebuyer",
+        required: true,
     },
     accountVerified:{
         type: Boolean,
