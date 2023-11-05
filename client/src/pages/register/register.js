@@ -4,9 +4,21 @@ import { useNavigate } from 'react-router-dom';
 
 function Register() {
 
-    const [credentials, setCredentials] = useState({ email: '', password: '' });
+    const [credentials, setCredentials] = useState({ email: '', password: '', accountType: 'homebuyer' });
     const navigate = useNavigate();
 
+    const checkBox = (e) =>{
+        const isChecked = e.target.checked;
+        const updatedCredentials = { ...credentials };
+
+        if (isChecked) {
+            updatedCredentials.accountType = 'broker';
+        }
+        else{
+            updatedCredentials.accountType = 'homebuyer';
+        }
+        setCredentials(updatedCredentials);
+    }
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -14,6 +26,7 @@ function Register() {
             console.log("empty email or password");
             return;
         }
+
         axios
             .post(process.env.REACT_APP_BACKEND_URL + '/auth/register/', credentials)
             .then(() => {
@@ -41,7 +54,15 @@ function Register() {
                     <br></br>
                     <label htmlFor="password" className="form-label">Password</label>
                     <input onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} value={credentials.password} type="password" className="form-control " id="password"></input>
+                    
                     <br></br>
+                        <div className='h-100 d-flex align-items-center justify-content-center'>
+                            <label>I am a realtor</label>
+                        </div>
+                        <div className='h-100 d-flex align-items-center justify-content-center'>
+                            <input type='checkbox' onChange={checkBox} ></input>
+                        </div>
+                        <br></br>
                     <div className='form-row text-center'>
                         <button type='submit' className="btn btn-info">Register</button>
                     </div>

@@ -12,7 +12,7 @@ const register = async(req, res) =>{
             return res.status(400).json({ error: "Password is required" });
         }
         const hashedPassword = await bcrypt.hash(password,10);
-        const newUser = new User({email, password:hashedPassword,accountType});
+        const newUser = new User({email, password:hashedPassword,accountType:accountType});
         await newUser.save();
         res.status(201).json({message: "User created successfully"});
     }catch(error){
@@ -34,7 +34,7 @@ const login = async(req, res) =>{
             return res.status(401).json({error: "Invalid password."})
         }
        
-        if(user.accountVerified == false){
+        if(user.accountType == 'broker' && user.accountVerified == false){
             return res.status(401).json({error: "Verification is currently pending."})
         }
         const token = jwt.sign({brokerId: user._id}, secretKey, {expiresIn: '1hr'});
