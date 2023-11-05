@@ -27,11 +27,12 @@ function Profile() {
   }, []);
 
   return (
+    <div>
     <Box component="div" sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
       <Avatar></Avatar>
       <p>{user.email}</p>
       <p>{user.accountType}</p>
-
+    </Box >
       {
         user.accountType === "broker" ?
           <Box>
@@ -66,7 +67,9 @@ function Profile() {
           </Box >
       }
 
-    </Box >)
+    
+    </div>
+    )
 
 }
 export default Profile;
