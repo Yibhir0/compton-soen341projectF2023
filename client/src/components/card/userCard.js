@@ -5,9 +5,17 @@ import DeleteBtn from '../button/deleteBtn';
 import VisibleBtn from '../button/visibleBtn';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import Tooltip from "@mui/material/Tooltip";
+import { useNavigate } from 'react-router-dom';
 
 
 const UserCard = ({ user }) => {
+  const navigate = useNavigate();
+
+
+  const handleVisisbleUser = () => {
+
+    navigate(`/users/user/view/${user._id}`, { state: user });
+  }
   const [userInfo, setUserInfo] = useState(
     user
   );
@@ -59,9 +67,9 @@ const UserCard = ({ user }) => {
               justifyContent: 'space-between',
 
             }}>
-            
-            
-            <VisibleBtn user={user} />
+
+
+            <VisibleBtn handleVisible={handleVisisbleUser} />
             <DeleteBtn handleDelete={deleteUser} />
           </Box>
 
@@ -72,7 +80,7 @@ const UserCard = ({ user }) => {
           <h6 className="b-text-font">{email}</h6>
           <h6 className="b-text-font">{accountType}</h6>
           <Tooltip title="Verified">
-                  <VerifiedIcon sx={{ color: "#40dced", fontSize: "xx-large" }} />
+            <VerifiedIcon sx={{ color: "#40dced", fontSize: "xx-large" }} />
           </Tooltip>
         </Box>
 
