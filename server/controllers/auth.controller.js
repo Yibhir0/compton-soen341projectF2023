@@ -16,7 +16,7 @@ const register = async(req, res) =>{
         await newUser.save();
         res.status(201).json({message: "User created successfully"});
     }catch(error){
-        res.status(500).json({error: "Error signing up"})
+        res.status(500).json({error: "Email already exists."})
     }
 }
 
@@ -34,6 +34,9 @@ const login = async(req, res) =>{
             return res.status(401).json({error: "Invalid password."})
         }
        
+        if(user.accountVerified == false){
+            return res.status(401).json({error: "Verification is currently pending."})
+        }
         const token = jwt.sign({brokerId: user._id}, secretKey, {expiresIn: '1hr'});
 
     
