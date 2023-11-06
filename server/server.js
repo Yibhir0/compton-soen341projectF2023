@@ -44,29 +44,12 @@ app.get("/", (req, res) => {
   res.send("Comptan Real Estate");
 });
 
-
-// (async () => {
-//   try {
-
-//     // Connect to database
-//     await connectDB()
-
-//   } catch (e) {
-//     console.error("could not connect");
-//     console.error(e.message);
-//     process.exit();
-//   }
-
-// })();
-
-// const server = app.listen(
-//   PORT,
-//   console.log(`Server started on port ${PORT}...`)
-// );
-//We don't want to run the server if we don't connect to database.
 connectDB()
   .then(() => {
-    app.listen(PORT, console.log("Server started on port 5000"));
+    if (process.env.NODE_ENV !== 'test') {
+      app.listen(PORT, console.log("Server started on port 5000"));
+    }
+
   })
   .catch((err) => {
     console.log(err);
