@@ -46,7 +46,6 @@ const updateVisit = async (req, res) => {
     //const updatedVisit = await visit.save();
 
     res.status(200).json(visit);
-    console.log(visit);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
