@@ -39,8 +39,6 @@ app.use(express.json());
 app.use("/api", PropertyRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
-
-app.use('/api/password-reset', passwordResetRouter);
 app.use("/api/visit",visitRouter)
 
 // Router listening for root and responding with  Comptan real estate
@@ -48,32 +46,15 @@ app.get("/", (req, res) => {
   res.send("Comptan Real Estate");
 });
 
+connectDB()
+  .then(() => {
+    if (process.env.NODE_ENV !== 'test') {
+      app.listen(PORT, console.log("Server started on port 5000"));
+    }
 
-(async () => {
-  try {
-      
-    // Connect to database
-    await connectDB()
-    
-  } catch (e) {
-    console.error("could not connect");
-    console.error(e.message);
-    process.exit();
-  }
-  
-})();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-const server = app.listen(
-  PORT,
-  console.log(`Server started on port ${PORT}...`)
-);
-//We don't want to run the server if we don't connect to database.
-// connectDB()
-//   .then(() => {
-//     app.listen(PORT, console.log("Server started on port 5000"));
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-  module.exports = {app,server};
+module.exports = { app };

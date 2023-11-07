@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 /* Creating a new schema for the property model. */
 const visitSchema = new Schema({
-  
-brokerID: {
+
+  brokerID: {
     type: String,
     required: false,
   },
@@ -15,21 +15,37 @@ brokerID: {
     required: false,
   },
 
-  propertyId:{
-    type: String,
-    required: false,
-  },
-  
-  message:{
+  propertyId: {
     type: String,
     required: false,
   },
 
-  accepted:{
-    
+  message: {
+    type: String,
+    required: false,
+  },
+
+  accepted: {
+
     type: Boolean,
     default: false
 
+  },
+  address: {
+
+    type: String,
+    default: false
+
+  },
+  city: {
+
+    type: String,
+    default: false
+
+  },
+
+  requestedAt: {
+    type: Date
   }
 
 

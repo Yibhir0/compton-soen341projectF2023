@@ -9,16 +9,16 @@ const secretKey = process.env.SECRET_KEY;
 const register = async(req, res) =>{
     try{
         
-        const {email, password,accountType} = req.body;
+        const {email, password,accountType,firstName,lastName,phoneNumber,licenseNumber,agency} = req.body;
         if (!password) {
             return res.status(400).json({ error: "Password is required" });
         }
         const hashedPassword = await bcrypt.hash(password,10);
-        const newUser = new User({email, password:hashedPassword,accountType});
+        const newUser = new User({email, password:hashedPassword,accountType:accountType,firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,licenseNumber:licenseNumber,agency:agency});
         await newUser.save();
         res.status(201).json({message: "User created successfully"});
     }catch(error){
-        res.status(500).json({error: "Error signing up"})
+        res.status(500).json({error: "Email already exists."})
     }
 }
 
@@ -36,6 +36,9 @@ const login = async(req, res) =>{
             return res.status(401).json({error: "Invalid password."})
         }
        
+        if(user.accountType == 'broker' && user.accountVerified == false){
+            return res.status(401).json({error: "Verification is currently pending."})
+        }
         const token = jwt.sign({brokerId: user._id}, secretKey, {expiresIn: '1hr'});
 
     

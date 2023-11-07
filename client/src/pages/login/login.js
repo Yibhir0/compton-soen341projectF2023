@@ -28,7 +28,7 @@ function Login(){
           window.location.reload()
          
         }catch(e){
-          alert("Incorrect email or password");
+          alert(e.response.data.error);
         }
     }
 
