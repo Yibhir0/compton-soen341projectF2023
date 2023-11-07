@@ -16,7 +16,7 @@ const getUsers = async(req, res) =>{
 //Get all non-verified brokers
 const getNonVerifiedUsers = async(req, res) =>{
   try {
-      const users = await User.find({accountVerified:false});
+      const users = await User.find({accountType:'broker',accountVerified:false});
       res.status(200).json(users);
     } catch (err) {
       res.status(500).json({ message: err.message });

@@ -11,20 +11,24 @@
     flex-direction: column;
     align-items: center;
   }
-  
-  .app-header form div {
-    margin: 10px;
-    display: inline-block;
-    align-self: center;
-    color:#000000;
+  .d-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .d-flex-r{
+    display: flex;
+    
   }
   
+  
   .app-header form input {
-    margin: 0 10px;
+    margin: 10px;
     padding: 5px;
-    border: none;
-    border-bottom: 2px solid #ccc;
-    width: 200px;
+    border: 2px solid #ccc;
+    width: 300px;
     background: transparent;
     color: #000000;
   }
