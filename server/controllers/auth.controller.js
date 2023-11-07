@@ -7,12 +7,12 @@ const secretKey = process.env.SECRET_KEY;
 const register = async(req, res) =>{
     try{
         
-        const {email, password,accountType} = req.body;
+        const {email, password,accountType,firstName,lastName,phoneNumber,licenseNumber,agency} = req.body;
         if (!password) {
             return res.status(400).json({ error: "Password is required" });
         }
         const hashedPassword = await bcrypt.hash(password,10);
-        const newUser = new User({email, password:hashedPassword,accountType:accountType});
+        const newUser = new User({email, password:hashedPassword,accountType:accountType,firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,licenseNumber:licenseNumber,agency:agency});
         await newUser.save();
         res.status(201).json({message: "User created successfully"});
     }catch(error){

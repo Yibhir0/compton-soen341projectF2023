@@ -17,6 +17,7 @@ import Visits from './pages/visit/visits'
 import Offers from './pages/offer/offers'
 
 import Verify from './pages/verify/verify'
+import BrokerRegister from './pages/register/broker_register';
 
 import PropertyEdit from "./pages/propertyEdit/propertyEdit"
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/properties" element={<Properties />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/broker_register" element={<BrokerRegister />}></Route>
 
         {isBrokerSignedIn && <Route path="/verify" element={<Verify />}></Route>}
 
