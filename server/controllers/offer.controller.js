@@ -50,4 +50,4 @@ const deleteOffer = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
-export default { getOffers, addOffer, updateOffer, deleteOffer };
+module.exports = { getOffers, addOffer, updateOffer, deleteOffer };
