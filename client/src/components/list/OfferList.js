@@ -15,7 +15,7 @@ const OfferList = ({ offers }) => {
       }}
       >
             {offers.map((offer, index) => (
-           <Offer offers={offer} key={index}/>
+           <Offer offer={offer} key={index}/>
           ))}
       </Box>
     );

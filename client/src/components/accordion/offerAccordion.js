@@ -19,6 +19,7 @@ function OfferAccordion(props) {
         date = new Date(offer.requestedAt);
     }
 
+
     const handleDelete = async () => {
         const confirmed = window.confirm('Are you sure you want to delete this offer?');
         if (confirmed) {

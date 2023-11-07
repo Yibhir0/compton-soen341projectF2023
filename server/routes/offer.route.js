@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/offers", getOffers);
 router.post("/offer", addOffer);
-router.put("/offer/:id", updateOffer);
-router.delete("/offer/:id", deleteOffer);
+router.put("/offers/:id", updateOffer);
+router.delete("/offers/:id", deleteOffer);
 
 module.exports = router;
