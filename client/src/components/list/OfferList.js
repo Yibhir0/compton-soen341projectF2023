@@ -14,8 +14,8 @@ const OfferList = ({ offers }) => {
         alignItems: "center",
       }}
       >
-            {offers.map((offers, index) => (
-           <Offer offers={offers} key={index}/>
+            {offers.map((offer, index) => (
+           <Offer offers={offer} key={index}/>
           ))}
       </Box>
     );

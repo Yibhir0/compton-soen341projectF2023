@@ -49,7 +49,7 @@ const offerSchema = new Schema({
   },
 
   offerPrice: {
-    type: String,
+    type: Number,
     default: false
   },
 
