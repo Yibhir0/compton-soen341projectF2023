@@ -141,6 +141,10 @@ function OfferAccordion(props) {
                                     <p style={style}>{offer.message}</p>
                                 </Box>
                                 <Box>
+                                    <h4>Offer Price</h4>
+                                    <p style={style}>{offer.offerPrice}</p>
+                                </Box>
+                                <Box>
                                     <h4>City</h4>
                                     <p>{offer.city}</p>
                                 </Box>

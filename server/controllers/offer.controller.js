@@ -1,13 +1,13 @@
-//import { find } from "../models/offer.model";
 const Offer = require("../models/offer.model");
 //  GetOffer
 const getOffers = async (req, res) => {
   try {
     const { brokerId } = req.query;
-    const offers = await find({ brokerID: brokerId })
+    const offers = await Offer.find({ brokerID: brokerId })
     res.status(200).json(offers);
   }
   catch (err) {
+    console.log(err);
     res.status(500).json({ message: err.message });
   }
 };

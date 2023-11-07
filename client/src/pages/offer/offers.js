@@ -16,8 +16,6 @@ function Offers() {
         };
         fetchData();
     }, []);
-
-
     return (
         <div>
             <h1 style={{ textAlign: "center" }} >Offers</h1>
