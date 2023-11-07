@@ -37,6 +37,7 @@ const OfferForm = ({ property }) => {
     const offerBody = {
       email: offers.email,
       message: offers.message,
+      offerPrice: offers.offerPrice,
       brokerID: property.brokerID,
       propertyId: property._id,
       address: property.address,
@@ -68,7 +69,7 @@ const OfferForm = ({ property }) => {
     setOffer({
       email: "",
       message: "",
-      price: "",
+      offerPrice: "",
       open: false
 
     })
