@@ -13,9 +13,10 @@ const getOffers = async (req, res) => {
 };
 //  AddOffer
 const addOffer = async (req, res) => {
+  console.log(req.body)
   const offer = new Offer(req.body);
   try {
-    const newOffer = await Offer.save();
+    const newOffer = await offer.save();
     res.status(201).json(newOffer);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -25,7 +26,7 @@ const addOffer = async (req, res) => {
 const updateOffer = async (req, res) => {
   const { id } = req.params;
   try {
-    const offer = await Offer.findByIdAndUpdate(id, req.body);;
+    const offer = await offer.findByIdAndUpdate(id, req.body);;
     if (!offer) {
       return res.status(404).json({ message: 'Offer not found' });
     }
@@ -40,7 +41,7 @@ const updateOffer = async (req, res) => {
 const deleteOffer = async (req, res) => {
   try {
     const { id } = req.params;
-    const offer = await Offer.findByIdAndDelete(id);
+    const offer = await offer.findByIdAndDelete(id);
     if (!offer) {
       return res.status(404).json({ message: "Cannot find any offer with id " + id + " to delete." })
     }

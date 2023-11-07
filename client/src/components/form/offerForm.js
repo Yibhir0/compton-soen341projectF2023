@@ -52,13 +52,9 @@ const OfferForm = ({ property }) => {
       },
       body: JSON.stringify(offerBody),
     })
-    //ici ne recoit pas response donc pas d'alert
       .then(response => {
         if (response.ok) {
           alert('Broker will contact you soon!!')
-        }
-        else { // montre que ca l'envoie pas au backend
-          alert('no response')
         }
       });
 
@@ -127,7 +123,7 @@ const OfferForm = ({ property }) => {
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">Offer price</InputLabel>
-              <FilledInput multiline name="Offer price" onChange={handleChange} value={offers.offerPrice}
+              <FilledInput multiline name="offerPrice" onChange={handleChange} value={offers.offerPrice}
               />
             </FormControl>
 
