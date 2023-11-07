@@ -27,7 +27,7 @@ const OfferForm = ({ property }) => {
   const [offers, setOffer] = useState({
     email: "",
     message: "",
-    price: "",
+    offerPrice: "",
 
   });
 
@@ -122,7 +122,7 @@ const OfferForm = ({ property }) => {
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">Offer price</InputLabel>
-              <FilledInput multiline name="price" onChange={handleChange} value={offers.price}
+              <FilledInput multiline name="Offer price" onChange={handleChange} value={offers.offerPrice}
               />
             </FormControl>
 
