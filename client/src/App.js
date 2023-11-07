@@ -26,20 +26,10 @@ function App() {
   const isBrokerSignedIn = !!localStorage.getItem('token');
   return (
     
-  <div className="App">
-  <NavBar/>
-  <Routes>
-  <Route path="/passwordReset" element={<PasswordReset />}></Route>
-  <Route path="/login" element={<Login />}></Route>
-  <Route path="/about" element={<About />}></Route>
-  <Route path="/properties" element={<Properties />}></Route>
-  <Route path="/" element={<Home />}></Route>
-  <Route path="/register" element={<Register />}></Route>
-  {isBrokerSignedIn && <Route path="/create" element={<CreateListing />}></Route>}
-
     <div className="App">
       <NavBar />
       <Routes>
+        <Route path="/passwordReset" element={<PasswordReset />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/properties" element={<Properties />}></Route>
@@ -60,7 +50,7 @@ function App() {
         {isBrokerSignedIn && <Route path="/edit/:id" element={<PropertyEdit />}></Route>}
 
         {isBrokerSignedIn && <Route path="/visits" element={<Visits />}></Route>}
-
+        
         <Route path="/properties/:id" element={<PropertyDetails />}></Route>
 
       </Routes>
