@@ -3,7 +3,7 @@ import { useParams} from 'react-router-dom';
 import { useNavigate  } from "react-router-dom";
 import jwtDecode from 'jwt-decode';
 import VisitForm from '../../components/form/visitForm';
-import OfferForm from '../../components/form/offersForm';
+import OfferForm from '../../components/form/offerForm';
 
 
 function PropertyView(){
