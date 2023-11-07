@@ -52,9 +52,13 @@ const OfferForm = ({ property }) => {
       },
       body: JSON.stringify(offerBody),
     })
+    //ici ne recoit pas response donc pas d'alert
       .then(response => {
         if (response.ok) {
           alert('Broker will contact you soon!!')
+        }
+        else { // montre que ca l'envoie pas au backend
+          alert('no response')
         }
       });
 
