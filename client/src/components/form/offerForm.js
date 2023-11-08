@@ -125,7 +125,14 @@ const OfferForm = ({ property }) => {
         <Box sx={style}>
         
           <div>
-            
+            <h5>Property</h5>
+
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Address</InputLabel>
+              <FilledInput multiline readOnly name="address" onChange={handleChange} defaultValue={property.address} value={offers.address} 
+              />
+            </FormControl>
+
             <h5>Offer information</h5>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
