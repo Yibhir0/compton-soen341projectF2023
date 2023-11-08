@@ -8,11 +8,14 @@ import Box from '@mui/material/Box';
 import DeclineBtn from '../button/declineBtn';
 import AcceptBtn from '../button/acceptBtn';
 import DeleteBtn from '../button/deleteBtn';
+import VisibleBtn from '../button/visibleBtn';
+import { useNavigate } from "react-router-dom";
 
 
 function VisitAccordion(props) {
 
     const [visit, setVisit] = useState(props.visit);
+    const navigate = useNavigate();
     let date;
 
     if (visit !== null) {
@@ -40,6 +43,11 @@ function VisitAccordion(props) {
             ...prevState,
             data,
         }));
+    }
+
+    const handleVisible = () => {
+        navigate(`/properties/${visit.propertyId}`);
+
     }
 
     const handleAccept = async () => {
@@ -160,6 +168,7 @@ function VisitAccordion(props) {
                                     <DeclineBtn handleDecline={handleAccept} />
                                 }
                                 <DeleteBtn handleDelete={handleDelete} />
+                                <VisibleBtn handleVisible={handleVisible} view="Property" />
                             </Box>
                         </Typography>
                     </AccordionDetails>
