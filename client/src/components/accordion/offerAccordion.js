@@ -105,7 +105,7 @@ function OfferAccordion(props) {
                                     p: 2,
                                     mr: 20,
                                 }}>
-                                <h6 style={{ color: 'gray' }}>From: {offer.email}</h6>
+                                <h6 style={{ color: 'gray' }}>{offer.buyerName}</h6>
                             </Box>
 
                             <Box
@@ -138,20 +138,27 @@ function OfferAccordion(props) {
                                     justifyContent: 'space-between'
                                 }}>
                                 <Box>
-                                    <h4>Message</h4>
-                                    <p style={style}>{offer.message}</p>
+                                    <h5>Buyer </h5>
+                                    <h6>Name: {offer.buyerName}</h6>
+                                    <h6>Email: {offer.email}</h6>
+                                    <h6>Address: {offer.buyerAddress}</h6>
                                 </Box>
                                 <Box>
-                                    <h4>Offer Price</h4>
-                                    <p style={style}>{offer.offerPrice}</p>
+                                    <h5>Broker </h5>
+                                    <h6>Name: {offer.brokerName}</h6>
+                                    <h6>Liscence: {offer.brokerLiscence}</h6>
+                                    <h6>Agency: {offer.brokerAgency}</h6>
                                 </Box>
                                 <Box>
-                                    <h4>City</h4>
-                                    <p>{offer.city}</p>
+                                    <h5>Offer </h5>
+                                    <h6>Price: {offer.offerPrice}</h6>
+                                    <h6>Deed Sale Date: {offer.deedSaleDate}</h6>
+                                    <h6>occupation Date: {offer.moveInDate}</h6>
                                 </Box>
                                 <Box>
-                                    <h4>Address</h4>
-                                    <p>{offer.address}</p>
+                                    <h5>Property </h5>
+                                    <h6>Address: {offer.address}</h6>
+                                    <h6>City: {offer.city}</h6>
                                 </Box>
                             </Box>
 
