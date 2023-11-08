@@ -26,23 +26,39 @@ const OfferForm = ({ property }) => {
 
   const [offers, setOffer] = useState({
     email: "",
-    message: "",
     offerPrice: "",
-
+    deedSaleDate: "",
+    moveInDate: "",
+    buyerName: "",
+    buyerAddress: "",
+    brokerName: "",
+    brokerLiscence: "",
+    brokerAgency: "",
   });
 
   const handleState = async () => {
     console.log("BorekerId:" + property.brokerID);
     let date = new Date();
     const offerBody = {
-      email: offers.email,
-      message: offers.message,
       offerPrice: offers.offerPrice,
+      deedSaleDate: offers.deedSaleDate,
+      moveInDate: offers.moveInDate,
+
+      buyerName: offers.buyerName,
+      email: offers.email,
+      buyerAddress: offers.buyerAddress,
+
+      brokerName: offers.brokerName,
+      brokerLiscence: offers.brokerLiscence,
+      brokerAgency: offers.brokerAgency,
+
       brokerID: property.brokerID,
       propertyId: property._id,
       address: property.address,
       city: property.city,
-      requestedAt: date
+      requestedAt: date,
+      
+
     };
 
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offer`, {
@@ -107,19 +123,10 @@ const OfferForm = ({ property }) => {
         onClose={handleClose}>
 
         <Box sx={style}>
-
+        
           <div>
-            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">Email</InputLabel>
-              <FilledInput name="email" onChange={handleChange} value={offers.email}
-              />
-            </FormControl>
-
-            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
-              <InputLabel htmlFor="filled-adornment-amount">Message</InputLabel>
-              <FilledInput multiline name="message" onChange={handleChange} value={offers.message}
-              />
-            </FormControl>
+            
+            <h5>Offer information</h5>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">Offer price</InputLabel>
@@ -127,11 +134,61 @@ const OfferForm = ({ property }) => {
               />
             </FormControl>
 
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Deed Sale Date</InputLabel>
+              <FilledInput multiline name="deedSaleDate" onChange={handleChange} value={offers.deedSaleDate}
+              />
+            </FormControl>
+
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Occupation Date</InputLabel>
+              <FilledInput multiline name="moveInDate" onChange={handleChange} value={offers.moveInDate}
+              />
+            </FormControl>
+
+            <h5>Client information</h5>
+
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Name</InputLabel>
+              <FilledInput name="buyerName" onChange={handleChange} value={offers.buyerName}
+              />
+            </FormControl>
+
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Email</InputLabel>
+              <FilledInput name="email" onChange={handleChange} value={offers.email}
+              />
+            </FormControl>
+
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Address</InputLabel>
+              <FilledInput name="buyerAddress" onChange={handleChange} value={offers.buyerAddress}
+              />
+            </FormControl>
+
+            <h5>Broker information</h5>
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Name</InputLabel>
+              <FilledInput multiline name="brokerName" onChange={handleChange} value={offers.brokerName}
+              />
+            </FormControl>
+
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">License Number</InputLabel>
+              <FilledInput multiline name="brokerLiscence" onChange={handleChange} value={offers.brokerLiscence}
+              />
+            </FormControl>
+
+            <FormControl fullWidth sx={{ m: 1 }} variant="filled">
+              <InputLabel htmlFor="filled-adornment-amount">Agency</InputLabel>
+              <FilledInput multiline name="brokerAgency" onChange={handleChange} value={offers.brokerAgency}
+              />
+            </FormControl>
+
+
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Button size="large" variant="contained" onClick={handleState}  >Make an Offer</Button>
-
             </Box>
-
 
           </div>
 

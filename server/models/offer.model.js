@@ -9,7 +9,7 @@ const offerSchema = new Schema({
     type: String,
     required: false,
   },
-
+//email of buyer
   email: {
     type: String,
     required: false,
@@ -50,6 +50,41 @@ const offerSchema = new Schema({
 
   offerPrice: {
     type: String,
+    default: false
+  },
+
+  brokerName: {
+    type: String,
+    default: false
+  },
+
+  brokerLiscence: {
+    type: String,
+    default: false
+  },
+
+  brokerAgency: {
+    type: String,
+    default: false
+  },
+
+  buyerName: {
+    type: String,
+    default: false
+  },
+
+  buyerAddress: {
+    type: String,
+    default: false
+  },
+
+  deedSaleDate: {
+    type: Date,
+    default: false
+  },
+
+  moveInDate: {
+    type: Date,
     default: false
   },
 
