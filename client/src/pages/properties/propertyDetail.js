@@ -16,7 +16,6 @@ function PropertyView() {
     const [property, setProperty] = useState(null);
     const { id } = useParams();
 
-    console.log(property);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/${id}`)
@@ -83,7 +82,6 @@ function PropertyView() {
                                 <Paper key={i}>
                                     <div className='property-card-container'>
                                         <h1 className='property-header'>Property Details</h1>
-
                                         <div className="property-detail">
                                             <div className="property-poster">
                                                 {img === 'default' ?
