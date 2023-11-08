@@ -56,15 +56,6 @@ function PropertyView(){
         navigate(`/edit/${id}`);
       
     };
-    
-  //filter for make offer button appear only if property is for sale
-    /*const makeOffer = property.propertyType === 'Sale' ? ( 
-      <>
-        <OfferForm property={property} />
-      </>
-    ) : (
-      <p></p>
-    );*/
 
     return(
         <div className="app">
@@ -75,12 +66,19 @@ function PropertyView(){
           <div className="d-flex justify-content-center text-center font-weight-bold">
           <button onClick={() => navigate(-1)} className="btn btn-dark"> Back </button>
           <VisitForm  property={property} />
-          <OfferForm property={property} />
           </div>
-          <br></br>
+          
           {property !== null ? (
             <div>
               <div className="d-flex align-items-center justify-content-center text-center">
+
+              {property.propertyType !== 'Rent' ? (
+                <OfferForm property={property} />
+              ) : (
+              <div>      
+              </div>
+              )}
+              <br></br>
                 <div>
                   <img style={{ width: '100%', height: '250px' }} src={"https://res.cloudinary.com/dbhsjm5a2/image/upload/v1697488900/" + property.images[0]} alt="Uploaded"></img>
                 </div>
