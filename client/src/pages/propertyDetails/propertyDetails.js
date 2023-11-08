@@ -57,6 +57,14 @@ function PropertyView(){
       
     };
     
+  //filter for make offer button appear only if property is for sale
+    /*const makeOffer = property.propertyType === 'Sale' ? ( 
+      <>
+        <OfferForm property={property} />
+      </>
+    ) : (
+      <p></p>
+    );*/
 
     return(
         <div className="app">
@@ -67,7 +75,7 @@ function PropertyView(){
           <div className="d-flex justify-content-center text-center font-weight-bold">
           <button onClick={() => navigate(-1)} className="btn btn-dark"> Back </button>
           <VisitForm  property={property} />
-          <OfferForm  property={property} />
+          <OfferForm property={property} />
           </div>
           <br></br>
           {property !== null ? (
