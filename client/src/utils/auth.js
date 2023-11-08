@@ -10,22 +10,25 @@ export function isSignedIn(){
 export function isBroker(){
     if(isSignedIn()){
         const type = getAccountType();
-        return type == "broker";
-    }   
+        return type === "broker";
+    }
+    return false;
 }
 
 export function isHomeBuyer(){
     if(isSignedIn()){
         const type = getAccountType();
-        return type == "homebuyer";
+        return type === "homebuyer";
     }
+    return false;
 }
 
 export function isAdmin(){
     if(isSignedIn){
         const type = getAccountType();
-        return type == "admin";
+        return type === "admin";
     }
+    return false;
 }
 
 function getAccountType(){
