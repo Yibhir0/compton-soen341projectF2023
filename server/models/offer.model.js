@@ -79,12 +79,12 @@ const offerSchema = new Schema({
   },
 
   deedSaleDate: {
-    type: Date,
+    type: String,
     default: false
   },
 
   moveInDate: {
-    type: Date,
+    type: String,
     default: false
   },
 
