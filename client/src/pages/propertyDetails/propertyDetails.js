@@ -72,7 +72,7 @@ function PropertyView(){
             <div>
               <div className="d-flex align-items-center justify-content-center text-center">
 
-              {property.propertyType !== 'Rent' ? (
+              {property.propertyType !== 'Rent' && isBrokerSignedIn ? (
                 <OfferForm property={property} />
               ) : (
               <div>      
