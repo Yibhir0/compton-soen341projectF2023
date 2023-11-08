@@ -3,6 +3,7 @@ import { useParams} from 'react-router-dom';
 import { useNavigate  } from "react-router-dom";
 import jwtDecode from 'jwt-decode';
 import VisitForm from '../../components/form/visitForm';
+import OfferForm from '../../components/form/offerForm';
 
 
 function PropertyView(){
@@ -55,7 +56,6 @@ function PropertyView(){
         navigate(`/edit/${id}`);
       
     };
-    
 
     return(
         <div className="app">
@@ -67,10 +67,18 @@ function PropertyView(){
           <button onClick={() => navigate(-1)} className="btn btn-dark"> Back </button>
           <VisitForm  property={property} />
           </div>
-          <br></br>
+          
           {property !== null ? (
             <div>
               <div className="d-flex align-items-center justify-content-center text-center">
+
+              {property.propertyType !== 'Rent' && isBrokerSignedIn ? (
+                <OfferForm property={property} />
+              ) : (
+              <div>      
+              </div>
+              )}
+              <br></br>
                 <div>
                   <img style={{ width: '100%', height: '250px' }} src={"https://res.cloudinary.com/dbhsjm5a2/image/upload/v1697488900/" + property.images[0]} alt="Uploaded"></img>
                 </div>

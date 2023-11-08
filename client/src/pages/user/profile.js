@@ -43,6 +43,10 @@ function Profile() {
               </span>
 
               <span>
+                <Link to="/offers" className='navItem'>Offers</Link>
+              </span>
+
+              <span>
                 <Link to="/create" className='navItem'>Add Property</Link>
               </span>
             </Box>
