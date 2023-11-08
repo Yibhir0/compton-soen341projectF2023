@@ -204,6 +204,7 @@ function FilterSearch({ change, handleModal }) {
           </Select>
         </FormControl>
 
+
         <Box sx={{ m: 1, display: 'flex', justifyContent: 'space-between' }}>
           <Button size="large" variant="contained" onClick={handleState}  >Search</Button>
           <Button size="large" variant="contained" onClick={clearFields}  >Reset</Button>

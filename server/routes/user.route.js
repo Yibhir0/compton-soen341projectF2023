@@ -1,6 +1,7 @@
 const express = require("express");
 const{
    getUsers,
+   getBrokers,
    getUser,
    deleteUser,
    getNonVerifiedUsers,
@@ -9,9 +10,10 @@ const{
 
 const router = express.Router();
 
+router.get("/brokers", getBrokers);
 router.get("/users/nonverified", getNonVerifiedUsers);
-router.get("/users", getUsers);
 router.get("/users/:id", getUser);
+router.get("/users", getUsers);
 router.delete("/users/:id",  deleteUser);
 router.put("/users/:id", verifyUser);
 

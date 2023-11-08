@@ -3,14 +3,25 @@
 const User = require("../models/user.model");
 
 
-// Get all verified brokers
+
+//Get ALL users (Brokers & Homebuyers)
 const getUsers = async(req, res) =>{
-    try {
-        const users = await User.find({accountType:"broker", accountVerified:true});
-        res.status(200).json(users);
-      } catch (err) {
-        res.status(500).json({ message: err.message });
-      }
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// Get all verified brokers
+const getBrokers = async(req, res) =>{
+  try {
+    const users = await User.find({accountType:"broker", accountVerified:true});
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 //Get all non-verified brokers
@@ -69,4 +80,4 @@ const deleteUser= async (req, res) =>{
   }
 }
 
-module.exports = {getUsers,getUser,deleteUser,getNonVerifiedUsers,verifyUser};
+module.exports = {getUsers,getBrokers,getUser,deleteUser,getNonVerifiedUsers,verifyUser};
