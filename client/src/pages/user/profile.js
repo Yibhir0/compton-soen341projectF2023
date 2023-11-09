@@ -29,7 +29,7 @@ function Profile() {
   return (
     <div>
       <Box component="div" sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
-        <Avatar sx={{ marginTop: '10px', width: 80, height: 80 }} >{user.email[0].toUpperCase()}</Avatar>
+        <Avatar sx={{ marginTop: '10px', width: 80, height: 80 }} ></Avatar>
         <p>{user.email}</p>
         <p>{user.accountType}</p>
       </Box >

@@ -12,8 +12,6 @@ const Navbar = () => {
     navigate('/');
   }
 
-
-
   // Available navbar links for both logged-in and non-logged-in users.
   const navigation = (
     <>
@@ -60,7 +58,6 @@ const Navbar = () => {
         <div className="nav-elements">
 
           <ul>
-
             {navigation}
             {brokerNavigation}
           </ul>
