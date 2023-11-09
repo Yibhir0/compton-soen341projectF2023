@@ -14,7 +14,7 @@ const updateBroker = async(req, res) =>{
     }
     
     const hashedPassword = await bcrypt.hash(password,10);
-    user = ({email,accountType:accountType,firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,licenseNumber:licenseNumber,agency:agency});
+    user = ({email: email,accountType:accountType,firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,licenseNumber:licenseNumber,agency:agency});
     //await user.save();
     console.log(user)
     return res.status(200).json({ message: "Email found, verification code sent soon" });
