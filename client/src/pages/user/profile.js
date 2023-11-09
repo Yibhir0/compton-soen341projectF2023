@@ -10,10 +10,8 @@ import UpdateBrokerForm from '../../components/form/updateBrokerForm';
 function Profile() {
 
   const id = localStorage.getItem('id');
-
   const [user, setUser] = useState({
   });
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +49,7 @@ function Profile() {
                 <Link to="/create" className='navItem'>Add Property</Link>
               </span>
               <div className="property-buttons-container">
-              <UpdateBrokerForm user = {user}/>  
+              <UpdateBrokerForm id = {id}/>  
               </div>
                     
             </Box>
