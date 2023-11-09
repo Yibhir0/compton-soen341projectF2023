@@ -24,6 +24,18 @@ const style = {
 };
 
 const UpdateBrokerForm = ({id}) => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+};
+
+const closeModal = () => {
+
+  setIsModalOpen(false);
+};
+
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
@@ -35,26 +47,27 @@ const UpdateBrokerForm = ({id}) => {
     agency: '',
   });
 
-useEffect(() => {
-  const fetchData = async () => {
-    const result = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
-    );
-    const data = await result.json();
-    setCredentials({
-      ...credentials,
-      email: data.email,
-      password: data.password,
-      accountType: 'broker',
-      firstName: data.firstName,
-      lastName: data.lastName,
-      phoneNumber: data.phoneNumber,
-      licenseNumber: data.licenseNumber,
-      agency: data.agency,
-  });
-  };
-  fetchData();
-}, []); 
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
+      );
+      const data = await result.json();
+      setCredentials({
+        ...credentials,
+        email: data.email,
+        password: data.password,
+        accountType: 'broker',
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phoneNumber: data.phoneNumber,
+        licenseNumber: data.licenseNumber,
+        agency: data.agency,
+    });
+    };
+    fetchData();
+  }, []); 
+
 console.log(credentials)
   const handleState = async () => {
     if (!credentials.password || !credentials.email) {
@@ -89,12 +102,6 @@ console.log(credentials)
       agency: '',
     });
   };
-  const handleClose = () => {
-
-    setCredentials({
-      open: !credentials.open
-    });
-  };
   const handleRequest = () => {
 
     setCredentials({
@@ -106,18 +113,14 @@ console.log(credentials)
   return (
     <div>
      <button className="btn btn-secondary mx-auto" onClick={handleRequest}  >Update Broker information</button>
-     <Modal open={credentials.open} onClose={handleClose}>
+     <Modal open={openModal} onClose={closeModal}>
         <Box sx={style}>
           <div>
           <FormControl fullWidth sx={{ m: 1 }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">Email</InputLabel>
           <FilledInput defaultValue={credentials.email} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value={credentials.email} name="email"/>
           </FormControl>
-                    
-          <FormControl fullWidth sx={{ m: 1 }} variant="filled">
-          <InputLabel htmlFor="filled-adornment-amount">Password</InputLabel>
-          <FilledInput defaultValue={credentials.password} onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} value={credentials.password} type='password' name="password" />
-          </FormControl>
+                  
 
           <FormControl fullWidth sx={{ m: 1 }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">First Name</InputLabel>
