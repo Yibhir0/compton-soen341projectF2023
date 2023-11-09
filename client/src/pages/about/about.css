@@ -1,7 +1,8 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
 .about-card-container{
     height: 550px;
     background-color: #011A3E;
+    color: white;
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
-} */
+}

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { STUDENTS } from "../../globals/names";
 import Carousel from 'react-material-ui-carousel';
-
+import './about.css'
 /*This is the about page of the site
 This would contain information behind the creation
 of the site such as the those who created it
@@ -16,7 +16,7 @@ function About() {
     <div>
 <Carousel>
       {/* Test idea, subject to change.. */}
-      <div className='property-card-container'> 
+      <div className='about-card-container'> 
       <span style={{ color: "white" }}>
       <br></br>
       
