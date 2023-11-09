@@ -3,10 +3,6 @@ const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
 
-
-
-const secretKey = process.env.SECRET_KEY;
-
 const updateBroker = async(req, res) =>{
     const { email, password, accountType, firstName, lastName, phoneNumber, licenseNumber, agency} = req.body;
     console.log(req.body);

@@ -49,7 +49,7 @@ const CreateBrokerForm = ({}) =>{
             
           
             alert("Information changed successfully");
-            navigate('/');
+            //navigate('/');
             window.location.reload()
 
           } catch (error) {

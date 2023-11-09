@@ -5,6 +5,7 @@ import MyProperties from "../properties/my-properties";
 import Users from "../user/users";
 import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
+import updateBrokerForm from '../../components/form/updateBrokerForm';
 
 function Profile() {
 
@@ -49,6 +50,7 @@ function Profile() {
               <span>
                 <Link to="/create" className='navItem'>Add Property</Link>
               </span>
+
             </Box>
             <Box>
               <MyProperties />
