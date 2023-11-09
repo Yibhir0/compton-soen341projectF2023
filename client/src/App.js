@@ -25,6 +25,7 @@ import PropertyEdit from "./pages/propertyEdit/propertyEdit"
 import PropertyPlayer from './components/player/propertyPlayer';
 
 import PasswordReset from "./pages/login/passwordReset"
+import BrokerDetails from "./pages/brokers/BrokerDetails";
 
 function App() {
 
