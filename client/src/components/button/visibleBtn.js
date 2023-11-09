@@ -5,11 +5,11 @@ import Tooltip from "@mui/material/Tooltip";
 import IconButton from '@mui/material/IconButton';
 
 
-const VisibleBtn = ({ handleVisible }) => {
+const VisibleBtn = ({ handleVisible, view }) => {
 
   return (
 
-    <Tooltip title="Visit User">
+    <Tooltip title={`View ${view}`}>
       <IconButton onClick={handleVisible} >
         <VisibilityIcon sx={{ color: "#15D32C", fontSize: "xx-large" }} />
       </IconButton>

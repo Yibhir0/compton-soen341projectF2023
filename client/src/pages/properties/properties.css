@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+.detailProperty {
+
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+
+}
+
+.property-header{
+    color:white;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.property-poster{
+    height: 300px;
+    border: 1px solid gold;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.property-poster > img{
+    height: 100%;
+    width: 100%;
+
+}
+.property-card-container{
+    height: 550px;
+    background-color: #011A3E;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+.property-detail{
+    position: absolute;
+    top:200px;
+    display: flex;
+    justify-content: space-evenly;
+    width:100%;
+}
+.property-info{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.property-buttons-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width:300px;
+}
+
+
