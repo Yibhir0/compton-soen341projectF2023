@@ -3,21 +3,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    email: {
+    email: {//The email associate with the user
         type: String,
         required: true,
         unique: true,
     },
-    password: {
+    password: {// The password required to login to the account
         type: String,
         required: true,
     },
-    accountType: {
+    accountType: {// The privelages given to the user (homebuyer, broker or admin).By default a user is set to homebuyer
         type: String,
         default: "homebuyer",
         required: true,
     },
-    accountVerified:{
+    accountVerified:{//
         type: Boolean,
         default: false,
         required:false,

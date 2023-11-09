@@ -9,6 +9,9 @@ import 'swiper/css/navigation';
 
 import SearchForm from '../../components/form/searchform';
 
+// This is the home page of the website
+//From heare we have access to recently viewed properties
+
 function Home() {
   console.log("home");
   return (
