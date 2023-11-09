@@ -18,16 +18,15 @@ const reset = async(req, res) =>{
       return res.status(401).json({ error: 'Invalid reset code' });
       
     }
-    console.log(user);
+    
     const hashedPassword = await bcrypt.hash(password,10);
     user.password = hashedPassword;
     await user.save();
-    console.log(user);
+
 
     
     return res.status(200).json({ message: "Email found, verification code sent soon" });
   } catch (error) {
-    console.log(error)
     res.status(500).json({ error: 'Internal server error' });
   }
 }
