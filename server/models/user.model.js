@@ -17,35 +17,35 @@ const userSchema = new Schema({
         default: "homebuyer",
         required: true,
     },
-    accountVerified:{
+    accountVerified: {
         type: Boolean,
         default: false,
-        required:false,
-    },
-    firstName:{
-        type:String,
         required: false,
-        default:""
     },
-    lastName:{
-        type:String,
+    firstName: {
+        type: String,
         required: false,
-        default:""
+        default: ""
     },
-    phoneNumber:{
-        type:String,
+    lastName: {
+        type: String,
         required: false,
-        default:""
+        default: ""
     },
-    licenseNumber:{
-        type:String,
+    phoneNumber: {
+        type: String,
         required: false,
-        default:""
+        default: ""
     },
-    agency:{
-        type:String,
+    licenseNumber: {
+        type: String,
         required: false,
-        default:""
+        default: ""
+    },
+    agency: {
+        type: String,
+        required: false,
+        default: ""
     },
 })
 
