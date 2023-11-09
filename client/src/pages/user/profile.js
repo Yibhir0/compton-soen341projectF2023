@@ -50,9 +50,9 @@ function Profile() {
                 <Link to="/create" className='navItem'>Add Property</Link>
               </span>
             </Box>
-            <Box>
+            <div>
               <MyProperties />
-            </Box>
+            </div>
           </Box>
 
         ) : user.accountType === "homebuyer" ? (
