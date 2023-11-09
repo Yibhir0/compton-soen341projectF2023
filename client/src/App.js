@@ -23,15 +23,17 @@ import BrokerRegister from './pages/register/broker_register';
 import PropertyEdit from "./pages/propertyEdit/propertyEdit"
 import PropertyPlayer from './components/player/propertyPlayer';
 
+import PasswordReset from "./pages/login/passwordReset"
 
 function App() {
 
   const isBrokerSignedIn = !!localStorage.getItem('token');
   return (
-
+    
     <div className="App">
       <NavBar />
       <Routes>
+        <Route path="/passwordReset" element={<PasswordReset />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/properties" element={<Properties />}></Route>
