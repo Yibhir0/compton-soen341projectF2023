@@ -46,14 +46,18 @@ function Brokers(){
 
             {brokers && brokers.length > 0 ? (
 
-                    <table style={{textAlign:'center', justifyContent:"center"}}>
+                    <table style={{textAlign:'center', justifyContent:"center"}} className={"brokers-table"}>
+                        <thead>
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>License Number</th>
+                            <th></th>
                         </tr>
+                        </thead>
+                        <tbody>
                         {
                             filterBrokers(name).map((broker) =>
                                 <tr>
@@ -62,11 +66,13 @@ function Brokers(){
                                     <td>{broker.email}</td>
                                     <td>{broker.phoneNumber}</td>
                                     <td>{broker.licenseNumber}</td>
+                                    <td>View</td>
 
                                 </tr>
                             )
 
                         }
+                        </tbody>
                     </table>
             ) : (
                 <div className="mx-auto" style={{ maxWidth: "1300px" }}>

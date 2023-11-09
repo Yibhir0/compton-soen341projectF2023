@@ -19,6 +19,7 @@ import BrokerRegister from './pages/register/broker_register';
 import Brokers from "./pages/brokers/Brokers";
 
 import PropertyEdit from "./pages/propertyEdit/propertyEdit"
+import BrokerDetails from "./pages/brokers/BrokerDetails";
 
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
         {isBrokerSignedIn && <Route path="/visits" element={<Visits />}></Route>}
 
         <Route path="/properties/:id" element={<PropertyDetails />}></Route>
+        <Route path="/brokers/:id" element={<BrokerDetails />}></Route>
+
+
 
       </Routes>
     </div>

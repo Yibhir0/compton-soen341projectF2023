@@ -34,9 +34,20 @@ const getNonVerifiedUsers = async(req, res) =>{
     }
 };
 
+// Get Broker
+const getBroker = async(req, res) => {
+  try{
+    const id = req.params.id;
+    const user = await User.find({accountType:'broker',accountVerified:true}).findById(id);
+    res.status(200).json(user);
+  } catch(err){
+    res.status(500).json({ message: err.message });
+  }
+};
 
 
-// Get broker
+
+// Get User
 const getUser = async(req, res) => {
     try{
       const id = req.params.id;
@@ -62,7 +73,7 @@ const verifyUser = async(req,res) =>{
   }
 
 };
-  
+
 /**
  * Deletes a broker
  */
@@ -80,4 +91,4 @@ const deleteUser= async (req, res) =>{
   }
 }
 
-module.exports = {getUsers,getBrokers,getUser,deleteUser,getNonVerifiedUsers,verifyUser};
+module.exports = {getUsers,getBrokers,getBroker, getUser,deleteUser,getNonVerifiedUsers,verifyUser};
