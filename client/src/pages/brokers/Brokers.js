@@ -3,11 +3,16 @@ import SearchForm from "../../components/form/searchform"
 import PropertyList from "../../components/list/PropertyList";
 import {Form} from "react-router-dom";
 import {Input} from "@mui/material";
+import Button from "@mui/material/Button";
 
 function Brokers(){
 
     const [brokers, setBrokers] = useState([]);
     const [brokersToList, setBrokersList] = useState([])
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+
+
     useEffect(() => {
         const fetchData = async () => {
             const result = await fetch(
@@ -19,17 +24,18 @@ function Brokers(){
         fetchData();
     }, []);
 
-    console.log(brokers)
+    const handleSearch = (fname, lname) => {
+        console.log(fname + " - " + lname);
 
-    // Change the state when search is triggered
-    const handleSearchState = (onBrokers) =>{
-        setBrokers(onBrokers)
     }
+
 
     return (
         <div>
             <div className="d-flex align-items-center justify-content-center text-center">
-                <SearchForm change={handleSearchState} />
+               <Input type={"text"} placeholder={"First Name..."} value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+                <Input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name..." required/>
+                <Button onClick={ () => {handleSearch(firstName, lastName)}}> Search</Button>
             </div>
 
             <br></br>
