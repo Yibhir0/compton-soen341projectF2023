@@ -11,7 +11,7 @@ const{
 
 const router = express.Router();
 
-router.get("/brokers/:id", getBroker);
+router.get("/brokers/:id", getUser);
 router.get("/brokers", getBrokers);
 router.get("/users/nonverified", getNonVerifiedUsers);
 router.get("/users/:id", getUser);

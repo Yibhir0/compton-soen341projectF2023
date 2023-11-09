@@ -39,7 +39,7 @@ function Brokers(){
     return (
         <div>
             <div className="d-flex align-items-center justify-content-center text-center">
-                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Last Name..." required/>
+                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name..." required/>
             </div>
 
             <br></br>
@@ -66,7 +66,7 @@ function Brokers(){
                                     <td>{broker.email}</td>
                                     <td>{broker.phoneNumber}</td>
                                     <td>{broker.licenseNumber}</td>
-                                    <td>View</td>
+                                    <td><a href={`/brokers/${broker._id}`}>View</a></td>
 
                                 </tr>
                             )
