@@ -105,7 +105,7 @@ function OfferAccordion(props) {
                                     p: 2,
                                     mr: 20,
                                 }}>
-                                <h6 style={{ color: 'gray' }}>{offer.buyerName}</h6>
+                                <h6 style={{ color: 'gray' }}>Offer From {offer.buyerName}</h6>
                             </Box>
 
                             <Box
@@ -137,27 +137,51 @@ function OfferAccordion(props) {
                                     display: 'flex',
                                     justifyContent: 'space-between'
                                 }}>
-                                <Box>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+
+                                    }}>
                                     <h5>Buyer </h5>
                                     <h6>Name: {offer.buyerName}</h6>
                                     <h6>Email: {offer.email}</h6>
-                                    <h6>Address: {offer.buyerAddress}</h6>
+                                    <h6 style={style}>Address: {offer.buyerAddress}</h6>
                                 </Box>
-                                <Box>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+
+                                    }}>
                                     <h5>Broker </h5>
                                     <h6>Name: {offer.brokerName}</h6>
                                     <h6>Liscence: {offer.brokerLiscence}</h6>
                                     <h6>Agency: {offer.brokerAgency}</h6>
                                 </Box>
-                                <Box>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+
+                                    }}>
                                     <h5>Offer </h5>
                                     <h6>Price: {offer.offerPrice}</h6>
                                     <h6>Deed Sale Date: {offer.deedSaleDate}</h6>
                                     <h6>occupation Date: {offer.moveInDate}</h6>
                                 </Box>
-                                <Box>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+
+                                    }}>
                                     <h5>Property </h5>
-                                    <h6>Address: {offer.address}</h6>
+                                    <h6 style={style}>Address: {offer.address}</h6>
                                     <h6>City: {offer.city}</h6>
                                 </Box>
                             </Box>
