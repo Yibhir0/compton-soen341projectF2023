@@ -29,25 +29,10 @@ const UpdateBrokerForm = ({id}) => {
 
   const openModal = () => {
     setIsModalOpen(true);
+    
 };
 
-const closeModal = () => {
-
-  setIsModalOpen(false);
-};
-
-  const [credentials, setCredentials] = useState({
-    email: '',
-    password: '',
-    accountType: 'broker',
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    licenseNumber: '',
-    agency: '',
-  });
-
-  useEffect(() => {
+useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
@@ -67,6 +52,24 @@ const closeModal = () => {
     };
     fetchData();
   }, []); 
+
+const closeModal = () => {
+
+  setIsModalOpen(false);
+};
+
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: '',
+    accountType: 'broker',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    licenseNumber: '',
+    agency: '',
+  });
+
+  
 
 console.log(credentials)
   const handleState = async () => {
