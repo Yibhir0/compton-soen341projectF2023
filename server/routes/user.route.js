@@ -1,4 +1,6 @@
 const express = require("express");
+
+//This is the router for users
 const{
    getUsers,
    getUser,
