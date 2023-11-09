@@ -24,6 +24,9 @@ const Navbar = () => {
       <li>
         <Link to="/properties" className='navItem'>Properties</Link>
       </li>
+        <li>
+            <Link to="/brokers" className='navItem'>Search Brokers</Link>
+        </li>
     </>
   );
 

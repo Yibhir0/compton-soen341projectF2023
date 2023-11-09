@@ -3,10 +3,21 @@
 const User = require("../models/user.model");
 
 
-// Get all verified brokers
-const getUsers = async (req, res) => {
+
+//Get ALL users (Brokers & Homebuyers)
+const getUsers = async(req, res) =>{
   try {
-    const users = await User.find({ accountType: "broker", accountVerified: true });
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// Get all verified brokers
+const getBrokers = async(req, res) =>{
+  try {
+    const users = await User.find({accountType:"broker", accountVerified:true});
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -23,6 +34,16 @@ const getNonVerifiedUsers = async (req, res) => {
   }
 };
 
+// Get Broker
+const getBroker = async(req, res) => {
+  try{
+    const id = req.params.id;
+    const user = await User.find({accountType:'broker',accountVerified:true}).findById(id);
+    res.status(200).json(user);
+  } catch(err){
+    res.status(500).json({ message: err.message });
+  }
+};
 
 
 // Get broker
@@ -51,7 +72,7 @@ const verifyUser = async (req, res) => {
   }
 
 };
-
+  
 /**
  * Deletes a broker
  */
@@ -59,14 +80,14 @@ const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await User.findByIdAndDelete(id);
-    if (!user) {
-      return res.status(404).json({ message: "Cannot find any user with id " + id + " to delete." })
+    if(!user){
+      return res.status(404).json({message: "Cannot find any user with id " + id + " to delete."})
     }
     res.status(200).json(user);
   }
-  catch (err) {
+  catch(err){
     res.status(500).json({ message: err.message });
   }
 }
 
-module.exports = { getUsers, getUser, deleteUser, getNonVerifiedUsers, verifyUser };
+module.exports = {getUsers,getBrokers,getBroker, getUser,deleteUser,getNonVerifiedUsers,verifyUser};
