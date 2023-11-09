@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import FilledInput from '@mui/material/FilledInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -31,14 +31,37 @@ const OfferForm = ({ property }) => {
     moveInDate: "",
     buyerName: "",
     buyerAddress: "",
+
+  });
+
+  const [broker, setBroker] = useState({
+
     brokerName: "",
     brokerLiscence: "",
     brokerAgency: "",
+
   });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/user/users/${property.brokerID}`
+      );
+      const data = await result.json();
+      setBroker({
+        ...broker,
+        brokerName: data.firstName + " " + data.lastName,
+        brokerLiscence: data.licenseNumber,
+        brokerAgency: data.agency,
+      });
+    };
+    fetchData();
+  }, []);
+
   const handleState = async () => {
-    console.log("BorekerId:" + property.brokerID);
+
     let date = new Date();
+
     const offerBody = {
       offerPrice: offers.offerPrice,
       deedSaleDate: offers.deedSaleDate,
@@ -48,16 +71,16 @@ const OfferForm = ({ property }) => {
       email: offers.email,
       buyerAddress: offers.buyerAddress,
 
-      brokerName: offers.brokerName,
-      brokerLiscence: offers.brokerLiscence,
-      brokerAgency: offers.brokerAgency,
+      brokerName: broker.brokerName,
+      brokerLiscence: broker.brokerLiscence,
+      brokerAgency: broker.brokerAgency,
 
       brokerID: property.brokerID,
       propertyId: property._id,
       address: property.address,
       city: property.city,
       requestedAt: date,
-      
+
 
     };
 
@@ -123,13 +146,13 @@ const OfferForm = ({ property }) => {
         onClose={handleClose}>
 
         <Box sx={style}>
-        
+
           <div>
             <h5>Property</h5>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">Address</InputLabel>
-              <FilledInput multiline readOnly name="address" onChange={handleChange} defaultValue={property.address} value={offers.address} 
+              <FilledInput multiline readOnly name="address" defaultValue={property.address}
               />
             </FormControl>
 
@@ -176,19 +199,19 @@ const OfferForm = ({ property }) => {
             <h5>Broker information</h5>
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">Name</InputLabel>
-              <FilledInput multiline name="brokerName" onChange={handleChange} value={offers.brokerName}
+              <FilledInput multiline name="brokerName" defaultValue={broker.brokerName}
               />
             </FormControl>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">License Number</InputLabel>
-              <FilledInput multiline name="brokerLiscence" onChange={handleChange} value={offers.brokerLiscence}
+              <FilledInput multiline name="brokerLiscence" defaultValue={broker.brokerLiscence}
               />
             </FormControl>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">Agency</InputLabel>
-              <FilledInput multiline name="brokerAgency" onChange={handleChange} value={offers.brokerAgency}
+              <FilledInput multiline name="brokerAgency" defaultValue={broker.brokerAgency}
               />
             </FormControl>
 
