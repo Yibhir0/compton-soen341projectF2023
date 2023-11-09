@@ -7,6 +7,7 @@ import { Paper } from '@mui/material';
 import DeleteBtn from '../../components/button/deleteBtn';
 import EditBtn from '../../components/button/editBtn';
 import PlayBtn from '../../components/button/playBtn';
+import OfferForm from '../../components/form/offerForm';
 
 import './properties.css';
 
@@ -109,6 +110,9 @@ function PropertyView() {
                                             </div>
                                             <div className="property-buttons-container">
                                                 <VisitForm property={property} />
+                                                {property.propertyType !== 'Rent' && isBrokerSignedIn && (
+                                                    <OfferForm property={property} />
+                                                )}
                                                 <PlayBtn handlePlay={playVideo} />
                                                 {isBrokerSignedIn && property.brokerID === decodedToken.brokerId && (
                                                     <div className="property-buttons-container">
