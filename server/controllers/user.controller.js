@@ -25,13 +25,13 @@ const getBrokers = async(req, res) =>{
 };
 
 //Get all non-verified brokers
-const getNonVerifiedUsers = async(req, res) =>{
+const getNonVerifiedUsers = async (req, res) => {
   try {
-      const users = await User.find({accountType:'broker',accountVerified:false});
-      res.status(200).json(users);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
+    const users = await User.find({ accountType: 'broker', accountVerified: false });
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 // Get Broker
@@ -46,40 +46,39 @@ const getBroker = async(req, res) => {
 };
 
 
-
-// Get User
-const getUser = async(req, res) => {
-    try{
-      const id = req.params.id;
-      const user = await User.findById(id);
-      res.status(200).json(user);
-    } catch(err){
-      res.status(500).json({ message: err.message });
-    }
-  };
+// Get broker
+const getUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findById(id);
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 
 // Verifies broker account
-const verifyUser = async(req,res) =>{
-  try{
-    const {id} = req.params;
-    const user = await User.findByIdAndUpdate(id, { accountVerified: true },{ new: true });
-    if(!user){
-      return res.status(404).json({message: "Cannot find any user with id " + id + " to verify."});
+const verifyUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndUpdate(id, { accountVerified: true }, { new: true });
+    if (!user) {
+      return res.status(404).json({ message: "Cannot find any user with id " + id + " to verify." });
     }
     res.status(200).json(user);
 
-  }catch(err){
+  } catch (err) {
     res.status(500).json({ message: err.message });
   }
 
 };
-
+  
 /**
  * Deletes a broker
  */
-const deleteUser= async (req, res) =>{
-  try{
-    const {id} = req.params;
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
     const user = await User.findByIdAndDelete(id);
     if(!user){
       return res.status(404).json({message: "Cannot find any user with id " + id + " to delete."})

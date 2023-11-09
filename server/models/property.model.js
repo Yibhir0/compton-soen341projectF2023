@@ -4,53 +4,59 @@ const Schema = mongoose.Schema;
 
 /* Creating a new schema for the property model. */
 const propertySchema = new Schema({
-  brokerID: {
+  brokerID: {//The Id of the broker who listed the property.This ID is unique to each broker
     type: String,
     required: false,
   },
 
-  address: {
+  address: {// The address of the property 
     type: String,
     required: false,
   },
 
-  city:{
+  city:{// The city of the property
     type: String,
     required: false,
   },
   
-  postalCode:{
+  postalCode:{// The postal code of the property
     type: String,
     required: false,
   },
 
-  propertyType: {
+  propertyType: {// The type of perperty listed
     type: String,
     required: false,
   },
 
-  price:{
+  price:{// The price of the property
     type: Number,
     required: false,
   },
 
-  numberOfBedrooms:{
+  numberOfBedrooms:{// The number of bedrooms in the property 
     type: Number,
     required: false,
   },
 
-  numberOfBathrooms:{
+  numberOfBathrooms:{// The number of bathrooms in the property 
     type: Number,
     required: false,
   },
 
-  amenities:{
+  amenities:{// The services provided by purchasing the property 
     type: Array,
     required: false,
   },
 
-  images:{
+  images:{// The an imgage of the coralated property
     type: Array,
+    required: false,
+  },
+
+  sold: {//Determines whether or not a property is sold. Turns true when sold. false by default
+    type: Boolean,
+    default: false,
     required: false,
   },
 

@@ -2,23 +2,18 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
+
+/*This is the user registration page of the site.
+This would create an new account to the site. This account would 
+be create with homebuyer privaleges. Users who desire to register with broker
+privaleges must use the broker registration pagae
+*/
+
 function Register() {
 
     const [credentials, setCredentials] = useState({ email: '', password: '', accountType: 'homebuyer' });
     const navigate = useNavigate();
 
-    // const checkBox = (e) =>{
-    //     const isChecked = e.target.checked;
-    //     const updatedCredentials = { ...credentials };
-
-    //     if (isChecked) {
-    //         updatedCredentials.accountType = 'broker';
-    //     }
-    //     else{
-    //         updatedCredentials.accountType = 'homebuyer';
-    //     }
-    //     setCredentials(updatedCredentials);
-    // }
 
     const handleRegister = (event) => {
         event.preventDefault();

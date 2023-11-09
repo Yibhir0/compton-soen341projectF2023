@@ -28,7 +28,9 @@ const PORT = process.env.PORT || 5001;
 const PropertyRouter = require("./routes/property.route");
 const authRouter = require("./routes/auth.route");
 const userRouter = require("./routes/user.route");
+const passwordResetRouter = require('./routes/passwordReset.route');
 const visitRouter = require("./routes/visit.route");
+const offerRouter = require("./routes/offer.route");
 
 app.use(express.json());
 
@@ -38,6 +40,8 @@ app.use("/api", PropertyRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/visit", visitRouter)
+app.use("/api/offer", offerRouter)
+app.use("/api/reset", passwordResetRouter)
 
 // Router listening for root and responding with  Comptan real estate
 app.get("/", (req, res) => {

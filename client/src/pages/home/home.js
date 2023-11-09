@@ -6,9 +6,10 @@ import { Navigation, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-
-import SearchForm from '../../components/form/searchform';
-
+/*This is home page  of the site.
+This would be the default page that would
+appear upon logining in or accessing the site
+*/
 function Home() {
   console.log("home");
   return (

@@ -3,46 +3,51 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    email: {
+    email: {//The email associate with the user
         type: String,
         required: true,
         unique: true,
     },
-    password: {
+    password: {// The password required to login to the account
         type: String,
         required: true,
     },
-    accountType: {
+    accountType: {// The privelages given to the user (homebuyer, broker or admin).By default a user is set to homebuyer
         type: String,
         default: "homebuyer",
         required: true,
     },
-    accountVerified:{
+    accountVerified:{//Whether an is verified or not by an admin.A verified homebuyer account can become a broker account
         type: Boolean,
         default: false,
-        required:false,
+        required: false,
     },
-    firstName:{
+    firstName:{//First name of the user
         type:String,
         required: false,
-        default:""
+        default: ""
     },
-    lastName:{
+    lastName:{//Last name of the user
         type:String,
         required: false,
-        default:""
+        default: ""
     },
-    phoneNumber:{
+    phoneNumber:{//The user's phone number
         type:String,
         required: false,
-        default:""
+        default: ""
     },
-    licenseNumber:{
+    licenseNumber:{//The broker license number. This number is exclusive to brokers and is unique to each user
         type:String,
         required: false,
-        default:""
+        default: ""
     },
-    agency:{
+    agency:{// The broker agencyof the user
+        type:String,
+        required: false,
+        default: ""
+    },
+    resetCode:{
         type:String,
         required: false,
         default:""

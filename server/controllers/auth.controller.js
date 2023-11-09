@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 
 const secretKey = process.env.SECRET_KEY;
 
+
+
 const register = async(req, res) =>{
     try{
         
@@ -37,10 +39,10 @@ const login = async(req, res) =>{
         if(user.accountType == 'broker' && user.accountVerified == false){
             return res.status(401).json({error: "Verification is currently pending."})
         }
-        const token = jwt.sign({brokerId: user._id}, secretKey, {expiresIn: '1hr'});
+        const token = jwt.sign({brokerId: user._id, accountType: user.accountType}, secretKey, {expiresIn: '1hr'});
 
     
-        res.json({message:"Login successful", token: token,id:user._id})
+        res.json({message:"Login successful", token: token,id:user._id, accountType: user.accountType})
     }catch(error){
         console.log(error)
         res.status(500).json({error: "Error logging in"})

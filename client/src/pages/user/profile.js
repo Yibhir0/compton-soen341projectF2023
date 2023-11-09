@@ -6,6 +6,9 @@ import Users from "../user/users";
 import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
 
+/*This is the profil page of a specified user.
+This would dislpay the profilof a given user
+*/
 function Profile() {
 
   const id = localStorage.getItem('id');
@@ -28,11 +31,11 @@ function Profile() {
 
   return (
     <div>
-    <Box component="div" sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
-      <Avatar></Avatar>
-      <p>{user.email}</p>
-      <p>{user.accountType}</p>
-    </Box >
+      <Box component="div" sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
+        <Avatar sx={{ marginTop: '10px', width: 80, height: 80 }} ></Avatar>
+        <p>{user.email}</p>
+        <p>{user.accountType}</p>
+      </Box >
       {
         user.accountType === "broker" ? (
           <Box>
@@ -43,19 +46,23 @@ function Profile() {
               </span>
 
               <span>
+                <Link to="/offers" className='navItem'>Offers</Link>
+              </span>
+
+              <span>
                 <Link to="/create" className='navItem'>Add Property</Link>
               </span>
             </Box>
-            <Box>
+            <div>
               <MyProperties />
-            </Box>
+            </div>
           </Box>
 
-        ): user.accountType === "homebuyer" ? (
-          <Box  sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
+        ) : user.accountType === "homebuyer" ? (
+          <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
             Homebuyer profile page
           </Box>
-        ):(
+        ) : (
           <Box>
             <Box
               sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
@@ -68,11 +75,11 @@ function Profile() {
             </Box>
             <Users />
           </Box >
-      )}
+        )}
 
-    
+
     </div>
-    )
+  )
 
 }
 export default Profile;

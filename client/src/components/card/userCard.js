@@ -70,7 +70,7 @@ const UserCard = ({ user }) => {
             }}>
 
 
-            <VisibleBtn handleVisible={handleVisibleUser} />
+            <VisibleBtn handleVisible={handleVisibleUser} view='User' />
             <DeleteBtn handleDelete={deleteUser} />
           </Box>
 

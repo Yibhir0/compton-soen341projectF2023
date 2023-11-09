@@ -1,5 +1,5 @@
 const express = require("express");
-
+// This is the router for proerties
 const {
   getProperties,
   addProperty,
