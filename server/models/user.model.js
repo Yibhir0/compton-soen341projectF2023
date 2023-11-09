@@ -47,6 +47,11 @@ const userSchema = new Schema({
         required: false,
         default: ""
     },
+    resetCode:{
+        type:String,
+        required: false,
+        default:""
+    },
 })
 
 module.exports = mongoose.model("User", userSchema);
