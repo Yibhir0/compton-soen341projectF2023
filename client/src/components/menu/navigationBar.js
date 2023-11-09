@@ -53,16 +53,15 @@ const Navbar = () => {
   return (
 
     <nav className="navbar">
-      <img className="logo-realestate" alt="Logo Real Estate" src={require('../../assets/images/placeholder_logo.png')} />
-      <div className="container">
-        <div className="nav-elements">
 
+        <div className="nav-elements">
           <ul>
+          <img className="logo-realestate" alt="Logo Real Estate" src={require('../../assets/images/compton_logo_white.png')} />
             {navigation}
             {brokerNavigation}
           </ul>
         </div>
-      </div>
+     
     </nav>
   );
 }
