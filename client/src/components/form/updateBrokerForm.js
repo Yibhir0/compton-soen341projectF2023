@@ -24,14 +24,24 @@ const style = {
 };
 
 const UpdateBrokerForm = ({id}) => {
-
+/*
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
     
-};
+    const closeModal = () => {
 
+        //setIsModalOpen(false);
+
+        //try 
+
+        setCredentials({
+          open: !credentials.open
+        });
+    };
+*/
 useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
@@ -52,11 +62,6 @@ useEffect(() => {
     };
     fetchData();
   }, []); 
-
-const closeModal = () => {
-
-  setIsModalOpen(false);
-};
 
   const [credentials, setCredentials] = useState({
     email: '',
@@ -112,11 +117,17 @@ console.log(credentials)
     });
   };
 
- 
+  const handleClose = () => {
+
+    setCredentials({
+      open: !credentials.open
+    });
+
+  }
   return (
     <div>
      <button className="btn btn-secondary mx-auto" onClick={handleRequest}  >Update Broker information</button>
-     <Modal open={openModal} onClose={closeModal}>
+     <Modal open={credentials.open} onClose={handleClose}>
         <Box sx={style}>
           <div>
           <FormControl fullWidth sx={{ m: 1 }} variant="filled">
