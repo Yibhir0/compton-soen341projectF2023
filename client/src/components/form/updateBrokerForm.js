@@ -24,7 +24,7 @@ const style = {
 
 const UpdateBrokerForm = ({user}) => {
   const id = localStorage.getItem('id');
-  //const [isModalOpen, setIsModalOpen] = useState(false); //not used
+  const [isModalOpen, setIsModalOpen] = useState(false); 
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
@@ -35,6 +35,28 @@ const UpdateBrokerForm = ({user}) => {
     licenseNumber: '',
     agency: '',
   });
+  /*
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
+      );
+      const data = await result.json();
+      setCredentials({
+        ...credentials,
+        email: data.email,
+        password: data.password,
+        accountType: 'broker',
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phoneNumber: data.phoneNumber,
+        licenseNumber: data.licenseNumber,
+        agency: data.agency,
+    });
+    };
+    fetchData();
+  }, []);
+*/
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -42,20 +64,6 @@ const UpdateBrokerForm = ({user}) => {
     setIsModalOpen(false);
   };
   const handleState = async () => {
-   /* 
-    useEffect(() => {
-        const fetchData = async () => {
-          const result = await fetch(
-            `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
-          );
-          const data = await result.json();
-          setCredentials(data);
-          console.log(credentials)
-    
-        };
-        fetchData();
-      }, []);
-*/
     if (!credentials.password || !credentials.email) {
       alert('empty email or password');
       return;
