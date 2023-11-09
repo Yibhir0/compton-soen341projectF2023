@@ -9,8 +9,7 @@ function Brokers(){
 
     const [brokers, setBrokers] = useState([]);
     const [brokersToList, setBrokersList] = useState([])
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [name, setName] = useState("");
 
 
     useEffect(() => {
@@ -24,18 +23,23 @@ function Brokers(){
         fetchData();
     }, []);
 
-    const handleSearch = (fname, lname) => {
-        console.log(fname + " - " + lname);
 
+
+    const filterBrokers = (name) => {
+        return brokers.filter((b) => {
+            if(!name) return true;
+            if(b.firstName.toLowerCase().includes(name.toLowerCase()) || b.lastName.toLowerCase().includes(name.toLowerCase())) return true;
+            return false;
+        })
     }
+
+
 
 
     return (
         <div>
             <div className="d-flex align-items-center justify-content-center text-center">
-               <Input type={"text"} placeholder={"First Name..."} value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
-                <Input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name..." required/>
-                <Button onClick={ () => {handleSearch(firstName, lastName)}}> Search</Button>
+                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Last Name..." required/>
             </div>
 
             <br></br>
@@ -51,7 +55,7 @@ function Brokers(){
                             <th>License Number</th>
                         </tr>
                         {
-                            brokers.map((broker) =>
+                            filterBrokers(name).map((broker) =>
                                 <tr>
                                     <td>{broker.firstName}</td>
                                     <td>{broker.lastName}</td>
@@ -61,6 +65,7 @@ function Brokers(){
 
                                 </tr>
                             )
+
                         }
                     </table>
             ) : (
