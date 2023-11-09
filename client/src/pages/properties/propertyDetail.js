@@ -8,6 +8,7 @@ import DeleteBtn from '../../components/button/deleteBtn';
 import EditBtn from '../../components/button/editBtn';
 import PlayBtn from '../../components/button/playBtn';
 import OfferForm from '../../components/form/offerForm';
+import { isBroker } from '../../utils/auth';
 
 import './properties.css';
 
@@ -110,8 +111,8 @@ function PropertyView() {
                                             </div>
                                             <div className="property-buttons-container">
                                                 <VisitForm property={property} />
-                                                {property.propertyType !== 'Rent' && isBrokerSignedIn && (
-                                                    <OfferForm property={property} />
+                                                {property.propertyType !== 'Rent' && isBroker() && (
+                                                    <OfferForm property={property} decodedToken={decodedToken} />
                                                 )}
                                                 <PlayBtn handlePlay={playVideo} />
                                                 {isBrokerSignedIn && property.brokerID === decodedToken.brokerId && (

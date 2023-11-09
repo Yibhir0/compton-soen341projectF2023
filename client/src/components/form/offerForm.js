@@ -22,7 +22,7 @@ const style = {
 
 };
 
-const OfferForm = ({ property }) => {
+const OfferForm = ({ property, decodedToken }) => {
 
   const [offers, setOffer] = useState({
     email: "",
@@ -45,7 +45,7 @@ const OfferForm = ({ property }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/user/users/${property.brokerID}`
+        `${process.env.REACT_APP_BACKEND_URL}/user/users/${decodedToken.brokerId}`
       );
       const data = await result.json();
       setBroker({
@@ -199,19 +199,19 @@ const OfferForm = ({ property }) => {
             <h5>Broker information</h5>
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">Name</InputLabel>
-              <FilledInput multiline name="brokerName" defaultValue={broker.brokerName}
+              <FilledInput readOnly multiline name="brokerName" defaultValue={broker.brokerName}
               />
             </FormControl>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">License Number</InputLabel>
-              <FilledInput multiline name="brokerLiscence" defaultValue={broker.brokerLiscence}
+              <FilledInput readOnly multiline name="brokerLiscence" defaultValue={broker.brokerLiscence}
               />
             </FormControl>
 
             <FormControl fullWidth sx={{ m: 1 }} variant="filled">
               <InputLabel htmlFor="filled-adornment-amount">Agency</InputLabel>
-              <FilledInput multiline name="brokerAgency" defaultValue={broker.brokerAgency}
+              <FilledInput readOnly multiline name="brokerAgency" defaultValue={broker.brokerAgency}
               />
             </FormControl>
 
