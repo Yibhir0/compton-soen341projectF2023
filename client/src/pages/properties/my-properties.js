@@ -11,7 +11,6 @@ function MyProperties({ id }) {
     let brokerId = decodedToken.brokerId;
     if (id != null) {
         brokerId = id;
-
     }
 
     useEffect(() => {
@@ -25,24 +24,24 @@ function MyProperties({ id }) {
         fetchData();
     }, []);
 
-
     return (
         <div>
 
-            <header className="app-header">
-                <h1>My Properties</h1>
-                <br></br>
-                {myproperties && myproperties.length > 0 ? (
-                    <div>
-                        <PropertyList properties={myproperties} />
-                    </div>
+            <div className="d-flex align-items-center justify-content-center text-center " style={{ marginTop: "20px" }}>
+                <h1>Broker's Properties</h1>
+            </div>
+            <br></br>
+            {myproperties && myproperties.length > 0 ? (
+                <div>
+                    <PropertyList properties={myproperties} />
+                </div>
 
-                ) : (
-                    <div className="mx-auto" style={{ maxWidth: "1300px" }}>
-                        <p>No properties yet</p>
-                    </div>
-                )}
-            </header>
+            ) : (
+                <div className="mx-auto" style={{ maxWidth: "1300px" }}>
+                    <p>No properties yet</p>
+                </div>
+            )}
+
         </div>
     )
 }

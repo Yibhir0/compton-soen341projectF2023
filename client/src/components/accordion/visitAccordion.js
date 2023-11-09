@@ -52,7 +52,6 @@ function VisitAccordion(props) {
 
     const handleAccept = async () => {
 
-
         let updatedVisit = visit;
 
         updatedVisit.accepted = !visit.accepted

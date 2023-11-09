@@ -28,8 +28,9 @@ const UserDetail = () => {
         <h6 className="b-text-font">Phone Number: {state.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}</h6>
         <h6 className="b-text-font">License Number: {state.licenseNumber}</h6>
         <h6 className="b-text-font">Agency: {state.agency}</h6>
-        <MyProperties id={state._id} />
+
       </Box>
+      <MyProperties id={state._id} />
 
     </div>
   )
