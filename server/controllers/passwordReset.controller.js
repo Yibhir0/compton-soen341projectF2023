@@ -48,7 +48,6 @@ const sendCode = async(req, res) =>{
 
     user.resetCode = code;
     await user.save();
-    console.log(user);
 
     // Send the email with the code
     await sendResetCodeEmail(email, code);
@@ -56,7 +55,7 @@ const sendCode = async(req, res) =>{
     
     return res.status(200).json({ message: "Email found, verification code sent soon" });
   } catch (error) {
-    console.error('Error:', error);
+    //console.error('Error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 }
@@ -82,7 +81,7 @@ const sendResetCodeEmail = async (email, code) => {
   // Send mail with defined transport object
   await transporter.sendMail(mailOptions);
 
-  console.log('Email sent successfully');
+  //console.log('Email sent successfully');
 };
 module.exports = {
     sendCode,
