@@ -51,11 +51,12 @@ const sendCode = async(req, res) =>{
     console.log(user);
 
     // Send the email with the code
-    //await sendResetCodeEmail(email, code);
+    await sendResetCodeEmail(email, code);
 
     
     return res.status(200).json({ message: "Email found, verification code sent soon" });
   } catch (error) {
+    console.error('Error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 }
@@ -66,7 +67,7 @@ const sendResetCodeEmail = async (email, code) => {
     service: 'gmail',
     auth: {
       user: 'comptonfall2023@gmail.com',
-      pass: 'samcoz-jofkox-2xyVhi',
+      pass: 'kwes vzvj ozxt klkg',
     },
   });
 
