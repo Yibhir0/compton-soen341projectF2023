@@ -3,6 +3,15 @@ import { useParams, useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import "../../pages/create/createProperty.css";
 
+
+
+/*This is the property editing page of the site.
+This would be a page exclusive to the broker listing the property.
+This would allow the user to make changes to the information
+of the property
+*/
+
+
 function PropertyEdit() {
     const { id } = useParams();
     const navigate = useNavigate();

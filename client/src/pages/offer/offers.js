@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import OfferList from '../../components/list/OfferList';
 import jwtDecode from 'jwt-decode';
 
+/*This is the offers page of the site
+This would contain information behind the creation
+of the site such as the those who created it
+*/
+
 function Offers() {
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);

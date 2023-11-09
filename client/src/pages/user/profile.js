@@ -6,6 +6,9 @@ import Users from "../user/users";
 import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
 
+/*This is the profil page of a specified user.
+This would dislpay the profilof a given user
+*/
 function Profile() {
 
   const id = localStorage.getItem('id');

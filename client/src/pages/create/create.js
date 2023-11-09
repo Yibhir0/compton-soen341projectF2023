@@ -3,6 +3,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
 
+
+/*This is the property creation pagee of the site.
+This would only be accesable by brokers to add a listing of a 
+property to their listing.
+*/
 function CreateProperty() {
 
 
