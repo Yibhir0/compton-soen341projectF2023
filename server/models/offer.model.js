@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Creating a new schema for the property model for the make an offer.
+
 const offerSchema = new Schema({
 
   brokerID: {//This would be the brokers unique identifier.Only brokers would have this ID

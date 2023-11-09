@@ -3,6 +3,11 @@ import jwtDecode from 'jwt-decode';
 import React, { useState, useEffect } from 'react';
 import PropertyList from "../../components/list/PropertyList";
 
+
+/*This is the my properties page of the site.
+This would be a page exclusive to broker accounts
+to see all of their property listing
+*/
 function MyProperties({ id }) {
 
     const [myproperties, setProperties] = useState([])

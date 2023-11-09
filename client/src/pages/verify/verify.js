@@ -2,6 +2,11 @@ import React, { useState,useEffect } from 'react';
 import UserList from '../../components/list/UserList';
 import { useNavigate  } from "react-router-dom";
 
+
+/*This is the user verification page of the site.
+This would page is exclusive to admins. This page would allow 
+an admin to given broker prvilages to a user that sent a request
+*/
 function Verify(){
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);

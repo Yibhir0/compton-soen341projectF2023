@@ -2,6 +2,12 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
+/*This is the login page of the site.
+This would allow thoses with account to the site
+to access their accounts given their Email address 
+and password
+*/
+
 function Login(){
 
     const [credentials, setCredentials] = useState({ email: '', password: '' });
