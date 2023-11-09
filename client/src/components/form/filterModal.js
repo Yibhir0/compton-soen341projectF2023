@@ -1,12 +1,12 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import FilterSearch from './filterSearch'
-function FilterModal({change,handleModal}) {
-const [open] = useState(true);
-const handleClose = () => handleModal();
+function FilterModal({ change, handleModal }) {
+  const [open] = useState(true);
+  const handleClose = () => handleModal();
   return (
     <div>
-      <Modal 
+      <Modal
         open={open}
         onClose={handleClose}>
         <FilterSearch change={change} handleModal={handleModal} />

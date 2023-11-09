@@ -7,8 +7,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 
-import SearchForm from '../../components/form/searchform';
-
 function Home() {
   console.log("home");
   return (

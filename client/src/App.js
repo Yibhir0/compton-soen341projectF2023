@@ -12,12 +12,16 @@ import UserDetail from "./pages/user/userDetails"
 import MyProperties from "./pages/properties/my-properties"
 import Profile from "./pages/user/profile";
 import NavBar from "./components/menu/navigationBar";
-import PropertyDetails from './pages/propertyDetails/propertyDetails'
+// import PropertyDetails from './pages/propertyDetails/propertyDetails'
+import PropertyDetails from './pages/properties/propertyDetail'
 import Visits from './pages/visit/visits'
+import Offers from './pages/offer/offers'
+
 import Verify from './pages/verify/verify'
 import BrokerRegister from './pages/register/broker_register';
 
 import PropertyEdit from "./pages/propertyEdit/propertyEdit"
+import PropertyPlayer from './components/player/propertyPlayer';
 
 import PasswordReset from "./pages/login/passwordReset"
 
@@ -50,8 +54,11 @@ function App() {
         {isBrokerSignedIn && <Route path="/edit/:id" element={<PropertyEdit />}></Route>}
 
         {isBrokerSignedIn && <Route path="/visits" element={<Visits />}></Route>}
-        
+
+        {isBrokerSignedIn && <Route path="/offers" element={<Offers />}></Route>}
+
         <Route path="/properties/:id" element={<PropertyDetails />}></Route>
+        <Route path="/properties/:id/player" element={<PropertyPlayer />}></Route>
 
       </Routes>
     </div>

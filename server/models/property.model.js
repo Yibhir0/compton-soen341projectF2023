@@ -54,6 +54,12 @@ const propertySchema = new Schema({
     required: false,
   },
 
+  sold: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
+
 });
 
 module.exports = mongoose.model("Property", propertySchema);

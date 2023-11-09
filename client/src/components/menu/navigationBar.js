@@ -12,12 +12,10 @@ const Navbar = () => {
     navigate('/');
   }
 
-
-
   // Available navbar links for both logged-in and non-logged-in users.
   const navigation = (
     <>
-      <li>
+      <li className='navItem'>
         <Link to="/" className='navItem'>Home</Link>
       </li>
       <li className='navItem'>
@@ -32,12 +30,6 @@ const Navbar = () => {
   // Available navbar links only if isBrokerSignedIn is true
   const brokerNavigation = isBrokerSignedIn ? (
     <>
-      {/* <li>
-        <Link to="/create" className='navItem'>Create Property Listing</Link>
-      </li>
-      <li>
-        <Link to="/my-properties" className='navItem'>My Properties</Link>
-      </li> */}
       <li>
 
         <Link to="/" onClick={handleSignout} className='navItem'>Sign out</Link>
@@ -45,8 +37,6 @@ const Navbar = () => {
       <li>
         <Link to="/users/user/:id" className='navItem'>Profile</Link>
       </li>
-
-
     </>
   ) : (
     //Available navbar links only if isBrokerSignedIn is false
@@ -63,18 +53,15 @@ const Navbar = () => {
   return (
 
     <nav className="navbar">
-      <div className="container">
+
         <div className="nav-elements">
           <ul>
-            <li>
-              <img className="logo-realestate" alt="Logo Real Estate" src={require('../../assets/images/placeholder_logo.png')} />
-            </li>
+          <img className="logo-realestate" alt="Logo Real Estate" src={require('../../assets/images/compton_logo_white.png')} />
             {navigation}
             {brokerNavigation}
-
           </ul>
         </div>
-      </div>
+     
     </nav>
   );
 }
