@@ -19,7 +19,6 @@ function PasswordReset() {
       await axios.post(process.env.REACT_APP_BACKEND_URL + '/reset/code', credentials);
       
       setCodeSent(true); // Update the codeSent state
-      setCredentials({ email: '', code: '', password: '' });
 
       alert("Code sent successfully");
     } catch (error) {
@@ -64,7 +63,7 @@ function PasswordReset() {
     <>
       <label htmlFor="email" className="form-label align-items-center">Email address</label>
       <br></br>
-      <input  defaultValue={credentials.email} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value = {credentials.email} type="email" className="form-control" id="email" aria-describedby="emailHelp"></input>
+      <input readOnly defaultValue={credentials.email} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value = {credentials.email} type="email" className="form-control" id="email" aria-describedby="emailHelp"></input>
       <br></br>
       <label htmlFor="newPassword" className="form-label align-items-center">New password</label>
       <br></br>
