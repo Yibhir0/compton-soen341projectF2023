@@ -57,6 +57,10 @@ function Login(){
             <div className='form-row text-center'>
                 <button type='submit' className="btn btn-info">Login</button>
             </div>
+            <br></br>
+            <div className='form-row text-center'>
+            <p>Forgot password? <a href="/passwordReset">Reset Password</a></p>
+            </div>
         </div>
         </form>
 
