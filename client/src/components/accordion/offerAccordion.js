@@ -8,67 +8,60 @@ import Box from '@mui/material/Box';
 import DeclineBtn from '../button/declineBtn';
 import AcceptBtn from '../button/acceptBtn';
 import DeleteBtn from '../button/deleteBtn';
-import VisibleBtn from '../button/visibleBtn';
-import { useNavigate } from "react-router-dom";
 
 
-function VisitAccordion(props) {
+function OfferAccordion(props) {
 
-    const [visit, setVisit] = useState(props.visit);
-    const navigate = useNavigate();
+    const [offer, setOffer] = useState(props.offer);
     let date;
 
-    if (visit !== null) {
-        date = new Date(visit.requestedAt);
+    if (offer !== null) {
+        date = new Date(offer.requestedAt);
     }
 
+
     const handleDelete = async () => {
-        const confirmed = window.confirm('Are you sure you want to delete this visit?');
+        const confirmed = window.confirm('Are you sure you want to delete this offer?');
         if (confirmed) {
-            fetch(`${process.env.REACT_APP_BACKEND_URL}/visit/visits/${visit._id}`, { method: 'DELETE' })
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offers/${offer._id}`, { method: 'DELETE' })
                 .then((response) => {
                     if (response.ok) {
-                        alert('Visit deleted successfully');
-                        setVisit(null)
+                        alert('Offer deleted successfully');
+                        setOffer(null)
                     }
                 })
                 .catch(error => {
-                    console.error('Failed to delete visit', error);
+                    console.error('Failed to delete offer', error);
                 });
         }
     }
 
-    const ChangeVisitState = async (data) => {
-        setVisit((prevState) => ({
+    const ChangeOfferState = async (data) => {
+        setOffer((prevState) => ({
             ...prevState,
             data,
         }));
     }
 
-    const handleVisible = () => {
-        navigate(`/properties/${visit.propertyId}`);
-
-    }
-
     const handleAccept = async () => {
 
 
-        let updatedVisit = visit;
+        let updatedOffer = offer;
 
-        updatedVisit.accepted = !visit.accepted
+        updatedOffer.accepted = !offer.accepted
 
 
-        await fetch(`${process.env.REACT_APP_BACKEND_URL}/visit/visits/${visit._id}`,
+        await fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offers/${offer._id}`,
             {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(updatedVisit),
+                body: JSON.stringify(updatedOffer),
             })
             .then(response => response.json())
             .then((data) => {
-                ChangeVisitState(data);
+                ChangeOfferState(data);
             })
             .catch(console.error);
     }
@@ -81,7 +74,7 @@ function VisitAccordion(props) {
 
     return (
         <div>
-            {(visit !== null) &&
+            {(offer !== null) &&
                 <Accordion
                     sx={{
                         bgcolor: 'background.paper',
@@ -112,7 +105,7 @@ function VisitAccordion(props) {
                                     p: 2,
                                     mr: 20,
                                 }}>
-                                <h6 style={{ color: 'gray' }}>From: {visit.email}</h6>
+                                <h6 style={{ color: 'gray' }}>{offer.buyerName}</h6>
                             </Box>
 
                             <Box
@@ -132,7 +125,7 @@ function VisitAccordion(props) {
                                     ml: 20,
                                 }}
                             >
-                                <p style={{ color: 'gray' }}>Status: {visit.accepted ? 'Accepted' : 'Pending'}</p>
+                                <p style={{ color: 'gray' }}>Status: {offer.accepted ? 'Accepted' : 'Pending'}</p>
                             </Box>
                         </Box>
                         {/* </Typography> */}
@@ -145,16 +138,27 @@ function VisitAccordion(props) {
                                     justifyContent: 'space-between'
                                 }}>
                                 <Box>
-                                    <h4>Message</h4>
-                                    <p style={style}>{visit.message}</p>
+                                    <h5>Buyer </h5>
+                                    <h6>Name: {offer.buyerName}</h6>
+                                    <h6>Email: {offer.email}</h6>
+                                    <h6>Address: {offer.buyerAddress}</h6>
                                 </Box>
                                 <Box>
-                                    <h4>City</h4>
-                                    <p>{visit.city}</p>
+                                    <h5>Broker </h5>
+                                    <h6>Name: {offer.brokerName}</h6>
+                                    <h6>Liscence: {offer.brokerLiscence}</h6>
+                                    <h6>Agency: {offer.brokerAgency}</h6>
                                 </Box>
                                 <Box>
-                                    <h4>Address</h4>
-                                    <p>{visit.address}</p>
+                                    <h5>Offer </h5>
+                                    <h6>Price: {offer.offerPrice}</h6>
+                                    <h6>Deed Sale Date: {offer.deedSaleDate}</h6>
+                                    <h6>occupation Date: {offer.moveInDate}</h6>
+                                </Box>
+                                <Box>
+                                    <h5>Property </h5>
+                                    <h6>Address: {offer.address}</h6>
+                                    <h6>City: {offer.city}</h6>
                                 </Box>
                             </Box>
 
@@ -162,13 +166,12 @@ function VisitAccordion(props) {
                                 display: 'flex',
                                 justifyContent: 'center'
                             }}>
-                                {!visit.accepted ?
+                                {!offer.accepted ?
                                     <AcceptBtn handleAccept={handleAccept} />
                                     :
                                     <DeclineBtn handleDecline={handleAccept} />
                                 }
                                 <DeleteBtn handleDelete={handleDelete} />
-                                <VisibleBtn handleVisible={handleVisible} view="Property" />
                             </Box>
                         </Typography>
                     </AccordionDetails>
@@ -178,4 +181,4 @@ function VisitAccordion(props) {
     );
 }
 
-export default VisitAccordion;
+export default OfferAccordion;
