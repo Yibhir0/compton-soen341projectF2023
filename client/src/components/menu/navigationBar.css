@@ -1,56 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 .navbar {
-  font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    display: flex;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
     width: 100%;
+    height: 150px;
     box-shadow: 0 0 25px 0 black;
+    background-color: #011a3eea;
+    margin-bottom: 15px;
+    padding: 0px;
   }
 
   .logo-realestate {
-    width: 62.5px;
-    height: 46px;
+    width: 150px;
+    height: 150px;
     vertical-align: middle;
+    margin-right: 400px;
   }
 
-  
+  .container {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+
  .nav-elements {
-    margin-top: 10px;
     justify-content: space-between;
+    align-content: center;
     
     
   } 
 
+
   .nav-elements ul li {
-    padding: 8px;
-    border-radius: 6px;
-    background-color: #011A3E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-right: 90px;
+    
   }
   
+  .nav-elements ul:first-child {
+    
+    margin-right: 50px;
+   
+  }
+
   .nav-elements ul {
     display: flex;
     align-content: center;
     align-items: center;
     list-style-type: none;
+    justify-content: space-between;
     position: static;    
-
-  }
-  
-  .nav-elements ul li:not(:last-child) {
-    margin-right: 90px;
+    padding: 0px;
+   
   }
 
   
  .nav-elements ul a {
     font-size: 16px;
     font-weight: bolder;
-    color: goldenrod;
+    color: #daa520;
     text-decoration: none;
     white-space: nowrap;
+    --s: 0.1em;   /* the thickness of the line */
+    --c: #fcfcfc; /* the color */ 
+    padding-bottom: var(--s);
+    background: 
+      linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
+      linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: 0.5s;
  
   } 
   
   .nav-elements ul a:hover  {
-    color: green;
+    color: #fcfcfc;
     font-weight: bolder;
+    --_p: 100%
   
   }
   

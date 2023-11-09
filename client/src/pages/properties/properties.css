@@ -14,7 +14,7 @@
 
 .property-poster{
     height: 300px;
-    border: 1px solid gold;
+    border: 1px solid goldenrod;
     border-radius: 10px;
     overflow: hidden;
 }
