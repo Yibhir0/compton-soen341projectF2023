@@ -30,6 +30,7 @@ const authRouter = require("./routes/auth.route");
 const userRouter = require("./routes/user.route");
 const visitRouter = require("./routes/visit.route");
 const offerRouter = require("./routes/offer.route");
+const updateRouter = require("./routes/update.route");
 
 app.use(express.json());
 
@@ -40,6 +41,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/visit", visitRouter)
 app.use("/api/offer", offerRouter)
+app.use("/api/update", updateRouter)
 
 // Router listening for root and responding with  Comptan real estate
 app.get("/", (req, res) => {
