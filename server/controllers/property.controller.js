@@ -7,7 +7,7 @@ const Property = require("../models/property.model");
  * in the response body.
  */
 
-const getProperties = async (req, res) => { 
+const getProperties = async (req, res) => {
   try {
     const properties = await Property.find();
     res.status(200).json(properties);
@@ -33,78 +33,78 @@ const addProperty = async (req, res) => {
 /**
  * find properties with filter criteria
  */
-const getFilteredProperties = async(req,res) =>{
+const getFilteredProperties = async (req, res) => {
   // Dynamically build the query.
   let filters = {};
-  
+
   const data = req.query;
   let and_conds = [];
-  const price={};
-  
+  const price = {};
+
   for (const field in data) {
-   
-    if(field === "amenities"){
-      and_conds.push({ [field]:{$all : data[field]} });
+
+    if (field === "amenities") {
+      and_conds.push({ [field]: { $all: data[field] } });
     }
-    else if(field === "numberOfBedrooms" || field ==="numberOfBathrooms"){
+    else if (field === "numberOfBedrooms" || field === "numberOfBathrooms") {
       let p = parseInt(data[field]);
-      if(p>3){
-        and_conds.push({[field]: { $gte: p }});
+      if (p > 3) {
+        and_conds.push({ [field]: { $gte: p } });
       }
-      else{
-        and_conds.push({[field]: p });
+      else {
+        and_conds.push({ [field]: p });
       }
     }
-    else if( field=== "minPrice"){
+    else if (field === "minPrice") {
       let p = parseInt(data[field]);
       price["$gte"] = p;
 
     }
-    else if( field=== "maxPrice"){
+    else if (field === "maxPrice") {
       let p = parseInt(data[field]);
       price["$lte"] = p;
     }
-    else{
+    else {
       let val = new RegExp(data[field]);
-      and_conds.push({[field]: { $regex: val, $options: "i" }});
+      and_conds.push({ [field]: { $regex: val, $options: "i" } });
     }
-    
+
   }
-  if(Object.keys(price).length>0) and_conds.push({price:price});
+  if (Object.keys(price).length > 0) and_conds.push({ price: price });
   filters["$and"] = and_conds;
 
 
   let query;
   // check if user put  filter values
-  if(filters['$and'].length>0){
+  if (filters['$and'].length > 0) {
     // Build the query with where clause
-    query = Property.where(filters); 
+    query = Property.where(filters);
   }
-  else{
+  else {
     // No query, fetch all properties
     query = Property;
   }
 
   // Fetch from mongo
-    try{
+  try {
     const properties = await query.find();
-   
+
     res.status(200).json(properties);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
+}
 //  Fetches a single property listing by its id (per request param).
- 
-const getProperty = async(req, res) => {
-  try{
-    const {id} = req.params;
+
+const getProperty = async (req, res) => {
+  try {
+    const { id } = req.params;
     const property = await Property.findById(id);
-    if(!property){
-      return res.status(404).json({messahe: "Property not found with id " + id})
+    if (!property) {
+      return res.status(404).json({ messahe: "Property not found with id " + id })
     }
     res.status(200).json(property);
-  } catch(err){
+  } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
@@ -113,12 +113,12 @@ const getProperty = async(req, res) => {
  * Updates a property listing if it exists and returns
  * the updated property listing.
  */
-const updateProperty = async (req, res) =>{
+const updateProperty = async (req, res) => {
   try {
-    const{id} = req.params;
+    const { id } = req.params;
     const property = await Property.findByIdAndUpdate(id, req.body);
-    if(!property){
-      return res.status(404).json({message: "Cannot find any property with id " + id + " to update."});
+    if (!property) {
+      return res.status(404).json({ message: "Cannot find any property with id " + id + " to update." });
     }
     const updatedProperty = await Property.findById(id);
     res.status(200).json(updatedProperty);
@@ -132,16 +132,16 @@ const updateProperty = async (req, res) =>{
  * if it exists and returns the updated
  * property listing that was removed.
  */
-const deleteProperty = async (req, res) =>{
-  try{
-    const {id} = req.params;
+const deleteProperty = async (req, res) => {
+  try {
+    const { id } = req.params;
     const property = await Property.findByIdAndDelete(id);
-    if(!property){
-      return res.status(404).json({message: "Cannot find any property with id " + id + " to delete."})
+    if (!property) {
+      return res.status(404).json({ message: "Cannot find any property with id " + id + " to delete." })
     }
     res.status(200).json(property);
   }
-  catch(err){
+  catch (err) {
     res.status(500).json({ message: err.message });
   }
 }
@@ -150,9 +150,9 @@ const deleteProperty = async (req, res) =>{
  * Fetches by brokerID and returns all properties belonging to
  * a specific broker.
  */
-const getBrokerProperties = async(req,res) =>{
+const getBrokerProperties = async (req, res) => {
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     const properties = await Property.find({ brokerID: id });
     res.status(200).json(properties);
   } catch (err) {
@@ -160,12 +160,105 @@ const getBrokerProperties = async(req,res) =>{
   }
 }
 
+
+/**
+ * Method gets documents with a geospatial field within a polygon
+ * @param {Array of coordinates} coordinates
+ * @returns array of documents
+ */
+const getPropertiesWithinGeoPolygon = async (req, res) => {
+
+  try {
+
+    // Get the query string object
+    const polyObj = req.query;
+
+    // Validate if the query string contains valid keys and values
+    const validPolyPoints = validatePolygonPoints(polyObj);
+
+    // Complete the other points of the polygon
+    const coordinates = completePolygonPoints(validPolyPoints);
+
+    // Get the document from database
+    let documents = await Property.find({
+      geometry: {
+        $geoWithin:
+        {
+          $geometry: {
+
+            type: "Polygon",
+
+            coordinates: [[
+              [coordinates["neLon"], coordinates["neLat"]],
+              [coordinates["nwLon"], coordinates["nwLat"]],
+              [coordinates["swLon"], coordinates["swLat"]],
+              [coordinates["seLon"], coordinates["seLat"]],
+              [coordinates["neLon"], coordinates["neLat"]],
+            ]]
+          }
+        }
+      }
+    });
+    // Send Json response
+    res.send(documents.toArray());
+
+  }
+
+  catch (err) {
+    res.status(404).send({ "Error": err.message });
+  }
+
+};
+
+
+/**
+ * Adds more points to make a
+ * polygon.
+ * @param {*} polyObj 
+ * @returns 
+ */
+function completePolygonPoints(polyObj) {
+  polyObj.nwLat = polyObj.neLat;
+  polyObj.nwLon = polyObj.swLon;
+  polyObj.seLat = polyObj.swLat;
+  polyObj.seLon = polyObj.neLon;
+
+  return polyObj;
+
+}
+/**
+ * This method checks if the polygon object
+ * contains all the coordinates. It uses a
+ * helper method validateNumeric to convert from
+ * string to float.
+ * @param {Object} polyObj 
+ * @returns Object with numeric coordinates
+ */
+function validatePolygonPoints(polyObj) {
+  let coordinates = {}
+  if (polyObj.neLat !== undefined &&
+    polyObj.neLon !== undefined &&
+    polyObj.swLat !== undefined &&
+    polyObj.swLon !== undefined) {
+
+    Object.keys(polyObj).forEach(k => {
+      let result = validateNumeric(polyObj[k.toString()]);
+
+      if (result) {
+        coordinates[k.toString()] = result
+      }
+
+    });
+  }
+}
+
 module.exports = {
- getProperties,
- addProperty,
- getFilteredProperties,
- getProperty,
-updateProperty,
-deleteProperty,
-getBrokerProperties,
+  getProperties,
+  addProperty,
+  getFilteredProperties,
+  getProperty,
+  updateProperty,
+  deleteProperty,
+  getBrokerProperties,
+  getPropertiesWithinGeoPolygon
 };
