@@ -14,7 +14,7 @@
     width: 150px;
     height: 150px;
     vertical-align: middle;
-    margin-right: 400px;
+    margin-right: 20%;
   }
 
   .container {
@@ -41,6 +41,12 @@
     
   }
   
+  .nav-elements ul li:last-child {
+ 
+    margin-right: 0px;
+    
+  }
+
   .nav-elements ul:first-child {
     
     margin-right: 50px;
