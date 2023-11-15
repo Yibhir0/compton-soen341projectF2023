@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams} from 'react-router-dom';
-import { useNavigate  } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import jwtDecode from 'jwt-decode';
 import VisitForm from '../../components/form/visitForm';
 
 
-function BrokerDetails(){
+function BrokerDetails() {
     const [broker, setBroker] = useState();
     const { id } = useParams();
     console.log(id)
@@ -34,16 +34,15 @@ function BrokerDetails(){
     console.log(broker)
 
 
-    return(
-            <div style={{marginLeft:"30px", marginTop:"30px"}}>
-                <h1> Broker details</h1>
-                <p>Name : {broker?.firstName + " " +broker?.lastName}</p>
-                <p>Email : {broker?.email}</p>
-                <p>Phone Number : {broker?.phoneNumber}</p>
-                <p>License : {broker?.licenseNumber}</p>
+    return (
+        <div style={{ marginLeft: "30px", marginTop: "30px" }}>
+            <h1> Broker details</h1>
+            <p>Name : {broker?.firstName + " " + broker?.lastName}</p>
+            <p>Email : {broker?.email}</p>
+            <p>Phone Number : {broker?.phoneNumber}</p>
+            <p>License : {broker?.licenseNumber}</p>
 
-
-            </div>
+        </div>
 
     )
 }

@@ -12,7 +12,7 @@ import UserDetail from "./pages/user/userDetails"
 import MyProperties from "./pages/properties/my-properties"
 import Profile from "./pages/user/profile";
 import NavBar from "./components/menu/navigationBar";
-import ParkingMapApp from './components/map/ParkingMapApp';
+import PropertyMapApp from './components/map/PropertyMapApp';
 import PropertyDetails from './pages/properties/propertyDetail'
 import Visits from './pages/visit/visits'
 import Offers from './pages/offer/offers'
@@ -34,6 +34,7 @@ function App() {
 
     <div className="App">
       <NavBar />
+
       <Routes>
         <Route path="/passwordReset" element={<PasswordReset />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -65,7 +66,7 @@ function App() {
 
 
         <Route path="/properties/:id/player" element={<PropertyPlayer />}></Route>
-        <Route path="/properties/polygon" element={<ParkingMapApp />}></Route>
+        <Route path="/properties/polygon" element={<PropertyMapApp />}></Route>
 
 
 

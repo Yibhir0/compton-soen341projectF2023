@@ -24,9 +24,13 @@ const Navbar = () => {
       <li>
         <Link to="/properties" className='navItem'>Properties</Link>
       </li>
-        <li>
-            <Link to="/brokers" className='navItem'>Search Brokers</Link>
-        </li>
+      <li>
+        <Link to="/properties/polygon" className='navItem'>Map</Link>
+      </li>
+      <li>
+        <Link to="/brokers" className='navItem'>Search Brokers</Link>
+      </li>
+
     </>
   );
 
@@ -57,14 +61,14 @@ const Navbar = () => {
 
     <nav className="navbar">
 
-        <div className="nav-elements">
-          <ul>
+      <div className="nav-elements">
+        <ul>
           <img className="logo-realestate" alt="Logo Real Estate" src={require('../../assets/images/compton_logo_white.png')} />
-            {navigation}
-            {brokerNavigation}
-          </ul>
-        </div>
-     
+          {navigation}
+          {brokerNavigation}
+        </ul>
+      </div>
+
     </nav>
   );
 }

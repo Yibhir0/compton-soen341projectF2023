@@ -167,11 +167,14 @@ const getBrokerProperties = async (req, res) => {
  * @returns array of documents
  */
 const getPropertiesWithinGeoPolygon = async (req, res) => {
+  console.log(req.query);
 
   try {
 
     // Get the query string object
     const polyObj = req.query;
+
+    console.log(polyObj);
 
     // Validate if the query string contains valid keys and values
     const validPolyPoints = validatePolygonPoints(polyObj);
