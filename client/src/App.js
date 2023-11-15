@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
+import { isBroker, isHomeBuyer, isAdmin, isSignedIn } from './utils/auth';
 
 
 import Home from "./pages/home/home";
@@ -19,17 +20,19 @@ import Offers from './pages/offer/offers'
 
 import Verify from './pages/verify/verify'
 import BrokerRegister from './pages/register/broker_register';
+import Brokers from "./pages/brokers/Brokers";
 
 import PropertyEdit from "./pages/propertyEdit/propertyEdit"
 import PropertyPlayer from './components/player/propertyPlayer';
 
 import PasswordReset from "./pages/login/passwordReset"
+import BrokerDetails from "./pages/brokers/BrokerDetails";
 
 function App() {
 
   const isBrokerSignedIn = !!localStorage.getItem('token');
   return (
-    
+
     <div className="App">
       <NavBar />
       <Routes>
@@ -40,6 +43,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/broker_register" element={<BrokerRegister />}></Route>
+        <Route path="/brokers" element={<Brokers />}></Route>
 
         {isBrokerSignedIn && <Route path="/verify" element={<Verify />}></Route>}
 
@@ -58,6 +62,9 @@ function App() {
         {isBrokerSignedIn && <Route path="/offers" element={<Offers />}></Route>}
 
         <Route path="/properties/:id" element={<PropertyDetails />}></Route>
+        <Route path="/brokers/:id" element={<BrokerDetails />}></Route>
+
+
         <Route path="/properties/:id/player" element={<PropertyPlayer />}></Route>
 
       </Routes>

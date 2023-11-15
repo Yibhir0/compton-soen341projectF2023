@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 const { connectDB, disconnectDB } = require("./dbConn");
 
+
 const app = express();
 
 
@@ -21,8 +22,7 @@ app.use(
     extended: true,
   }),
 );
-
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 //const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/27017";
 
 const PropertyRouter = require("./routes/property.route");

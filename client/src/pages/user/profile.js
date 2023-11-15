@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
 import UpdateBrokerForm from '../../components/form/updateBrokerForm';
 
+/*This is the profil page of a specified user.
+This would dislpay the profilof a given user
+*/
 function Profile() {
 
   const id = localStorage.getItem('id');
@@ -53,9 +56,9 @@ function Profile() {
               </div>
                     
             </Box>
-            <Box>
+            <div>
               <MyProperties />
-            </Box>
+            </div>
           </Box>
 
         ) : user.accountType === "homebuyer" ? (

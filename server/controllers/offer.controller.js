@@ -1,5 +1,5 @@
 const Offer = require("../models/offer.model");
-//  GetOffer
+//  GetOffer//
 const getOffers = async (req, res) => {
   try {
     const { brokerId } = req.query;

@@ -2,16 +2,28 @@ import "./createProperty.css"
 import React, { useState, useEffect, useRef } from 'react';
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
+import {initLocationAutocomplete} from '../../components/autocomplete/autocomplete'
 
+/*This is the property creation pagee of the site.
+This would only be accesable by brokers to add a listing of a 
+property to their listing.
+*/
 function CreateProperty() {
 
+  const [coordinates, setCoordinates] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
 
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
   const [uploadedImageIDs, setUploadedImageIDs] = useState([]);
 
   const navigate = useNavigate();
+
   useEffect(() => {
+    initLocationAutocomplete(setCoordinates);
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget({
       cloudName: 'dbhsjm5a2',
@@ -53,6 +65,10 @@ function CreateProperty() {
       numberOfBathrooms: event.target.numberOfBathrooms.value,
       amenities: selectedAmenities,
       images: uploadedImageIDs,
+      geometry: {
+        type: "Point",
+        coordinates: [coordinates.longitude,coordinates.latitude],
+      },
     };
 
 
@@ -78,7 +94,6 @@ function CreateProperty() {
   };
   return (
     <div className="app">
-
       <header className="app-header">
 
         <h1>Create Property Listing</h1>
@@ -88,15 +103,15 @@ function CreateProperty() {
           <div >
 
             <div className="d-flex">
-              <input type="address" placeholder="Address" id="address" name="address" autoComplete="off" />
+              <input required type="address" placeholder="Address" id="address-input" name="address" autoComplete="off" />
             </div>
 
             <div className="d-flex">
-              <input type="text" id="city" name="city" placeholder="City" autoComplete="off" />
+              <input type="text" id="locality-input" name="city" placeholder="City" autoComplete="off" />
             </div>
 
             <div className="d-flex">
-              <input type="text" id="postalCode" name="postalCode" placeholder="Postal Code" autoComplete="off" />
+              <input type="text" id="postal_code-input" name="postalCode" placeholder="Postal Code" autoComplete="off" />
             </div>
 
             <div className="d-flex">
@@ -147,14 +162,15 @@ function CreateProperty() {
               )}
             </div>
             <div className="d-flex">
-              <button type="submit">Create</button>
+              <Box>
+                <button type="submit">Create</button>
+              </Box>
+              
             </div>
 
           </div>
 
         </form>
-
-
 
       </header>
 

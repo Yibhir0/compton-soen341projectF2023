@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import SearchForm from "../../components/form/searchform"
 import PropertyList from "../../components/list/PropertyList";
 
+/*This is the property page  of the site.
+This would display all of the properties that are listed
+by brokers on the site
+*/
 function Properties() {
 
   const [properties, setProperties] = useState([]);

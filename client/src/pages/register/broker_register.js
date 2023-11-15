@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
+
+/*This is the broker registration page of the site.
+This would create an new account to the site alerting
+an admin that the new user would like broker 
+privelages to the site
+*/
 function BrokerRegister() {
 
     const [credentials, setCredentials] = useState({ email: '', password: '', accountType: 'broker', firstName: '', lastName: '', phoneNumber: '', licenseNumber:'', agency:'' });

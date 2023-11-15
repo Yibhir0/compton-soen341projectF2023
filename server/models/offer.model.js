@@ -3,87 +3,88 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Creating a new schema for the property model for the make an offer.
+
 const offerSchema = new Schema({
 
-  brokerID: {
+  brokerID: {//This would be the brokers unique identifier.Only brokers would have this ID
     type: String,
     required: false,
   },
 //email of buyer
-  email: {
+  email: {// This is the email tied to the accound. Every type of user (Admin,Broker or homebuyer must have one.
     type: String,
     required: false,
   },
 
-  propertyId: {
+  propertyId: {// This is the unique identifier of a given property.Every property must have there own ID.
     type: String,
     required: false,
   },
 
-  message: {
+  message: {// This would be the message from the homebuyer to the broker
     type: String,
     required: false,
   },
 
-  accepted: {
+  accepted: {//The statuts of the visit request. Upon the broker's acceptance, the value would be change to true
 
     type: Boolean,
     default: false
 
   },
-  address: {
+  address: {// The address to the property that is requested to visit
 
     type: String,
     default: false
 
   },
-  city: {
+  city: {//The city to the property that is requested to visit
 
     type: String,
     default: false
 
   },
 
-  requestedAt: {
+  requestedAt: {// The date when the visit request was sent to the broker
     type: Date
   },
 
-  offerPrice: {
+  offerPrice: {// The price offered by the homebuyer to buy the property
     type: String,
     default: false
   },
 
-  brokerName: {
+  brokerName: {// The name of the broker who's has the  property listed
     type: String,
     default: false
   },
 
-  brokerLiscence: {
+  brokerLiscence: {//The unique broker identification number
     type: String,
     default: false
   },
 
-  brokerAgency: {
+  brokerAgency: {// The broker agency of the broker
     type: String,
     default: false
   },
 
-  buyerName: {
+  buyerName: {// The name of the homebuyer who requested the offer
     type: String,
     default: false
   },
 
-  buyerAddress: {
+  buyerAddress: {//The address of the homebuyer
     type: String,
     default: false
   },
 
-  deedSaleDate: {
+  deedSaleDate: {// The deed sales date
     type: String,
     default: false
   },
 
-  moveInDate: {
+  moveInDate: {// The date to move in by
     type: String,
     default: false
   },

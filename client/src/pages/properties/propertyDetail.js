@@ -12,7 +12,10 @@ import { isBroker } from '../../utils/auth';
 
 import './properties.css';
 
-
+/*This is the detailed property page of a specified property.
+Users would be directed to this page when they click "view details"
+on a specified property.Each property listed have there own propertyDetaill page
+*/
 function PropertyView() {
     const navigate = useNavigate();
     const [property, setProperty] = useState(null);
@@ -90,10 +93,9 @@ function PropertyView() {
                                                     <img src={require('../../assets/images/landingpage_background1.jpg')} alt="Photos" />
                                                     :
                                                     <img src={`https://res.cloudinary.com/dbhsjm5a2/image/upload/v1697488900/${img}`} alt="Photos" />
-
-
-
                                                 }
+
+
 
                                             </div>
                                             <div className="property-info">
@@ -107,6 +109,8 @@ function PropertyView() {
                                                     {property.amenities?.map((amenity, index) => (
                                                         <li key={index}>{amenity}</li>
                                                     ))}
+
+
                                                 </ul>
                                             </div>
                                             <div className="property-buttons-container">
@@ -114,6 +118,7 @@ function PropertyView() {
                                                 {property.propertyType !== 'Rent' && isBroker() && (
                                                     <OfferForm property={property} decodedToken={decodedToken} />
                                                 )}
+
                                                 <PlayBtn handlePlay={playVideo} />
                                                 {isBrokerSignedIn && property.brokerID === decodedToken.brokerId && (
                                                     <div className="property-buttons-container">

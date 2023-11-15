@@ -1,6 +1,6 @@
 const express = require("express");
 
-
+//This is the router of the authentication
 const{
     register,
     login,

@@ -44,6 +44,7 @@ const login = async(req, res) =>{
     
         res.json({message:"Login successful", token: token,id:user._id, accountType: user.accountType})
     }catch(error){
+        console.log(error)
         res.status(500).json({error: "Error logging in"})
     }
 }

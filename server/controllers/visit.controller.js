@@ -16,6 +16,7 @@ const getVisits = async (req, res) => {
   }
 };
 
+//Adds a visit
 const addVisit = async (req, res) => {
   const visit = new Visit(req.body);
 
@@ -27,7 +28,7 @@ const addVisit = async (req, res) => {
   }
 };
 
-
+// Updates visits
 const updateVisit = async (req, res) => {
 
 
@@ -52,6 +53,7 @@ const updateVisit = async (req, res) => {
   }
 }
 
+//Deletes a requested visist
 const deleteVisit = async (req, res) => {
   try {
     const { id } = req.params;
