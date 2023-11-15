@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
 
 
-function initMap(setCoordinates) {
+function initLocationAutocomplete(setCoordinates) {
   const componentForm = [
     'address',
     'locality',
@@ -75,7 +75,7 @@ function CreateProperty() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    initMap(setCoordinates);
+    initLocationAutocomplete(setCoordinates);
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget({
       cloudName: 'dbhsjm5a2',
