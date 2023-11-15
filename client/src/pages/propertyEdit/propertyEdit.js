@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import "../../pages/create/createProperty.css";
+import {initLocationAutocomplete} from '../../components/autocomplete/autocomplete'
 
 
 
@@ -18,6 +19,11 @@ function PropertyEdit() {
 
     const [property, setProperty] = useState(null);
 
+    const [coordinates, setCoordinates] = useState({
+        latitude: 0,
+        longitude: 0,
+      });
+
     const token = localStorage.getItem('token');
 
     useEffect(() => {
@@ -25,6 +31,7 @@ function PropertyEdit() {
             .then(response => response.json())
             .then(data => {
                 setProperty(data);
+                initLocationAutocomplete(setCoordinates);
                 const decodedToken = jwtDecode(token);
 
                 //prevents brokers from modifying other broker's property listings using direct link
@@ -35,9 +42,13 @@ function PropertyEdit() {
             .catch(error => {
                 console.error('Failed to fetch property details:', error);
             });
-    }, [id]);
+            
+    }, []);
 
     const editProperty = async (event) => {
+
+        console.log(coordinates)
+
         event.preventDefault();
         property.address = event.target.address.value;
         property.city = event.target.city.value;
@@ -46,6 +57,10 @@ function PropertyEdit() {
         property.price = event.target.price.value;
         property.numberOfBedrooms = event.target.numberOfBedrooms.value;
         property.numberOfBathrooms = event.target.numberOfBathrooms.value;
+        property.geometry = {
+            type: "Point",
+            coordinates: [coordinates.longitude, coordinates.latitude],
+          };
 
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         const selectedAmenities = [];
@@ -89,16 +104,16 @@ function PropertyEdit() {
                         <div>
                             <form onSubmit={editProperty}>
                                 <div className="d-flex">
-                                    <input defaultValue={property.address} type="address" placeholder="Address" id="address" name="address" autoComplete="off" />
+                                    <input defaultValue={property.address} type="address" placeholder="Address" id="address-input" name="address" autoComplete="off" />
                                 </div>
 
                                 <div className="d-flex">
 
-                                    <input defaultValue={property.city} type="text" id="city" placeholder="City" name="city" autoComplete="off" />
+                                    <input defaultValue={property.city} type="text" id="locality-input" placeholder="City" name="city" autoComplete="off" />
                                 </div>
 
                                 <div className="d-flex">
-                                    <input defaultValue={property.postalCode} placeholder="Postal Code" type="text" id="postalCode" name="postalCode" autoComplete="off" />
+                                    <input defaultValue={property.postalCode} placeholder="Postal Code" type="text" id="postal_code-input" name="postalCode" autoComplete="off" />
                                 </div>
 
                                 <div className="d-flex">

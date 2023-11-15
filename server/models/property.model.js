@@ -54,6 +54,17 @@ const propertySchema = new Schema({
     required: false,
   },
 
+  geometry: {
+    type: {
+      type: String,
+      default: "Point",
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
+  },
+
   sold: {//Determines whether or not a property is sold. Turns true when sold. false by default
     type: Boolean,
     default: false,
