@@ -8,7 +8,7 @@ const {
   updateProperty,
   deleteProperty,
   getBrokerProperties,
-  getPropertiesWithinGeoPolygon,
+  getPropertiesWithinPolygon,
 } = require("../controllers/property.controller");
 
 const router = express.Router();
@@ -19,6 +19,8 @@ router.get("/properties", getProperties);
 router.post("/property", addProperty);
 // Creating route for get properties with filtering
 router.get("/properties/filter", getFilteredProperties);
+
+router.get("/properties/polygon", getPropertiesWithinPolygon);
 /* Creating a route for the get request. */
 router.get("/properties/:id", getProperty);
 /* Creating a route for the put request. */
@@ -28,6 +30,6 @@ router.delete("/properties/:id", deleteProperty);
 
 router.get("/brokerproperties/:id", getBrokerProperties);
 
-router.get("/properties/polygon", getPropertiesWithinGeoPolygon);
+
 
 module.exports = router;

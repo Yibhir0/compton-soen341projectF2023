@@ -11,6 +11,7 @@ import {
  * @returns 
  */
 function Bounds(props) {
+
   const mapEvents = useMapEvents({
     "moveend": () => {
       props.action(mapEvents.getBounds());

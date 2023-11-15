@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -9,63 +9,65 @@ import {
 
 import MarkerClusterGroup from 'react-leaflet-cluster'
 import "leaflet/dist/leaflet.css";
+import { useNavigate } from "react-router-dom";
 
 import Bounds from "./Bounds";
 
 import PropertyTooltip from "./PropertyTooltip";
 
+import "leaflet/dist/leaflet.css";
+
 import { Icon } from "leaflet";
 
 const icon = new Icon({
-  iconUrl: "/home_tip.png",
+  iconUrl: "/favicon.png",
   iconSize: [20, 20]
 });
 
+const PropertyMap = (props) => {
+  const [propertyArr, setPropertyArr] = useState([]);
+  const [selected, setSelected] = useState(null);
 
-
-/**
- * Class component renders react-leaftlet map component.
- * The Component's state contains a list of parking streets
- * in the city of montreal and the selected street. When the component
- * is initially invoked, react lifecycle method componentdidMount
- * fetches data within the initial bounds the parent sent as props.
- * After that react lifecycle method componentdidUpdate will fetche data
- * and setState whenever the bounds change. The data retrieved from the server
- * will be used for markers attributes and the tooltip display.
- */
-
-function PropertyMap(props) {
-
-
-  const [state, setState] = useState({
-    propertyArr: [],
-    selected: null,
-  })
-
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/polygon?neLat=` + props.bounds._northEast.lat
-        + "&neLon=" + props.bounds._northEast.lng
-        + "&swLon=" + props.bounds._southWest.lng
-        + "&swLat=" + props.bounds._southWest.lat);
+    const fetchAll = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/polygon?neLat=` +
+          props.bounds._northEast.lat +
+          "&neLon=" + props.bounds._northEast.lng +
+          "&swLon=" + props.bounds._southWest.lng +
+          "&swLat=" + props.bounds._southWest.lat);
 
-      if (response.ok) {
-        const djson = await response.json();
-        setState({
-          propertyArr: djson,
-        });
+        if (response.ok) {
+          const djson = await response.json();
+          setPropertyArr(djson);
+        }
+      } catch (err) {
+        console.error(err);
       }
     };
-    fetchData();
-  }, []);
 
+    fetchAll();
+  }, [props.bounds]);
 
-
-  const setSelected = (selectedItem) => {
-    setState(prevState => ({ ...prevState, selected: selectedItem }));
+  const getPopUpPosition = () => {
+    if (selected !== null) {
+      return [selected.geometry.coordinates[1], selected.geometry.coordinates[0]];
+    }
   };
 
+  const changeSelectedState = (item) => {
+    setSelected(item);
+  };
+
+  const handleModal = (item) => {
+    setSelected(null);
+  };
+
+  const handleVisible = () => {
+    navigate(`/properties/${selected._id}`);
+  };
 
   return (
     <div>
@@ -88,7 +90,8 @@ function PropertyMap(props) {
       >
         <TileLayer
           url={props.tileUrl}
-          attribution={props.attribution} />
+          attribution={props.attribution}
+        />
         <MarkerClusterGroup
           spiderfyOnMaxZoom={false}
           zoomToBoundsOnClick={true}
@@ -96,34 +99,32 @@ function PropertyMap(props) {
           removeOutsideVisibleBounds={false}
           disableClusteringAtZoom={props.maxZoom}
         >
-          {state.propertyArr?.map((item, index) =>
+          {propertyArr?.map((item, index) =>
             <Marker
               key={index}
               position={[item.geometry.coordinates[1], item.geometry.coordinates[0]]}
               eventHandlers={{
                 click: () => {
-                  setState({ selected: item });
+                  changeSelectedState(item);
                 },
               }}
               icon={icon}
             />
           )}
-
         </MarkerClusterGroup>
-
-        {state.selected && (
+        {selected !== null &&
           <Popup
-            position={[state.selected.geometry.coordinates[1], state.selected.geometry.coordinates[0]]}
+            position={getPopUpPosition()}
             onClose={() => setSelected(null)}
+
           >
-            <PropertyTooltip property={state.selected} />
+            <PropertyTooltip property={selected} handleVisible={handleVisible} handleModal={handleModal} />
           </Popup>
-        )}
+        }
         <Bounds action={props.action} />
       </MapContainer>
     </div>
-  )
-}
-
+  );
+};
 
 export default PropertyMap;

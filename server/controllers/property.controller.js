@@ -8,6 +8,8 @@ const Property = require("../models/property.model");
  */
 
 const getProperties = async (req, res) => {
+
+
   try {
     const properties = await Property.find();
     res.status(200).json(properties);
@@ -166,15 +168,13 @@ const getBrokerProperties = async (req, res) => {
  * @param {Array of coordinates} coordinates
  * @returns array of documents
  */
-const getPropertiesWithinGeoPolygon = async (req, res) => {
-  console.log(req.query);
+const getPropertiesWithinPolygon = async (req, res) => {
+
 
   try {
 
     // Get the query string object
     const polyObj = req.query;
-
-    console.log(polyObj);
 
     // Validate if the query string contains valid keys and values
     const validPolyPoints = validatePolygonPoints(polyObj);
@@ -202,8 +202,8 @@ const getPropertiesWithinGeoPolygon = async (req, res) => {
         }
       }
     });
-    // Send Json response
-    res.send(documents.toArray());
+
+    res.status(200).json(documents);
 
   }
 
@@ -229,6 +229,18 @@ function completePolygonPoints(polyObj) {
   return polyObj;
 
 }
+
+/**
+ * This method parses and validates points
+ * @param {String} num 
+ * @returns float or undefined
+ */
+function validateNumeric(num) {
+  let result = parseFloat(num);
+  return isNaN(result) ? undefined : result;
+
+}
+
 /**
  * This method checks if the polygon object
  * contains all the coordinates. It uses a
@@ -253,6 +265,8 @@ function validatePolygonPoints(polyObj) {
 
     });
   }
+
+  return Object.keys(coordinates).length === 4 ? coordinates : undefined;
 }
 
 module.exports = {
@@ -263,5 +277,5 @@ module.exports = {
   updateProperty,
   deleteProperty,
   getBrokerProperties,
-  getPropertiesWithinGeoPolygon
+  getPropertiesWithinPolygon,
 };

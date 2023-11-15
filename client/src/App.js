@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import { isBroker, isHomeBuyer, isAdmin, isSignedIn } from './utils/auth';
+
 
 
 import Home from "./pages/home/home";
@@ -13,7 +13,7 @@ import UserDetail from "./pages/user/userDetails"
 import MyProperties from "./pages/properties/my-properties"
 import Profile from "./pages/user/profile";
 import NavBar from "./components/menu/navigationBar";
-import PropertyMapApp from './components/map/PropertyMapApp';
+import PropertyMapApp from './pages/map/mapApp';
 import PropertyDetails from './pages/properties/propertyDetail'
 import Visits from './pages/visit/visits'
 import Offers from './pages/offer/offers'
