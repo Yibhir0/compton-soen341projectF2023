@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { isBroker, isHomeBuyer, isAdmin, isSignedIn } from '../../utils/auth'
 
 /*This is the login page of the site.
 This would allow thoses with account to the site
@@ -13,6 +14,15 @@ function Login(){
     const [credentials, setCredentials] = useState({ email: '', password: '' });
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (isSignedIn()) {
+          navigate('/');
+        }
+      }, []);
+
+    if (isSignedIn()) {
+        return;
+    }
 
     const handleLogin = async (event) =>{
         event.preventDefault();
