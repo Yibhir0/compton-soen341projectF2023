@@ -1,3 +1,15 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-width: 1440px;
+
+  }
+
+.App {
+    min-width: 1440px;
+
+}  
 h1 {
     padding: 20px;
 
