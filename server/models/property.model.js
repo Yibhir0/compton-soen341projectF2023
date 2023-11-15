@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+var GeoJSON = require('mongoose-geojson-schema');
+
 const Schema = mongoose.Schema;
 
 /* Creating a new schema for the property model. */
@@ -14,12 +16,12 @@ const propertySchema = new Schema({
     required: false,
   },
 
-  city:{// The city of the property
+  city: {// The city of the property
     type: String,
     required: false,
   },
-  
-  postalCode:{// The postal code of the property
+
+  postalCode: {// The postal code of the property
     type: String,
     required: false,
   },
@@ -29,27 +31,27 @@ const propertySchema = new Schema({
     required: false,
   },
 
-  price:{// The price of the property
+  price: {// The price of the property
     type: Number,
     required: false,
   },
 
-  numberOfBedrooms:{// The number of bedrooms in the property 
+  numberOfBedrooms: {// The number of bedrooms in the property 
     type: Number,
     required: false,
   },
 
-  numberOfBathrooms:{// The number of bathrooms in the property 
+  numberOfBathrooms: {// The number of bathrooms in the property 
     type: Number,
     required: false,
   },
 
-  amenities:{// The services provided by purchasing the property 
+  amenities: {// The services provided by purchasing the property 
     type: Array,
     required: false,
   },
 
-  images:{// The an imgage of the coralated property
+  images: {// The an imgage of the coralated property
     type: Array,
     required: false,
   },
@@ -63,6 +65,7 @@ const propertySchema = new Schema({
       type: [Number],
       required: true,
     },
+
   },
 
   sold: {//Determines whether or not a property is sold. Turns true when sold. false by default
