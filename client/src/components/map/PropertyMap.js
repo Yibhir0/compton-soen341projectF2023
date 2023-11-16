@@ -25,6 +25,7 @@ const icon = new Icon({
 });
 
 const PropertyMap = (props) => {
+
   const [propertyArr, setPropertyArr] = useState([]);
   const [selected, setSelected] = useState(null);
 
@@ -78,6 +79,17 @@ const PropertyMap = (props) => {
         preferCanvas={true}
         style={{
           height: "100vh",
+        }}
+        whenReady={(map) => {
+          map.target.on("drag", function (e) {
+            changeSelectedState(null);
+          });
+          map.target.on("zoom", function (e) {
+            changeSelectedState(null);
+          });
+          map.target.on("click", function (e) {
+            changeSelectedState(null);
+          });
         }}
       >
         <TileLayer
