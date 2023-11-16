@@ -7,7 +7,7 @@ function Users(){
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/user/users`
+        `${process.env.REACT_APP_BACKEND_URL}/user/brokers/`
       );
       const data = await result.json();
       setUsers(data);

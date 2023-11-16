@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
+const Property = require("./models/property.model");
+
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
-const {server} = require("./server");
+const { server } = require("./server");
 
 let mongod = null;
 
@@ -12,11 +14,11 @@ const connectDB = async () => {
   try {
     let dbUrl = process.env.MONGODB_URI;
     if (process.env.NODE_ENV === 'test') {
-      if(mongod == null){
+      if (mongod == null) {
         mongod = await MongoMemoryServer.create();
         dbUrl = mongod.getUri();
-      }  
-     
+      }
+
     }
 
     const conn = await mongoose.connect(dbUrl, {
@@ -24,6 +26,8 @@ const connectDB = async () => {
       useUnifiedTopology: true,
 
     });
+
+
     console.log(dbUrl);
     console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (err) {
