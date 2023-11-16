@@ -61,10 +61,6 @@ const PropertyMap = (props) => {
     setSelected(item);
   };
 
-  const handleModal = (item) => {
-    setSelected(null);
-  };
-
   const handleVisible = () => {
     navigate(`/properties/${selected._id}`);
   };
@@ -81,11 +77,7 @@ const PropertyMap = (props) => {
         updateWhenIdle={true}
         preferCanvas={true}
         style={{
-          width: "100%",
-          position: "absolute",
-          top: 0,
-          bottom: 0,
-          zIndex: -1
+          height: "100vh",
         }}
       >
         <TileLayer
@@ -108,6 +100,7 @@ const PropertyMap = (props) => {
                   changeSelectedState(item);
                 },
               }}
+
               icon={icon}
             />
           )}
@@ -115,10 +108,12 @@ const PropertyMap = (props) => {
         {selected !== null &&
           <Popup
             position={getPopUpPosition()}
-            onClose={() => setSelected(null)}
+            onClose={() => {
+              setSelected(null);
+            }}
 
           >
-            <PropertyTooltip property={selected} handleVisible={handleVisible} handleModal={handleModal} />
+            <PropertyTooltip property={selected} handleVisible={handleVisible} />
           </Popup>
         }
         <Bounds action={props.action} />

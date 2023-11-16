@@ -1,7 +1,7 @@
 const express = require("express");
 
 //This is the router of the authentication
-const{
+const {
     register,
     login,
 } = require("../controllers/auth.controller");

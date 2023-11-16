@@ -28,7 +28,7 @@ const PropertyTooltip = ({ property, handleVisible }) => {
           {property.images.length === 0 ?
             <img style={{ width: '160px', height: "auto" }} src={require('../../assets/images/landingpage_background1.jpg')} alt="Photos" />
             :
-            <img src={`https://res.cloudinary.com/dbhsjm5a2/image/upload/v1697488900/${property.images[0]}`} alt="Photos" />
+            <img style={{ width: '160px', height: "auto" }} src={`https://res.cloudinary.com/dbhsjm5a2/image/upload/v1697488900/${property.images[0]}`} alt="Photos" />
           }
           <VisibleBtn handleVisible={handleVisible} view="Property" />
         </Box>
