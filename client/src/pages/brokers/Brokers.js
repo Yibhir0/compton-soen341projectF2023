@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchForm from "../../components/form/searchform"
 import PropertyList from "../../components/list/PropertyList";
-import {Form} from "react-router-dom";
-import {Input} from "@mui/material";
+import { Form } from "react-router-dom";
+import { Input } from "@mui/material";
 import Button from "@mui/material/Button";
 
-function Brokers(){
+function Brokers() {
 
     const [brokers, setBrokers] = useState([]);
     const [brokersToList, setBrokersList] = useState([])
@@ -27,8 +27,8 @@ function Brokers(){
 
     const filterBrokers = (name) => {
         return brokers.filter((b) => {
-            if(!name) return true;
-            if(b.firstName.toLowerCase().includes(name.toLowerCase()) || b.lastName.toLowerCase().includes(name.toLowerCase())) return true;
+            if (!name) return true;
+            if (b.firstName.toLowerCase().includes(name.toLowerCase()) || b.lastName.toLowerCase().includes(name.toLowerCase())) return true;
             return false;
         })
     }
@@ -39,15 +39,15 @@ function Brokers(){
     return (
         <div>
             <div className="d-flex align-items-center justify-content-center text-center">
-                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name..." required/>
+                <Input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name..." required />
             </div>
 
             <br></br>
 
             {brokers && brokers.length > 0 ? (
 
-                    <table style={{textAlign:'center', justifyContent:"center"}} className={"brokers-table"}>
-                        <thead>
+                <table style={{ textAlign: 'center', justifyContent: "center" }} className={"brokers-table"}>
+                    <thead>
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
@@ -56,11 +56,11 @@ function Brokers(){
                             <th>License Number</th>
                             <th></th>
                         </tr>
-                        </thead>
-                        <tbody>
+                    </thead>
+                    <tbody>
                         {
-                            filterBrokers(name).map((broker) =>
-                                <tr>
+                            filterBrokers(name).map((broker, index) =>
+                                <tr key={index}>
                                     <td>{broker.firstName}</td>
                                     <td>{broker.lastName}</td>
                                     <td>{broker.email}</td>
@@ -72,8 +72,8 @@ function Brokers(){
                             )
 
                         }
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
             ) : (
                 <div className="mx-auto" style={{ maxWidth: "1300px" }}>
                     <p>No properties yet</p>

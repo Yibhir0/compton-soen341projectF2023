@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-import { isBroker, isHomeBuyer, isAdmin, isSignedIn } from './utils/auth';
+
 
 
 import Home from "./pages/home/home";
@@ -13,7 +13,7 @@ import UserDetail from "./pages/user/userDetails"
 import MyProperties from "./pages/properties/my-properties"
 import Profile from "./pages/user/profile";
 import NavBar from "./components/menu/navigationBar";
-// import PropertyDetails from './pages/propertyDetails/propertyDetails'
+import PropertyMapApp from './pages/map/mapApp';
 import PropertyDetails from './pages/properties/propertyDetail'
 import Visits from './pages/visit/visits'
 import Offers from './pages/offer/offers'
@@ -35,6 +35,7 @@ function App() {
 
     <div className="App">
       <NavBar />
+
       <Routes>
         <Route path="/passwordReset" element={<PasswordReset />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -66,6 +67,9 @@ function App() {
 
 
         <Route path="/properties/:id/player" element={<PropertyPlayer />}></Route>
+        <Route path="/properties/polygon" element={<PropertyMapApp />}></Route>
+
+
 
       </Routes>
     </div>
