@@ -17,6 +17,7 @@ import PropertyMapApp from './pages/map/mapApp';
 import PropertyDetails from './pages/properties/propertyDetail'
 import Visits from './pages/visit/visits'
 import Offers from './pages/offer/offers'
+import Mortgage from './pages/mortgage/mortgage';
 
 import Verify from './pages/verify/verify'
 import BrokerRegister from './pages/register/broker_register';
@@ -41,6 +42,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/properties" element={<Properties />}></Route>
+        <Route path="/mortgage" element={<Mortgage />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/broker_register" element={<BrokerRegister />}></Route>

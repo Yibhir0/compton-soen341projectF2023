@@ -1,0 +1,41 @@
+.mortgage-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    background-color: #011a3eea;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #daa520;
+  }
+  
+  .result-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fcfcfc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  

@@ -25,6 +25,9 @@ const Navbar = () => {
         <Link to="/properties" className='navItem'>Properties</Link>
       </li>
       <li>
+        <Link to="/mortgage" className='navItem'>Mortgage Calculator</Link>
+      </li>
+      <li>
         <Link to="/properties/polygon" className='navItem'>Map</Link>
       </li>
       <li>

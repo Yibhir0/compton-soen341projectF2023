@@ -8,13 +8,15 @@
     background-color: #011a3eea;
     margin-bottom: 15px;
     padding: 0px;
+    
   }
 
   .logo-realestate {
     width: 150px;
     height: 150px;
     vertical-align: middle;
-    margin-right: 20%;
+    margin-right: 10%;
+
   }
 
   .container {
