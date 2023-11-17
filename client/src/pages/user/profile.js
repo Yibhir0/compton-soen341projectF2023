@@ -5,6 +5,7 @@ import Users from "../user/users";
 import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
 import AvatarProfile from '../../components/avatar/avatar';
+import UpdateBrokerForm from '../../components/form/updateBrokerForm';
 
 const linkStyle = {
   marginTop: "10px",
@@ -16,16 +17,15 @@ const linkStyle = {
 
 };
 
-/*This is the profil page of a specified user.
-This would dislpay the profilof a given user
+
+/*This is the profile page of a specified user.
+This would dislpay the profile of a given user
 */
 function Profile() {
 
   const id = localStorage.getItem('id');
-
   const [user, setUser] = useState({
   });
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,6 +65,13 @@ function Profile() {
 
               <Link to="/create" className='navItem' style={linkStyle}>Add Property</Link>
 
+              <span>
+                <Link to="/create" className='navItem'>Add Property</Link>
+              </span>
+              <div className="property-buttons-container">
+                <UpdateBrokerForm id={id} />
+              </div>
+
             </Box>
             <div>
               <MyProperties />
@@ -75,6 +82,7 @@ function Profile() {
           <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
             Homebuyer profile page
           </Box>
+
         ) : (
           <Box>
             <Box

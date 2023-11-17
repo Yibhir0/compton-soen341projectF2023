@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+
 function BrokerDetails() {
     const [broker, setBroker] = useState();
     const { id } = useParams();
+
 
     useEffect(() => {
         const fetchData = async () => {
