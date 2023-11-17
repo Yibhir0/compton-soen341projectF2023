@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
 import UpdateBrokerForm from '../../components/form/updateBrokerForm';
 
-/*This is the profil page of a specified user.
-This would dislpay the profilof a given user
+/*This is the profile page of a specified user.
+This would dislpay the profile of a given user
 */
 function Profile() {
 
@@ -65,6 +65,7 @@ function Profile() {
           <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
             Homebuyer profile page
           </Box>
+          
         ) : (
           <Box>
             <Box

@@ -1,39 +1,22 @@
 const User = require("../models/user.model");
-const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
 
 
-const updateBroker = async(req, res) =>{
-    const { email, password, accountType, firstName, lastName, phoneNumber, licenseNumber, agency} = req.body;
-    console.log(req.body);
+const updateAccountInfo = async(req, res) =>{
   try {
-    const user = await User.findOne({ email });
+    const  email  = req.body.email;
+    const update = await User.findOneAndUpdate({ email: email }, req.body);
 
-    if (!user) {
-      return res.status(401).json({ error: 'Invalid email' });
+    if(!update){
+      return res.status(404).json({ message: "Cannot find any user with email " + email + " to update." });
     }
-    
-    const hashedPassword = await bcrypt.hash(password,10);
-    user = ({email: email,accountType:accountType,firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,licenseNumber:licenseNumber,agency:agency});
-    //await user.save();
-    console.log(user)
-    return res.status(200).json({ message: "Email found, verification code sent soon" });
+    res.status(200).json(email);
+
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    console.log("error")
+    res.status(500).json({ message: error.message });
   }
 }
 
-
-const updateClient = async(req, res) =>{
-   
-}
-
-const updateAdmin = async(req, res) =>{
-    
-}
-
 module.exports = {
-    updateBroker, 
-    updateClient, 
-    updateAdmin,
+  updateAccountInfo,
 };

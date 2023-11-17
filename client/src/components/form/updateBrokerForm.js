@@ -5,9 +5,7 @@ import Box from '@mui/material/Box';
 import FilledInput from '@mui/material/FilledInput';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import jwtDecode from 'jwt-decode';
 
 const style = {
   position: 'absolute',
@@ -24,115 +22,61 @@ const style = {
 };
 
 const UpdateBrokerForm = ({id}) => {
-/*
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [credentials, setCredentials] = useState({ email: '',password:'', accountType: 'broker', firstName: '', lastName: '', phoneNumber: '', licenseNumber:'', agency:'' });
+
+  useEffect(() => {
+      const fetchData = async () => {
+        const result = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
+        );
+        const data = await result.json();
+        setCredentials({
+          ...credentials,
+          email: data.email,
+          password: data.password,
+          accountType: data.accountType,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          phoneNumber: data.phoneNumber,
+          licenseNumber: data.licenseNumber,
+          agency: data.agency,
+      });
+      };
+      fetchData();
+    }, []); 
 
     const openModal = () => {
-        setIsModalOpen(true);
+      setIsModalOpen(true);
     };
-    
-    const closeModal = () => {
-
-        //setIsModalOpen(false);
-
-        //try 
-
-        setCredentials({
-          open: !credentials.open
-        });
-    };
-*/
-useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
-      );
-      const data = await result.json();
-      setCredentials({
-        ...credentials,
-        email: data.email,
-        password: data.password,
-        accountType: 'broker',
-        firstName: data.firstName,
-        lastName: data.lastName,
-        phoneNumber: data.phoneNumber,
-        licenseNumber: data.licenseNumber,
-        agency: data.agency,
-    });
-    };
-    fetchData();
-  }, []); 
-
-  const [credentials, setCredentials] = useState({
-    email: '',
-    password: '',
-    accountType: 'broker',
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    licenseNumber: '',
-    agency: '',
-  });
-
   
+    const closeModal = () => {
+      setIsModalOpen(false);
+    };
 
-console.log(credentials)
   const handleState = async () => {
-    if (!credentials.password || !credentials.email) {
-      alert('empty email or password');
-      return;
-    }
-
-    try {
-      await axios.post(process.env.REACT_APP_BACKEND_URL + '/update/broker', credentials);
-      alert('Information changed successfully');
-      window.location.reload();
-    } catch (error) {
-      alert(error);
-      if (error.response) {
-        alert(error.response.data.error);
-      } else {
-        alert('An error occurred: ' + error.message);
-      }
-    }
-
-    
-  };
-  const clearFields = () => {
-    setCredentials({
-      email: '',
-      password: '',
-      accountType: 'broker',
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      licenseNumber: '',
-      agency: '',
-    });
-  };
-  const handleRequest = () => {
-
-    setCredentials({
-      open: true
-    });
+      axios
+      .post(process.env.REACT_APP_BACKEND_URL + '/update/update-info', credentials)
+      .then(() => {
+        console.log("test")
+        alert('Account details updated.')
+        closeModal();
+      })
+      .catch((e) => {
+        alert("Error");
+      })  
   };
 
-  const handleClose = () => {
-
-    setCredentials({
-      open: !credentials.open
-    });
-
-  }
   return (
     <div>
-     <button className="btn btn-secondary mx-auto" onClick={handleRequest}  >Update Broker information</button>
-     <Modal open={credentials.open} onClose={handleClose}>
+     <button className="btn btn-secondary mx-auto" onClick={openModal}  >Update Account information</button>
+     <Modal open={isModalOpen} onClose={closeModal}>
         <Box sx={style}>
           <div>
           <FormControl fullWidth sx={{ m: 1 }} variant="filled">
           <InputLabel htmlFor="filled-adornment-amount">Email</InputLabel>
-          <FilledInput defaultValue={credentials.email} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value={credentials.email} name="email"/>
+          <FilledInput readOnly defaultValue={credentials.email} onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value={credentials.email} name="email"/>
           </FormControl>
                   
 

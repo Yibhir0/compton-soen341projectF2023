@@ -1,25 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import jwtDecode from 'jwt-decode';
-import VisitForm from '../../components/form/visitForm';
 
 
 function BrokerDetails() {
     const [broker, setBroker] = useState();
     const { id } = useParams();
-    console.log(id)
-
-    // useEffect(()=>{
-    //     fetch(`${process.env.REACT_APP_BACKEND_URL}/user/brokers/${id}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setBroker(data);
-    //         })
-    //         .catch(error => {
-    //             console.error('Failed to fetch broker details:', error);
-    //         });
-    // },[]);
+    
     useEffect(() => {
         const fetchData = async () => {
             const result = await fetch(
@@ -31,7 +17,6 @@ function BrokerDetails() {
         fetchData();
     }, []);
 
-    console.log(broker)
 
 
     return (
