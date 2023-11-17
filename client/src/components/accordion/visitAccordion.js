@@ -88,6 +88,7 @@ function VisitAccordion(props) {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         borderRadius: 2,
+                        border: "1px solid #011a3eea",
                         p: 2,
                         m: 2,
                         minWidth: 300,
