@@ -59,7 +59,6 @@ const UpdateBrokerForm = ({id}) => {
       axios
       .post(process.env.REACT_APP_BACKEND_URL + '/update/update-info', credentials)
       .then(() => {
-        console.log("test")
         alert('Account details updated.')
         closeModal();
       })
