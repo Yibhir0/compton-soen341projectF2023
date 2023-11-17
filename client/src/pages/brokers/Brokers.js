@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import SearchForm from "../../components/form/searchform"
-import PropertyList from "../../components/list/PropertyList";
-import { Form } from "react-router-dom";
 import { Input } from "@mui/material";
-import Button from "@mui/material/Button";
+
 
 function Brokers() {
 
     const [brokers, setBrokers] = useState([]);
-    const [brokersToList, setBrokersList] = useState([])
     const [name, setName] = useState("");
 
 
@@ -66,7 +62,7 @@ function Brokers() {
                                     <td>{broker.email}</td>
                                     <td>{broker.phoneNumber}</td>
                                     <td>{broker.licenseNumber}</td>
-                                    <td><a href={`/brokers/${broker._id}`}>View</a></td>
+                                    <td><a href={`/users/user/view/${broker._id}`}>View</a></td>
 
                                 </tr>
                             )

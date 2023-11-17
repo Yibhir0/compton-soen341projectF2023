@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
 import DeleteBtn from '../button/deleteBtn';
 import VisibleBtn from '../button/visibleBtn';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import Tooltip from "@mui/material/Tooltip";
 import { useNavigate } from 'react-router-dom';
+
+import AvatarProfile from '../avatar/avatar';
 
 
 const UserCard = ({ user }) => {
@@ -74,15 +75,24 @@ const UserCard = ({ user }) => {
             <DeleteBtn handleDelete={deleteUser} />
           </Box>
 
-          <Avatar
-            alt=""
-            sx={{ width: 100, height: 100 }}
-          />
-          <h6 className="b-text-font">{email}</h6>
-          <h6 className="b-text-font">{accountType}</h6>
-          <Tooltip title="Verified">
-            <VerifiedIcon sx={{ color: "#40dced", fontSize: "xx-large" }} />
-          </Tooltip>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: 'space-between',
+              alignItems: "center",
+              flexDirection: 'column'
+
+            }}>
+
+            <AvatarProfile data={user} size={80}
+
+            />
+            <h6 className="b-text-font">{email}</h6>
+            <h6 className="b-text-font">{accountType}</h6>
+            <Tooltip title="Verified">
+              <VerifiedIcon sx={{ color: "#40dced", fontSize: "xx-large" }} />
+            </Tooltip>
+          </Box>
         </Box>
 
       }

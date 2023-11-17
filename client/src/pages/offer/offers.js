@@ -20,7 +20,7 @@ function Offers() {
             setOffer(data);
         };
         fetchData();
-    }, []);
+    }, [decodedToken.brokerId]);
     return (
         <div>
             <h1 style={{ textAlign: "center" }} >Offers</h1>
