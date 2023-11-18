@@ -208,7 +208,8 @@ const getPropertiesWithinPolygon = async (req, res) => {
             ]]
           }
         }
-      }
+      },
+      propertyType: { $ne: 'Sold' },
     });
 
     res.status(200).json(documents);
