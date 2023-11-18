@@ -108,7 +108,7 @@ function PropertyView() {
 
                                             </div>
                                             <div className="property-info">
-                                                <h4>For : {property.propertyType}</h4>
+                                                <h4>{property.propertyType}</h4>
                                                 <h5>Price : {property.price} <span style={{ color: "gold" }}>$</span></h5>
                                                 <h5>{property.address}</h5>
                                                 <h5>{property.city} , {property.postalCode} </h5>
@@ -124,7 +124,7 @@ function PropertyView() {
                                             </div>
                                             <div className="property-buttons-container">
                                                 <VisitForm property={property} />
-                                                {property.propertyType !== 'Rent' && isBroker() && (
+                                                {property.propertyType !== 'Sold' && property.propertyType !== 'Rent' && isBroker() && (
                                                     <OfferForm property={property} decodedToken={decodedToken} />
                                                 )}
 
