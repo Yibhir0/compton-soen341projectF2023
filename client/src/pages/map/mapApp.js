@@ -19,8 +19,6 @@ const PropertyMapApp = () => {
     const changeState = (newBounds) => {
         setState({ bounds: newBounds });
     }
-
-
     return (
         <PropertyMap
             attribution={MapConfig.attribution}

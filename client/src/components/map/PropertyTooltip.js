@@ -14,6 +14,8 @@ const PropertyTooltip = ({ property, handleVisible }) => {
             bgcolor: "background.paper",
             boxShadow: 1,
             borderRadius: 2,
+            border: "1",
+            borderColor: "gold",
             p: 2,
             width: "27ch",
             m: 1,

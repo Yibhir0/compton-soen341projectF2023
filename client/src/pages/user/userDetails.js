@@ -1,13 +1,25 @@
 
-import React, { } from 'react';
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import AvatarProfile from '../../components/avatar/avatar';
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
 import MyProperties from '../properties/my-properties';
 const UserDetail = () => {
+  const [broker, setBroker] = useState();
+  const { id } = useParams();
 
-  const location = useLocation();
-  const { state } = location;
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/user/brokers/${id}`
+      );
+      const data = await result.json();
+      setBroker(data);
+    };
+    fetchData();
+  }, [id]);
+
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Broker Details</h1>
@@ -18,19 +30,18 @@ const UserDetail = () => {
           justifyContent: 'space-between',
           alignItems: "center"
         }}>
-        <Avatar
-          alt=""
-          sx={{ width: 160, height: 160 }}
-        />
-        <h6 className="b-text-font">{state.email}</h6>
-        <h6 className="b-text-font">{state.accountType}</h6>
-        <h6 className="b-text-font">Name: {state.firstName} {state.lastName}</h6>
-        <h6 className="b-text-font">Phone Number: {state.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}</h6>
-        <h6 className="b-text-font">License Number: {state.licenseNumber}</h6>
-        <h6 className="b-text-font">Agency: {state.agency}</h6>
+        {broker &&
+          < AvatarProfile data={broker} size={100} />
+        }
+        <h6 className="b-text-font">{broker?.email}</h6>
+        <h6 className="b-text-font">{broker?.accountType}</h6>
+        <h6 className="b-text-font">Name: {broker?.firstName} {broker?.lastName}</h6>
+        <h6 className="b-text-font">Phone Number: {broker?.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}</h6>
+        <h6 className="b-text-font">License Number: {broker?.licenseNumber}</h6>
+        <h6 className="b-text-font">Agency: {broker?.agency}</h6>
 
       </Box>
-      <MyProperties id={state._id} />
+      <MyProperties />
 
     </div>
   )

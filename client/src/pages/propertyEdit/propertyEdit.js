@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import "../../pages/create/createProperty.css";
-import {initLocationAutocomplete} from '../../components/autocomplete/autocomplete'
+import { initLocationAutocomplete } from '../../components/autocomplete/autocomplete'
 
 
 
@@ -22,7 +22,7 @@ function PropertyEdit() {
     const [coordinates, setCoordinates] = useState({
         latitude: 0,
         longitude: 0,
-      });
+    });
 
     const token = localStorage.getItem('token');
 
@@ -42,8 +42,8 @@ function PropertyEdit() {
             .catch(error => {
                 console.error('Failed to fetch property details:', error);
             });
-            
-    }, []);
+
+    },);
 
     const editProperty = async (event) => {
 
@@ -60,7 +60,7 @@ function PropertyEdit() {
         property.geometry = {
             type: "Point",
             coordinates: [coordinates.longitude, coordinates.latitude],
-          };
+        };
 
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         const selectedAmenities = [];

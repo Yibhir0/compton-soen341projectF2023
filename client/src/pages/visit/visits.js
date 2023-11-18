@@ -15,7 +15,7 @@ function Visits() {
             setVisits(data);
         };
         fetchData();
-    }, []);
+    }, [decodedToken.brokerId]);
 
 
     return (

@@ -29,6 +29,15 @@ function PropertyView() {
                 if (data.images.length === 0) {
                     data.images.push('default')
                 }
+
+                let properties = JSON.parse(localStorage.getItem("properties") || "[]");
+
+                properties.pop();
+                console.log(properties)
+                properties.unshift(data);
+
+                localStorage.setItem("properties", JSON.stringify(properties));
+
                 setProperty(data);
             })
             .catch(error => {
