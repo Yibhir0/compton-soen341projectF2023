@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import UserList from '../../components/list/UserList';
-
+import { isAdmin } from '../../utils/auth'
 function Users(){
 
   const [users, setUsers] = useState([]);
@@ -12,7 +12,10 @@ function Users(){
       const data = await result.json();
       setUsers(data);
     };
-    fetchData();
+    if(isAdmin()){
+      fetchData();
+    }
+    
   }, []);
 
 
@@ -24,7 +27,7 @@ function Users(){
             
           ) : (
             <div className="mx-auto" style={{ maxWidth: "1300px" }}>
-            <p>No Brokers yet</p>
+            
             </div>
           )}
     </div>

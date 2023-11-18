@@ -27,7 +27,9 @@ function Profile() {
   const [user, setUser] = useState({
   });
 
+
   useEffect(() => {
+
     const fetchData = async () => {
       const result = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
@@ -38,6 +40,7 @@ function Profile() {
     };
     fetchData();
   }, [id]);
+
 
 
   return (
