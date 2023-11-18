@@ -216,7 +216,7 @@ const OfferForm = ({ property, decodedToken }) => {
 
 
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Button size="large" variant="contained" onClick={handleState}  >Make an Offer</Button>
+              <Button style={{ backgroundColor: "#011a3eea" }} size="large" variant="contained" onClick={handleState}  >Make an Offer</Button>
             </Box>
 
           </div>

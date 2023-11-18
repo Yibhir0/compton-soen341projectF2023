@@ -47,7 +47,6 @@ function VisitAccordion(props) {
 
     const handleVisible = () => {
         navigate(`/properties/${visit.propertyId}`);
-
     }
 
     const handleAccept = async () => {
@@ -89,6 +88,7 @@ function VisitAccordion(props) {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         borderRadius: 2,
+                        border: "1px solid #011a3eea",
                         p: 2,
                         m: 2,
                         minWidth: 300,
@@ -134,7 +134,6 @@ function VisitAccordion(props) {
                                 <p style={{ color: 'gray' }}>Status: {visit.accepted ? 'Accepted' : 'Pending'}</p>
                             </Box>
                         </Box>
-                        {/* </Typography> */}
                     </AccordionSummary>
                     <AccordionDetails sx={{ width: "100ch" }}>
                         <Typography >

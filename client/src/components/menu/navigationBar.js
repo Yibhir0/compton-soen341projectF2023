@@ -3,6 +3,7 @@ import './navigationBar.css';
 
 const Navbar = () => {
   const isBrokerSignedIn = !!localStorage.getItem('token');
+  const id = localStorage.getItem('id');
   const navigate = useNavigate();
 
   // Deletes token created during successful sign in.
@@ -45,7 +46,7 @@ const Navbar = () => {
         <Link to="/" onClick={handleSignout} className='navItem'>Sign out</Link>
       </li>
       <li>
-        <Link to="/users/user/:id" className='navItem'>Profile</Link>
+        <Link to={`/users/user/${id}`} className='navItem'>Profile</Link>
       </li>
     </>
   ) : (

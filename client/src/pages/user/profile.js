@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import MyProperties from "../properties/my-properties";
 import Users from "../user/users";
 import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
+import AvatarProfile from '../../components/avatar/avatar';
 import UpdateBrokerForm from '../../components/form/updateBrokerForm';
+
+const linkStyle = {
+  marginTop: "10px",
+  textDecoration: "none",
+  color: 'gold',
+  padding: "4px",
+  backgroundColor: "#011a3eea",
+  borderRadius: "10px"
+
+};
+
 
 /*This is the profile page of a specified user.
 This would dislpay the profile of a given user
@@ -26,35 +37,39 @@ function Profile() {
 
     };
     fetchData();
-  }, []);
+  }, [id]);
+
 
   return (
+
     <div>
+
       <Box component="div" sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
-        <Avatar sx={{ marginTop: '10px', width: 80, height: 80 }} ></Avatar>
-        <p>{user.email}</p>
-        <p>{user.accountType}</p>
+        {user &&
+          <AvatarProfile data={user} size={80} />
+        }
+        <p>{user?.email}</p>
+        <p>{user?.accountType}</p>
+
       </Box >
       {
         user.accountType === "broker" ? (
-          <Box>
+          <Box >
             <Box
-              sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
-              <span>
-                <Link to="/visits" className='navItem'>Visits</Link>
-              </span>
 
-              <span>
-                <Link to="/offers" className='navItem'>Manage Offers</Link>
-              </span>
+              sx={{ display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: 'space-between' }}>
 
-              <span>
-                <Link to="/create" className='navItem'>Add Property</Link>
-              </span>
+              <Link to="/visits" className='navItem' style={linkStyle}>Visits</Link>
+
+
+              <Link to="/offers" className='navItem' style={linkStyle}>Manage Offers</Link>
+
+              <Link to="/create" className='navItem' style={linkStyle}>Add Property</Link>
+
               <div className="property-buttons-container">
-              <UpdateBrokerForm id = {id}/>  
+                <UpdateBrokerForm id={id} />
               </div>
-                    
+
             </Box>
             <div>
               <MyProperties />
@@ -65,17 +80,16 @@ function Profile() {
           <Box sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
             Homebuyer profile page
           </Box>
-          
+
         ) : (
           <Box>
             <Box
-              sx={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
-              <span>
-                <CreateBrokerForm></CreateBrokerForm>
-              </span>
-              <span>
-                <Link to="/verify" className='navItem'>Verify Brokers</Link>
-              </span>
+              sx={{ display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: "space-between" }}>
+
+              <CreateBrokerForm></CreateBrokerForm>
+
+              <Link to="/verify" className='navItem' style={linkStyle}>Verify Brokers</Link>
+
             </Box>
             <Users />
           </Box >
@@ -83,6 +97,7 @@ function Profile() {
 
 
     </div>
+
   )
 
 }

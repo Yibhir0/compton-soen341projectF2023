@@ -19,7 +19,6 @@ function OfferAccordion(props) {
         date = new Date(offer.requestedAt);
     }
 
-
     const handleReject = async () => {
         const confirmed = window.confirm('Are you sure you want to reject this offer?');
         if (confirmed) {
@@ -112,6 +111,7 @@ function OfferAccordion(props) {
                         flexDirection: 'column',
                         justifyContent: 'center',
                         borderRadius: 2,
+                        border: "1px solid #011a3eea",
                         p: 2,
                         m: 2,
                         minWidth: 1000,
