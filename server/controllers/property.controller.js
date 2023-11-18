@@ -160,6 +160,16 @@ const getBrokerProperties = async (req, res) => {
   }
 }
 
+const getActiveListings = async(req,res) =>{
+  try {
+    const { id } = req.params;
+    const properties = await Property.find({ brokerID: id, propertyType: { $ne: "Sold" }} );
+    res.status(200).json(properties);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
+
 
 /**
  * Method gets documents with a geospatial field within a polygon
@@ -276,4 +286,5 @@ module.exports = {
   deleteProperty,
   getBrokerProperties,
   getPropertiesWithinPolygon,
+  getActiveListings,
 };

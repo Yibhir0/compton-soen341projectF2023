@@ -72,6 +72,7 @@ function Profile() {
 
             </Box>
             <div>
+              <h1 style={{ textAlign: "center" }}>My Listings</h1>
               <MyProperties />
             </div>
           </Box>
