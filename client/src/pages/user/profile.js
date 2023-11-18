@@ -65,9 +65,6 @@ function Profile() {
 
               <Link to="/create" className='navItem' style={linkStyle}>Add Property</Link>
 
-              <span>
-                <Link to="/create" className='navItem'>Add Property</Link>
-              </span>
               <div className="property-buttons-container">
                 <UpdateBrokerForm id={id} />
               </div>
