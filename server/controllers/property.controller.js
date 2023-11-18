@@ -3,15 +3,13 @@ const Property = require("../models/property.model");
 
 /**
  * It's an async function that uses the property model to find 
- * all properties and then returns a status of 200 with the properties
+ * all properties that are not sold and then returns a status of 200 with the properties
  * in the response body.
  */
 
 const getProperties = async (req, res) => {
-
-
   try {
-    const properties = await Property.find();
+    const properties = await Property.find({ propertyType: { $ne: "Sold" } });
     res.status(200).json(properties);
   } catch (err) {
     res.status(500).json({ message: err.message });

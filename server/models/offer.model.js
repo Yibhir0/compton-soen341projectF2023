@@ -89,6 +89,11 @@ const offerSchema = new Schema({
     default: false
   },
 
+  status: {
+    type:String,
+    default: "Pending"
+  }
+
 });
 
 module.exports = mongoose.model("Offer", offerSchema);

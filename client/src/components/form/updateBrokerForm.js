@@ -6,6 +6,7 @@ import FilledInput from '@mui/material/FilledInput';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -69,7 +70,7 @@ const UpdateBrokerForm = ({id}) => {
 
   return (
     <div>
-     <button className="btn btn-secondary mx-auto" onClick={openModal}  >Update Account information</button>
+     <Link  onClick={openModal}  >Update Account Information</Link>
      <Modal open={isModalOpen} onClose={closeModal}>
         <Box sx={style}>
           <div>

@@ -22,26 +22,12 @@ const addOffer = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
-//  UpdateOffer
-const updateOffer = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const offer = await Offer.findByIdAndUpdate(id, req.body);;
-    if (!offer) {
-      return res.status(404).json({ message: 'Offer not found' });
-    }
-    res.status(200).json(offer);
-    console.log(offer);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
-}
+
 //  DelOffer
-const deleteOffer = async (req, res) => {
+const updateOffer = async (req, res) => {
   try {
     const { id } = req.params;
-    const offer = await Offer.findByIdAndDelete(id);
+    const offer = await Offer.findByIdAndUpdate(id,req.body);
     if (!offer) {
       return res.status(404).json({ message: "Cannot find any offer with id " + id + " to delete." })
     }
@@ -51,4 +37,4 @@ const deleteOffer = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
-module.exports = { getOffers, addOffer, updateOffer, deleteOffer };
+module.exports = { getOffers, addOffer, updateOffer };

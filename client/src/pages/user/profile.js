@@ -45,7 +45,7 @@ function Profile() {
               </span>
 
               <span>
-                <Link to="/offers" className='navItem'>Offers</Link>
+                <Link to="/offers" className='navItem'>Manage Offers</Link>
               </span>
 
               <span>

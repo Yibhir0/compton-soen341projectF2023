@@ -80,8 +80,6 @@ const OfferForm = ({ property, decodedToken }) => {
       address: property.address,
       city: property.city,
       requestedAt: date,
-
-
     };
 
     await fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offer`, {
@@ -109,6 +107,7 @@ const OfferForm = ({ property, decodedToken }) => {
       email: "",
       message: "",
       offerPrice: "",
+      propertyId: "",
       open: false
 
     })
