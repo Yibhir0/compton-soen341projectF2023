@@ -1,9 +1,11 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import AvatarProfile from '../../components/avatar/avatar';
 import Box from "@mui/material/Box";
 import PropertyList from "../../components/list/PropertyList";
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+
 const UserDetail = () => {
   const [broker, setBroker] = useState();
   const [properties, setProperties] = useState([]);
@@ -47,8 +49,8 @@ const UserDetail = () => {
         <div style={{ display: 'flex' }}>
           <div style={{ marginRight: '200px' , textAlign:'center'}}>
             <h3>Contact Information</h3>
-            <h6 className="b-text-font">{broker?.email}</h6>
-            <h6 className="b-text-font">{broker?.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}</h6>
+            <h6 className="b-text-font"><EmailIcon></EmailIcon> {broker?.email}</h6>
+            <h6 className="b-text-font"><PhoneIcon></PhoneIcon> {broker?.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3')}</h6>
           </div>
   
         <div style={{ textAlign:'center'}}>
