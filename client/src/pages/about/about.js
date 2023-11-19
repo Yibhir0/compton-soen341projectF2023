@@ -48,26 +48,48 @@ function About(props) {
 //   )
 
 
+const ABOUTPAGE = [
+  {
+      Head1: "Comptant Real Estate Company",
+      Head2: "The Compton Real Estate company is a student project\nAt Concordia University for the Fall 2023 SOEN341 Course",
+      Head3: "The Goal of the project was to create a real estate web app designed to help users buy, rent and sell residential properties."
+      
+  },
+  
+  {
+    Head1: "Comptant Real Estate Company",
+    Head2: "The Compton Real Estate company is a student project\nAt Concordia University for the Fall 2023 SOEN341 Course",
+    Head3: "The Goal of the project was to create a real estate web app designed to help users buy, rent and sell residential properties."
+  }
+]
 
-
-    var items = [
-        {
-            name: "Random Name #1",
-            description: "Probably the most random thing you have ever seen!"
-        },
-        {
-            name: "Random Name #2",
-            description: "Hello World!"
-        }
-    ]
+    // var items = [
+    //     {
+    //         name: "Random Name #1",
+    //         description: "Probably the most random thing you have ever seen!"
+    //     },
+    //     {
+    //         name: "Random Name #2",
+    //         description: "Hello World!"
+    //     }
+    // ]
 
     return (
+      // <div className='about-card-container'> 
+      // <span style={{ color: "white" }}>
         <Carousel>
             {
-                //items.map( (item, i) => <Item key={i} item={item} /> )
-                students.map((student, index) => (<li key={index}> {student}  </li>))
+
+              
+               // items.map( (item, i) => <Item key={i} item={item} /> )
+                students.map( (student, i) => <Item key={i} student={student}  />)
+
+
+             //  students.map((student, index) => (<li key={index}> {student}  </li>))
             }
         </Carousel>
+        // </span>
+        // </div>
     )
 }
 
@@ -75,13 +97,30 @@ function Item(props)
 {
     return (
         <Paper>
-            <h2>{props.item.name}</h2>
-            
-            <p>{props.item.description}</p>
+<div className='about-card-container'> 
+      <span style={{ color: "white" }}>
 
-            <Button className="CheckButton">
-                Check it out!
-            </Button>
+
+           {/* <h2>{props.item.name}</h2>
+            
+            <p>{props.item.description}</p>  */}
+
+            <h1 className='property-header'>{props.student}
+
+            </h1>
+            <h2>{props.student}</h2>
+
+            
+            <p>{props.student}</p> 
+
+
+
+
+            </span>
+            </div>
+
+          
+            
         </Paper>
     )
 
