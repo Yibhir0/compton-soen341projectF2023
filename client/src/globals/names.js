@@ -7,6 +7,18 @@ const STUDENTS = ["Dominic Riccio - 40125922",
 "Yassine Ibhir - 40251116"]  ;
 
 
+// const STUDENTS = [
+//     {
+//         name: "Random Name #1",
+//         description: "Probably the most random thing you have ever seen!"
+//     },
+    
+//     {
+//         name: "Random Name #2",
+//         description: "Hello World!"
+//     }
+// ]
+
 
 const AMENITIES = ["Parking","Pet Friendly","Swimming Pool"];
 
