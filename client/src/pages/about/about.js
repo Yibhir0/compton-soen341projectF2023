@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import React, { useState } from 'react';
-import { STUDENTS } from "../../globals/names";
 import Carousel from 'react-material-ui-carousel';
 import { Paper, Button } from '@mui/material'
 import './about.css'
@@ -11,11 +10,6 @@ of the site such as the those who created it
 */
 
 function About(props) {
-
-
-
-  const [students] = useState(STUDENTS);
-
 
 
 var ABOUTPAGE = [
