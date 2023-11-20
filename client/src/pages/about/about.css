@@ -6,3 +6,8 @@
     color: white;
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
+.about-header{
+    color:goldenrod;
+    text-align: center;
+    padding-top: 30px;
+}
