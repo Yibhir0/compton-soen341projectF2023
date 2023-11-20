@@ -16,7 +16,7 @@ var ABOUTPAGE = [
   {
 
       Head0: "About Us",
-      Head1: "Comptant Real Estate Company",
+      Head1: "Compton Real Estate Company",
       Head2: "The Compton Real Estate company is a Concordia University student project ",
       Head4: "The Goal of the project was to create a real estate web app designed to help users buy, rent and sell residential properties."
       
@@ -78,7 +78,7 @@ function Item(props)
 {
     return (
         <Paper>
-<div className='about-card-container'> 
+<div className='about-card-container d-flex align-items-center justify-content-center text-center'> 
       
 
 
