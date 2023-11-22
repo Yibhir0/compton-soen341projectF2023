@@ -24,26 +24,7 @@ const addOffer = async (req, res) => {
     messageEmail = 'Your offer is succefully sent ! \n The broker will contact you soon.';
 
     await sendEmail(offer.email, messageEmail);
-    //licenseNumber = offer.brokerLiscence
-    //const user = await User.findOne({ licenseNumber });
 
-   // if (!user) {
-     // return res.status(401).json({ error: 'no user found' });
-    //}
-
-  
-    //Send the email notification for new offer received (to broker)
-    //messageEmail = 'A new offer as been received, Check your offer on compton real estate';
-
-    //await sendEmail(user.email, messageEmail);
-
-    const newOffer = await offer.save();
-    res.status(201).json(newOffer);
-
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-};
 
 //  DelOffer
 const updateOffer = async (req, res) => {

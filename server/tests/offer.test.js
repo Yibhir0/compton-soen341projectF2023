@@ -31,7 +31,7 @@ describe('API User test', () => {
                 moveInDate: "2023-12-22",
                 buyerName: "Dom R",
                 email: "comptonfall2023@gmail.com",
-                buyerAddress: "123 Test St",
+                buyerAddress: "167 Rue Fleury Ouest",
                 brokerName: "Broker Dom",
                 brokerLiscence: "D123",
                 brokerAgency: "Remax",
@@ -42,7 +42,7 @@ describe('API User test', () => {
             expect(res.body.moveInDate).toBe("2023-12-22");
             expect(res.body.buyerName).toBe("Dom R");
             expect(res.body.email).toBe("comptonfall2023@gmail.com");
-            expect(res.body.buyerAddress).toBe("123 Test St");
+            expect(res.body.buyerAddress).toBe("167 Rue Fleury Ouest");
             expect(res.body.brokerName).toBe("Broker Dom");
             expect(res.body.brokerLiscence).toBe("D123");
             expect(res.body.brokerAgency).toBe("Remax");
