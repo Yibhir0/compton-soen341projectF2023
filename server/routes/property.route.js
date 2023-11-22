@@ -9,6 +9,7 @@ const {
   deleteProperty,
   getBrokerProperties,
   getPropertiesWithinPolygon,
+  getActiveListings,
 } = require("../controllers/property.controller");
 
 const router = express.Router();
@@ -29,6 +30,8 @@ router.put("/properties/:id", updateProperty);
 router.delete("/properties/:id", deleteProperty);
 
 router.get("/brokerproperties/:id", getBrokerProperties);
+
+router.get("/getactivelistings/:id", getActiveListings);
 
 
 

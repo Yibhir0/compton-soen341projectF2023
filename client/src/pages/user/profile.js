@@ -27,7 +27,9 @@ function Profile() {
   const [user, setUser] = useState({
   });
 
+
   useEffect(() => {
+
     const fetchData = async () => {
       const result = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/user/users/${id}`
@@ -38,6 +40,7 @@ function Profile() {
     };
     fetchData();
   }, [id]);
+
 
 
   return (
@@ -56,12 +59,13 @@ function Profile() {
         user.accountType === "broker" ? (
           <Box >
             <Box
+
               sx={{ display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: 'space-between' }}>
 
               <Link to="/visits" className='navItem' style={linkStyle}>Visits</Link>
 
 
-              <Link to="/offers" className='navItem' style={linkStyle}>Offers</Link>
+              <Link to="/offers" className='navItem' style={linkStyle}>Manage Offers</Link>
 
               <Link to="/create" className='navItem' style={linkStyle}>Add Property</Link>
 
@@ -71,6 +75,7 @@ function Profile() {
 
             </Box>
             <div>
+              <h1 style={{ textAlign: "center" }}>My Listings</h1>
               <MyProperties />
             </div>
           </Box>

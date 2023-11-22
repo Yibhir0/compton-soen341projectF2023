@@ -68,12 +68,6 @@ const propertySchema = new Schema({
 
   },
 
-  sold: {//Determines whether or not a property is sold. Turns true when sold. false by default
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-
 });
 
 module.exports = mongoose.model("Property", propertySchema);
