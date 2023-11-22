@@ -16,7 +16,7 @@ const getOffers = async (req, res) => {
 };
 //  AddOffer
 const addOffer = async (req, res) => {
-  //console.log(req.body)
+  console.log(req.body)
   const offer = new Offer(req.body);
   try {
 
@@ -24,18 +24,19 @@ const addOffer = async (req, res) => {
     messageEmail = 'Your offer is succefully sent ! \n The broker will contact you soon.';
 
     await sendEmail(offer.email, messageEmail);
-    licenseNumber = offer.brokerLiscence
-    const user = await User.findOne({ licenseNumber });
+    //licenseNumber = offer.brokerLiscence
+    //const user = await User.findOne({ licenseNumber });
 
-    if (!user) {
-      return res.status(401).json({ error: 'no user found' });
-    }
+   // if (!user) {
+     // return res.status(401).json({ error: 'no user found' });
+    //}
 
   
     //Send the email notification for new offer received (to broker)
-    messageEmail = 'A new offer as been received, Check your offer on compton real estate';
+    //messageEmail = 'A new offer as been received, Check your offer on compton real estate';
 
-    await sendEmail(user.email, messageEmail);
+    //await sendEmail(user.email, messageEmail);
+
     const newOffer = await offer.save();
     res.status(201).json(newOffer);
 
