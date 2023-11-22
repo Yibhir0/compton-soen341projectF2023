@@ -24,7 +24,11 @@ const addOffer = async (req, res) => {
     messageEmail = 'Your offer is succefully sent ! \n The broker will contact you soon.';
 
     await sendEmail(offer.email, messageEmail);
-
+    
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
 
 //  DelOffer
 const updateOffer = async (req, res) => {
