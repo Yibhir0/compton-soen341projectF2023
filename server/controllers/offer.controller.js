@@ -25,6 +25,9 @@ const addOffer = async (req, res) => {
 
     await sendEmail(offer.email, messageEmail);
     
+    const newOffer = await offer.save();
+    res.status(201).json(newOffer);
+
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
