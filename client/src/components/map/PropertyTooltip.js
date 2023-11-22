@@ -25,7 +25,7 @@ const PropertyTooltip = ({ property, handleVisible }) => {
             alignItems: "center",
           }}
         >
-          <h5>{property.propertyType}</h5>
+          <h5>For {property.propertyType}</h5>
           <h6>{property.price} <span style={{ color: "gold" }}>$</span></h6>
           {property.images.length === 0 ?
             <img style={{ width: '160px', height: "auto" }} src={require('../../assets/images/landingpage_background1.jpg')} alt="Photos" />

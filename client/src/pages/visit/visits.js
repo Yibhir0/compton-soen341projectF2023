@@ -25,7 +25,7 @@ function Visits() {
                 <VisitList visits={visits} />
             ) : (
                 <div className="mx-auto" style={{ maxWidth: "1300px" }}>
-                    <p>No requested visits yet</p>
+                    <p>No Visits Yet</p>
                 </div>
             )}
         </div>

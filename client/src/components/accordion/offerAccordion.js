@@ -1,42 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Box from '@mui/material/Box';
+import DeclineBtn from '../button/declineBtn';
 import AcceptBtn from '../button/acceptBtn';
-import RejectBtn from '../button/rejectBtn';
+import DeleteBtn from '../button/deleteBtn';
 
 
 function OfferAccordion(props) {
 
     const [offer, setOffer] = useState(props.offer);
-
     let date;
 
     if (offer !== null) {
         date = new Date(offer.requestedAt);
     }
-
-    const handleReject = async () => {
-        const confirmed = window.confirm('Are you sure you want to reject this offer?');
+    const handleDelete = async () => {
+        const confirmed = window.confirm('Are you sure you want to delete this offer?');
         if (confirmed) {
-            offer.status = "Rejected"
-            await fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offers/update/${offer._id}`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(offer),
-            })
-            .then(response => response.json())
-            .then((data) => {
-                ChangeOfferState(data);
-            })
-            .catch(console.error);
-
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offers/${offer._id}`, { method: 'DELETE' })
+                .then((response) => {
+                    if (response.ok) {
+                        alert('Offer deleted successfully');
+                        setOffer(null)
+                    }
+                })
+                .catch(error => {
+                    console.error('Failed to delete offer', error);
+                });
         }
     }
 
@@ -48,50 +42,26 @@ function OfferAccordion(props) {
     }
 
     const handleAccept = async () => {
-        let property = {};
-        const confirmed = window.confirm('Are you sure you want to accept this offer?');
-        if (confirmed) {
-            offer.status = "Accepted"
-            await fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offers/update/${offer._id}`,
+
+
+        let updatedOffer = offer;
+
+        updatedOffer.accepted = !offer.accepted
+
+
+        await fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offers/${offer._id}`,
             {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(offer),
+                body: JSON.stringify(updatedOffer),
             })
             .then(response => response.json())
             .then((data) => {
                 ChangeOfferState(data);
             })
             .catch(console.error);
-
-            await fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/${offer.propertyId}`)
-            .then(response => response.json())
-            .then(pr => {
-                property = pr;
-            })
-            .catch(error => {
-                console.error('Failed to fetch property details:', error);
-            });
-
-            property.propertyType = "Sold"
-
-            await fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/${property._id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(property),
-            })
-                .then(response => {
-                    if (response.ok) {
-                        alert('Changes successful.');
-                    }
-                });
-        
-        }
-
     }
     const style = {
         width: '200px',
@@ -114,7 +84,7 @@ function OfferAccordion(props) {
                         border: "1px solid #011a3eea",
                         p: 2,
                         m: 2,
-                        minWidth: 1000,
+                        minWidth: 300,
                     }}>
                     <AccordionSummary
 
@@ -134,7 +104,7 @@ function OfferAccordion(props) {
                                     p: 2,
                                     mr: 20,
                                 }}>
-                                <h6 style={{ color: 'gray' }}>Offer from {offer.brokerName}</h6>
+                                <h6 style={{ color: 'gray' }}>Offer From {offer.buyerName}</h6>
                             </Box>
 
                             <Box
@@ -154,12 +124,12 @@ function OfferAccordion(props) {
                                     ml: 20,
                                 }}
                             >
-                                <p style={{ color: 'gray' }}>Status: {offer.status}</p>
+                                <p style={{ color: 'gray' }}>Status: {offer.accepted ? 'Accepted' : 'Pending'}</p>
                             </Box>
                         </Box>
                         {/* </Typography> */}
                     </AccordionSummary>
-                    <AccordionDetails sx={{ width: "150ch" }}>
+                    <AccordionDetails sx={{ width: "100ch" }}>
                         <Typography >
                             <Box
                                 sx={{
@@ -173,7 +143,7 @@ function OfferAccordion(props) {
                                         justifyContent: 'space-between',
 
                                     }}>
-                                    <h3>Buyer </h3>
+                                    <h5>Buyer </h5>
                                     <h6>Name: {offer.buyerName}</h6>
                                     <h6>Email: {offer.email}</h6>
                                     <h6 style={style}>Address: {offer.buyerAddress}</h6>
@@ -185,7 +155,7 @@ function OfferAccordion(props) {
                                         justifyContent: 'space-between',
 
                                     }}>
-                                    <h3>Broker </h3>
+                                    <h5>Broker </h5>
                                     <h6>Name: {offer.brokerName}</h6>
                                     <h6>Liscence: {offer.brokerLiscence}</h6>
                                     <h6>Agency: {offer.brokerAgency}</h6>
@@ -197,10 +167,10 @@ function OfferAccordion(props) {
                                         justifyContent: 'space-between',
 
                                     }}>
-                                    <h3>Offer </h3>
+                                    <h5>Offer </h5>
                                     <h6>Price: {offer.offerPrice}</h6>
                                     <h6>Deed Sale Date: {offer.deedSaleDate}</h6>
-                                    <h6>Occupation Date: {offer.moveInDate}</h6>
+                                    <h6>occupation Date: {offer.moveInDate}</h6>
                                 </Box>
                                 <Box
                                     sx={{
@@ -209,7 +179,7 @@ function OfferAccordion(props) {
                                         justifyContent: 'space-between',
 
                                     }}>
-                                    <h3>Property </h3>
+                                    <h5>Property </h5>
                                     <h6 style={style}>Address: {offer.address}</h6>
                                     <h6>City: {offer.city}</h6>
                                 </Box>
@@ -219,9 +189,12 @@ function OfferAccordion(props) {
                                 display: 'flex',
                                 justifyContent: 'center'
                             }}>
-                                
-                                <AcceptBtn handleAccept={handleAccept} />
-                                <RejectBtn handleReject={handleReject} />
+                                {!offer.accepted ?
+                                    <AcceptBtn handleAccept={handleAccept} />
+                                    :
+                                    <DeclineBtn handleDecline={handleAccept} />
+                                }
+                                <DeleteBtn handleDelete={handleDelete} />
                             </Box>
                         </Typography>
                     </AccordionDetails>

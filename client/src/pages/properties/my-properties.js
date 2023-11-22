@@ -28,7 +28,7 @@ function MyProperties() {
         <div>
 
             <div className="d-flex align-items-center justify-content-center text-center " style={{ marginTop: "20px" }}>
-                
+                <h1>Broker's Properties</h1>
             </div>
             <br></br>
             {myproperties && myproperties.length > 0 ? (

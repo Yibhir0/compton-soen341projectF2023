@@ -9,8 +9,6 @@ import EditBtn from '../../components/button/editBtn';
 import PlayBtn from '../../components/button/playBtn';
 import OfferForm from '../../components/form/offerForm';
 import { isBroker } from '../../utils/auth';
-import BathtubIcon from '@mui/icons-material/Bathtub';
-import HotelIcon from '@mui/icons-material/Hotel';
 
 import './properties.css';
 
@@ -110,12 +108,12 @@ function PropertyView() {
 
                                             </div>
                                             <div className="property-info">
-                                                <h4>{property.propertyType}</h4>
-                                                <h5><span style={{ color: "gold" }}>${property && property.price? `${property.price.toLocaleString()}${property.propertyType === 'For Rent' ? '/Month' : ''}`: ''}</span></h5>
+                                                <h4>For : {property.propertyType}</h4>
+                                                <h5>Price : {property.price} <span style={{ color: "gold" }}>$</span></h5>
                                                 <h5>{property.address}</h5>
                                                 <h5>{property.city} , {property.postalCode} </h5>
-                                                <h5><HotelIcon></HotelIcon> {property.numberOfBedrooms} Bedrooms</h5>
-                                                <h5><BathtubIcon></BathtubIcon> {property.numberOfBathrooms} Bathrooms</h5>
+                                                <h5>{property.numberOfBedrooms} Bedrooms</h5>
+                                                <h5>{property.numberOfBathrooms} Bathrooms</h5>
                                                 <ul>
                                                     {property.amenities?.map((amenity, index) => (
                                                         <li key={index}>{amenity}</li>
@@ -126,7 +124,7 @@ function PropertyView() {
                                             </div>
                                             <div className="property-buttons-container">
                                                 <VisitForm property={property} />
-                                                {property.propertyType !== 'Sold' && property.propertyType !== 'Rent' && isBroker() && (
+                                                {property.propertyType !== 'Rent' && isBroker() && (
                                                     <OfferForm property={property} decodedToken={decodedToken} />
                                                 )}
 

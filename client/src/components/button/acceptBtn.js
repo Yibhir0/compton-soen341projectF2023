@@ -3,7 +3,7 @@ import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from "@mui/material/Tooltip";
 
-const AcceptBtn = ({ handleAccept  }) => {
+const AcceptBtn = ({ handleAccept }) => {
     return (
         <Tooltip title="Accept">
             <IconButton onClick={handleAccept}>

@@ -23,7 +23,7 @@ function Offers() {
     }, [decodedToken.brokerId]);
     return (
         <div>
-            <h1 style={{ textAlign: "center" }} > Manage Offers</h1>
+            <h1 style={{ textAlign: "center" }} >Offers</h1>
             {offers.length > 0 ? (
                 <OfferList offers={offers} />
             ) : (

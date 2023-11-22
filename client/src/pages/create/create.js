@@ -82,7 +82,7 @@ function CreateProperty() {
       .then(response => {
         if (response.ok) {
           alert("Property is created successfully");
-          navigate(-1);
+          navigate("/my-properties");
         }
         else {
           alert("Sorry! try to create again");
@@ -117,8 +117,8 @@ function CreateProperty() {
             <div className="d-flex">
               <label htmlFor="propertyType">Property Type:</label>
               <select name="propertyType" id="propertyType">
-                <option value="For Sale">For Sale</option>
-                <option value="For Rent">For Rent</option>
+                <option value="Sale">For Sale</option>
+                <option value="Rent">For Rent</option>
               </select>
             </div>
 

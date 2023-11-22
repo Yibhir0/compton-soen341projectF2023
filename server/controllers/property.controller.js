@@ -3,13 +3,15 @@ const Property = require("../models/property.model");
 
 /**
  * It's an async function that uses the property model to find 
- * all properties that are not sold and then returns a status of 200 with the properties
+ * all properties and then returns a status of 200 with the properties
  * in the response body.
  */
 
 const getProperties = async (req, res) => {
+
+
   try {
-    const properties = await Property.find({ propertyType: { $ne: "Sold" } });
+    const properties = await Property.find();
     res.status(200).json(properties);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -40,10 +42,6 @@ const getFilteredProperties = async (req, res) => {
   const data = req.query;
   let and_conds = [];
   const price = {};
-
-  if (!("propertyType" in data)) {
-    and_conds.push({ "propertyType": { $ne: "Sold" } });
-  }
 
   for (const field in data) {
 
@@ -164,16 +162,6 @@ const getBrokerProperties = async (req, res) => {
   }
 }
 
-const getActiveListings = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const properties = await Property.find({ brokerID: id, propertyType: { $ne: "Sold" } });
-    res.status(200).json(properties);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-}
-
 
 /**
  * Method gets documents with a geospatial field within a polygon
@@ -212,8 +200,7 @@ const getPropertiesWithinPolygon = async (req, res) => {
             ]]
           }
         }
-      },
-      propertyType: { $ne: 'Sold' },
+      }
     });
 
     res.status(200).json(documents);
@@ -291,5 +278,4 @@ module.exports = {
   deleteProperty,
   getBrokerProperties,
   getPropertiesWithinPolygon,
-  getActiveListings,
 };
