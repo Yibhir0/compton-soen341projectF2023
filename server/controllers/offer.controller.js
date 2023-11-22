@@ -1,4 +1,7 @@
 const Offer = require("../models/offer.model");
+const User = require("../models/user.model");
+const nodemailer = require('nodemailer');
+
 //  GetOffer//
 const getOffers = async (req, res) => {
   try {
@@ -18,6 +21,22 @@ const addOffer = async (req, res) => {
   try {
     const newOffer = await offer.save();
     res.status(201).json(newOffer);
+    /* --------------------------------------------
+    * Works, but when the test run I have an error. 
+    * It does not find a user 
+    * To fix if we have time
+     -------------------------------------------- */
+
+    //Send the email notification for new offer received (to broker)
+    licenseNumber = offer.brokerLiscence
+    const user = await User.findOne({ licenseNumber });
+    if (!user) {
+      return res.status(401).json({ error: 'no user found' });
+    }
+
+    messageEmail = 'A new offer as been received, Check your offer on compton real estate';
+    await sendEmail(user.email, messageEmail);
+
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -37,4 +56,30 @@ const updateOffer = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
-module.exports = { getOffers, addOffer, updateOffer };
+
+//send email
+const sendEmail = async (email, messageEmail) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'comptonfall2023@gmail.com',
+        pass: 'kwes vzvj ozxt klkg',
+      },
+    });
+
+    const mailOptions = {
+      from: 'comptonfall2023@gmail.com',
+      to: email,
+      subject: 'Offer Notification',
+      text: `Offer notification message: ${messageEmail}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully');
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw new Error('Email sending failed');
+  }
+};
+module.exports = { getOffers, addOffer, updateOffer, sendEmail };
