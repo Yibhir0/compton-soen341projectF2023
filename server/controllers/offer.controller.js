@@ -19,8 +19,7 @@ const addOffer = async (req, res) => {
   console.log(req.body)
   const offer = new Offer(req.body);
   try {
-    const newOffer = await offer.save();
-    res.status(201).json(newOffer);
+    
     /* --------------------------------------------
     * Works, but when the test run I have an error. 
     * It does not find a user 
@@ -33,9 +32,13 @@ const addOffer = async (req, res) => {
     if (!user) {
       return res.status(401).json({ error: 'no user found' });
     }
-
+    console.log("before send")
     messageEmail = 'A new offer as been received, Check your offer on compton real estate';
     await sendEmail(user.email, messageEmail);
+    console.log("after send ")
+
+    const newOffer = await offer.save();
+    res.status(201).json(newOffer);
 
   } catch (err) {
     res.status(400).json({ message: err.message });

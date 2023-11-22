@@ -32,7 +32,7 @@ describe('API User test', () => {
                 buyerName: "Dom R",
                 email: "comptonfall2023@gmail.com",
                 buyerAddress: "167 Rue Fleury Ouest",
-                brokerName: "Broker Dom",
+                brokerName: "Dominic Riccio",
                 brokerLiscence: "D123",
                 brokerAgency: "Remax",
             });
@@ -43,7 +43,7 @@ describe('API User test', () => {
             expect(res.body.buyerName).toBe("Dom R");
             expect(res.body.email).toBe("comptonfall2023@gmail.com");
             expect(res.body.buyerAddress).toBe("167 Rue Fleury Ouest");
-            expect(res.body.brokerName).toBe("Broker Dom");
+            expect(res.body.brokerName).toBe("Dominic Riccio");
             expect(res.body.brokerLiscence).toBe("D123");
             expect(res.body.brokerAgency).toBe("Remax");
         });
