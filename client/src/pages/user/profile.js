@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
 import AvatarProfile from '../../components/avatar/avatar';
 import UpdateBrokerForm from '../../components/form/updateBrokerForm';
+import { isAdmin } from '../../utils/auth'
 
 const linkStyle = {
   marginTop: "10px",
@@ -88,7 +89,8 @@ function Profile() {
             Homebuyer profile page
           </Box>
 
-        ) : (
+        ) : isAdmin() ?(
+          
           <Box>
             <Box
               sx={{ display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: "space-between" }}>
@@ -100,7 +102,10 @@ function Profile() {
             </Box>
             <Users />
           </Box >
-        )}
+        ) : (
+          <div></div>
+        )
+      }
 
 
     </div>
