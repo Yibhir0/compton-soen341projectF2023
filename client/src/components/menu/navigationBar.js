@@ -30,9 +30,6 @@ const Navbar = () => {
       <li>
         <Link to="/properties/polygon" className='navItem'>Map</Link>
       </li>
-      <li>
-        <Link to="/brokers" className='navItem'>Search Brokers</Link>
-      </li>
 
     </>
   );
@@ -44,9 +41,15 @@ const Navbar = () => {
     <>
 
     {isHomeBuyer() && (
+      <>
       <li>
       <Link to="/mortgage" className='navItem'>Mortgage Calculator</Link>
-    </li>
+      </li>
+      
+      <li>
+        <Link to="/brokers" className='navItem'>Search Brokers</Link>
+      </li>
+      </>
     )}
       <li>
 
