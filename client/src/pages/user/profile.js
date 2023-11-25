@@ -65,7 +65,10 @@ function Profile() {
               <Link to="/visits" className='navItem' style={linkStyle}>Visits</Link>
 
 
-              <Link to="/offers" className='navItem' style={linkStyle}>Manage Offers</Link>
+              <Link to="/offers-sent" className='navItem' style={linkStyle}>Offers Sent</Link>
+
+              <Link to="/offers" className='navItem' style={linkStyle}>Offers Received</Link>
+
 
               <Link to="/create" className='navItem' style={linkStyle}>Add Property</Link>
 

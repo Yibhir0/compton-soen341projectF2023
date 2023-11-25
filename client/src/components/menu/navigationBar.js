@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './navigationBar.css';
+import { isHomeBuyer } from '../../utils/auth'
 
 const Navbar = () => {
   const isBrokerSignedIn = !!localStorage.getItem('token');
@@ -25,9 +26,7 @@ const Navbar = () => {
       <li>
         <Link to="/properties" className='navItem'>Properties</Link>
       </li>
-      <li>
-        <Link to="/mortgage" className='navItem'>Mortgage Calculator</Link>
-      </li>
+      
       <li>
         <Link to="/properties/polygon" className='navItem'>Map</Link>
       </li>
@@ -38,9 +37,17 @@ const Navbar = () => {
     </>
   );
 
+  
+
   // Available navbar links only if isBrokerSignedIn is true
   const brokerNavigation = isBrokerSignedIn ? (
     <>
+
+    {isHomeBuyer() && (
+      <li>
+      <Link to="/mortgage" className='navItem'>Mortgage Calculator</Link>
+    </li>
+    )}
       <li>
 
         <Link to="/" onClick={handleSignout} className='navItem'>Sign out</Link>

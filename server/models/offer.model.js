@@ -10,6 +10,10 @@ const offerSchema = new Schema({
     type: String,
     required: false,
   },
+  sentBrokerID: {//This would be the brokers unique identifier.Only brokers would have this ID
+    type: String,
+    required: false,
+  },
 //email of buyer
   email: {// This is the email tied to the accound. Every type of user (Admin,Broker or homebuyer must have one.
     type: String,
