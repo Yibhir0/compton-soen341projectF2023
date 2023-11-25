@@ -5,13 +5,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from "@mui/material/Button";
 /*This is home page  of the site.
 This would be the default page that would
 appear upon logining in or accessing the site
 */
 function Home() {
   const [recentlyViewed, setRecentlyViewed] = useState([]);
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +41,16 @@ function Home() {
     fetchData();
   }, []);
 
+  const navigateToMap = () => {
+    // 👇️ navigate to /contacts
+    navigate('/properties/polygon');
+  };
+
+  const navigateToCalculator = () => {
+    // 👇️ navigate to /contacts
+    navigate('/mortgage');
+  };
+
   return (
     <div className="home-page">
 
@@ -49,17 +63,26 @@ function Home() {
                 width: 1440,
 
               }}
-              alt="Background House"
+                 className={"home-img"}
+                 alt="Background House"
               src={require("../../assets/images/landingpage_background.jpg")}>
             </Box>
           </div>
-
+        <div>
           <div className="label">
 
             <p className="label-welcome">Welcome to Compton Real Estate</p>
             <p className="label-subtext">Find your next home with us.</p>
+            <br/>
+            <button onClick={navigateToMap} className="label-map">
+              View Property Map 📍
+            </button>
+            <button onClick={navigateToCalculator} className="label-mortgage">
+              Mortgage Calculator 🏠
+            </button>
           </div>
-          <div className="searchProperty"></div>
+
+        </div>
           <div className="recentlyViewedListings">
             <p className="recentlyViewedText">Recently Viewed</p>
           </div>
