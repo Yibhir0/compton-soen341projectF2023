@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const request = require("supertest");
 const { app } = require("../server");
+const unidecode = require('unidecode');
 
 require("dotenv").config();
 
