@@ -2,6 +2,7 @@ env:
   browser: true
   es2021: true
   node: true
+  jest: true
 
 extends:
   - eslint:recommended
@@ -11,7 +12,6 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-rules:
-  # Override default settings
-  eqeqeq: warn
-  strict: off
+
+globals:
+  expect: "readonly"
