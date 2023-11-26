@@ -16,3 +16,15 @@ jobs:
           npm install
           npm run build --if-present
           npm run test  --if-present
+  front-end:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v2
+
+      - run: |
+          cd client
+          npm install
+          CI="" npm run build --if-present
+          npm run test  --if-present
+  
