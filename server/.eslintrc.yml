@@ -11,4 +11,7 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-rules: {}
+rules:
+  # Override default settings
+  eqeqeq: warn
+  strict: off
