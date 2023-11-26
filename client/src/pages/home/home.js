@@ -6,8 +6,7 @@ import { Navigation, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from "@mui/material/Button";
-import {isHomeBuyer} from "../../utils/auth";
+import { isHomeBuyer } from "../../utils/auth";
 /*This is home page  of the site.
 This would be the default page that would
 appear upon logining in or accessing the site
@@ -64,28 +63,28 @@ function Home() {
                 width: 1440,
 
               }}
-                 className={"home-img"}
-                 alt="Background House"
+              className={"home-img"}
+              alt="Background House"
               src={require("../../assets/images/landingpage_background.jpg")}>
             </Box>
           </div>
-        <div>
-          <div className="label">
+          <div>
+            <div className="label">
 
-            <p className="label-welcome">Welcome to Compton Real Estate</p>
-            <p className="label-subtext">Find your next home with us.</p>
-            <br/>
-            <button onClick={navigateToMap} className="label-map">
-              View Property Map 📍
-            </button>
-            {isHomeBuyer() && (
-            <button onClick={navigateToCalculator} className="label-mortgage">
-              Mortgage Calculator 🏠
-            </button>
-                )}
+              <p className="label-welcome">Welcome to Compton Real Estate</p>
+              <p className="label-subtext">Find your next home with us.</p>
+              <br />
+              <button onClick={navigateToMap} className="label-map">
+                View Property Map 📍
+              </button>
+              {isHomeBuyer() && (
+                <button onClick={navigateToCalculator} className="label-mortgage">
+                  Mortgage Calculator 🏠
+                </button>
+              )}
+            </div>
+
           </div>
-
-        </div>
           <div className="recentlyViewedListings">
             <p className="recentlyViewedText">Recently Viewed</p>
           </div>
