@@ -19,10 +19,7 @@ function PropertyEdit() {
 
     const [property, setProperty] = useState(null);
 
-    const [coordinates, setCoordinates] = useState({
-        latitude: 0,
-        longitude: 0,
-    });
+    const [coordinates, setCoordinates] = useState(null);
 
     const token = localStorage.getItem('token');
 
@@ -31,6 +28,10 @@ function PropertyEdit() {
             .then(response => response.json())
             .then(data => {
                 setProperty(data);
+                setCoordinates({
+                    latitude: data.geometry.coordinates[0],
+                    longitude: data.geometry.coordinates[1]
+                  });
                 initLocationAutocomplete(setCoordinates);
                 const decodedToken = jwtDecode(token);
 
@@ -42,12 +43,9 @@ function PropertyEdit() {
             .catch(error => {
                 console.error('Failed to fetch property details:', error);
             });
-
-    },);
+    },[]);
 
     const editProperty = async (event) => {
-
-        console.log(coordinates)
 
         event.preventDefault();
         property.address = event.target.address.value;
