@@ -16,3 +16,13 @@ jobs:
           npm install
           npm run build --if-present
           npm run test  --if-present
+      # Add ESLint setup
+      - name: Install ESLint
+        run: npm install eslint --save-dev
+
+      - name: Create ESLint configuration
+        run: npx eslint --init
+
+      # Run ESLint with --fix and --quiet flags
+      - name: Run ESLint
+        run: npx eslint --fix --quiet .
