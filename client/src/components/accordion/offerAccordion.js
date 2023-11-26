@@ -224,9 +224,9 @@ function OfferAccordion(props) {
                                 justifyContent: 'center'
                             }}>
 
-                                {offer.status == 'Pending' && (
+                                {offer.status === 'Pending' && (
                                     <div>
-                                        {offer.brokerID == decodedToken.brokerId && (
+                                        {offer.brokerID === decodedToken.brokerId && (
                                             <React.Fragment>
                                                 <AcceptBtn handleAccept={handleAccept} />
                                                 <RejectBtn handleReject={handleReject} />

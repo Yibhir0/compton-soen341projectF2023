@@ -43,7 +43,7 @@ function PropertyEdit() {
             .catch(error => {
                 console.error('Failed to fetch property details:', error);
             });
-    },[]);
+    },);
 
     const editProperty = async (event) => {
 
