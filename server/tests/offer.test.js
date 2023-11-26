@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+
 const request = require("supertest");
 const { app } = require("../server");
- 
+
 require("dotenv").config();
 
 // Mock data testing MongoMemoryServer (see dbConn.js)
