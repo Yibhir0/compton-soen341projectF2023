@@ -23,6 +23,7 @@
     "mongoose-geojson-schema": "^2.2.5",
     "nodemailer": "^6.9.7",
     "nodemon": "^3.0.1",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "unidecode": "^0.1.8"
   }
 }

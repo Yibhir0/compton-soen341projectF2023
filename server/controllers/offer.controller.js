@@ -11,6 +11,19 @@ const getOffers = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+const getMyOffers = async (req, res) => {
+  try {
+    const { brokerId } = req.query;
+    const offers = await Offer.find({ sentBrokerID: brokerId })
+    res.status(200).json(offers);
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({ message: err.message });
+  }
+};
+
 //  AddOffer
 const addOffer = async (req, res) => {
   console.log(req.body)
@@ -37,4 +50,4 @@ const updateOffer = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
-module.exports = { getOffers, addOffer, updateOffer };
+module.exports = { getOffers, addOffer, updateOffer, getMyOffers };

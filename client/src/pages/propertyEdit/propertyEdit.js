@@ -119,8 +119,8 @@ function PropertyEdit() {
                                 <div className="d-flex">
                                     <label htmlFor="propertyType">Property Type</label>
                                     <select defaultValue={property.propertyType} name="propertyType" id="propertyType">
-                                        <option value="Sale">For Sale</option>
-                                        <option value="Rent">For Rent</option>
+                                        <option value="For Sale">For Sale</option>
+                                        <option value="For Rent">For Rent</option>
                                     </select>
                                 </div>
 

@@ -21,15 +21,18 @@ function Users(){
 
   return (
     <div>
-        <h1 style={{textAlign:"center"}} >Brokers</h1>
-        {users.length > 0 ? (
-            <UserList users={users}/>
-            
+        {isAdmin() && (
+        <div>
+          <h1 style={{ textAlign: "center" }}>Brokers</h1>
+          {users.length > 0 ? (
+            <UserList users={users} />
           ) : (
             <div className="mx-auto" style={{ maxWidth: "1300px" }}>
-            
+              There are currently no brokers in the system.
             </div>
           )}
+        </div>
+      )}
     </div>
 
   )
