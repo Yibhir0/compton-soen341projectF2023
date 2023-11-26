@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from "@mui/material/Button";
+import {isHomeBuyer} from "../../utils/auth";
 /*This is home page  of the site.
 This would be the default page that would
 appear upon logining in or accessing the site
@@ -77,9 +78,11 @@ function Home() {
             <button onClick={navigateToMap} className="label-map">
               View Property Map 📍
             </button>
+            {isHomeBuyer() && (
             <button onClick={navigateToCalculator} className="label-mortgage">
               Mortgage Calculator 🏠
             </button>
+                )}
           </div>
 
         </div>
