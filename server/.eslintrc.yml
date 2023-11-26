@@ -15,3 +15,10 @@ plugins:
 
 globals:
   expect: "readonly"
+
+overrides:
+  - files:
+      - "**/*.spec.js"
+      - "**/*.spec.jsx"
+    env:
+      jest: true
