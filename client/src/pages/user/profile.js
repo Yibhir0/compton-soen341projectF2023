@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
 import AvatarProfile from '../../components/avatar/avatar';
 import UpdateBrokerForm from '../../components/form/updateBrokerForm';
+import { isAdmin } from '../../utils/auth'
 
 const linkStyle = {
   marginTop: "10px",
@@ -65,7 +66,10 @@ function Profile() {
               <Link to="/visits" className='navItem' style={linkStyle}>Visits</Link>
 
 
-              <Link to="/offers" className='navItem' style={linkStyle}>Manage Offers</Link>
+              <Link to="/offers-sent" className='navItem' style={linkStyle}>Offers Sent</Link>
+
+              <Link to="/offers" className='navItem' style={linkStyle}>Offers Received</Link>
+
 
               <Link to="/create" className='navItem' style={linkStyle}>Add Property</Link>
 
@@ -85,7 +89,8 @@ function Profile() {
             Homebuyer profile page
           </Box>
 
-        ) : (
+        ) : isAdmin() ?(
+          
           <Box>
             <Box
               sx={{ display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: "space-between" }}>
@@ -97,7 +102,10 @@ function Profile() {
             </Box>
             <Users />
           </Box >
-        )}
+        ) : (
+          <div></div>
+        )
+      }
 
 
     </div>
