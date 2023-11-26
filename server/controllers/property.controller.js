@@ -1,6 +1,6 @@
 
 const Property = require("../models/property.model");
-
+const unidecode = require('unidecode');
 /**
  * It's an async function that uses the property model to find 
  * all properties that are not sold and then returns a status of 200 with the properties
@@ -20,7 +20,12 @@ const getProperties = async (req, res) => {
  * Creates a new property and saves it to the database.
  */
 const addProperty = async (req, res) => {
-  const property = new Property(req.body);
+  
+
+  const city = req.body.city;
+  const cityNoAccents = unidecode(city);
+
+  const property = new Property({...req.body, city:cityNoAccents});
 
   try {
     const newProperty = await property.save();
@@ -120,7 +125,10 @@ const getProperty = async (req, res) => {
 const updateProperty = async (req, res) => {
   try {
     const { id } = req.params;
-    const property = await Property.findByIdAndUpdate(id, req.body);
+    const city = req.body.city;
+    const cityNoAccents = unidecode(city);
+
+    const property = await Property.findByIdAndUpdate(id, {...req.body, city:cityNoAccents});
     if (!property) {
       return res.status(404).json({ message: "Cannot find any property with id " + id + " to update." });
     }

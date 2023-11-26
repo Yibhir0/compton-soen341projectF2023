@@ -28,6 +28,7 @@ describe('API Property test', () => {
     it("should create a property", async () => {
       const res = await request(app).post("/api/property").send({
         brokerID: "22",
+        city: "Montreal",
         address: "2004 rue mackay",
         propertyType: "house",
       });
