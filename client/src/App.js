@@ -28,6 +28,7 @@ import PropertyPlayer from './components/player/propertyPlayer';
 
 import PasswordReset from "./pages/login/passwordReset"
 import BrokerDetails from "./pages/brokers/BrokerDetails";
+import OffersSent from './pages/offer/SentOffers'
 
 function App() {
 
@@ -63,6 +64,8 @@ function App() {
         {isBrokerSignedIn && <Route path="/visits" element={<Visits />}></Route>}
 
         {isBrokerSignedIn && <Route path="/offers" element={<Offers />}></Route>}
+
+        {isBrokerSignedIn && <Route path="/offers-sent" element={<OffersSent />}></Route>}
 
         <Route path="/properties/:id" element={<PropertyDetails />}></Route>
         <Route path="/brokers/:id" element={<BrokerDetails />}></Route>

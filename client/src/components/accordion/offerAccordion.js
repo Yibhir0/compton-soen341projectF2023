@@ -7,11 +7,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Box from '@mui/material/Box';
 import AcceptBtn from '../button/acceptBtn';
 import RejectBtn from '../button/rejectBtn';
+import jwtDecode from 'jwt-decode';
 
 
 function OfferAccordion(props) {
 
     const [offer, setOffer] = useState(props.offer);
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
 
     let date;
 
@@ -46,6 +49,7 @@ function OfferAccordion(props) {
             data,
         }));
     }
+
 
     const handleAccept = async () => {
         let property = {};
@@ -134,7 +138,7 @@ function OfferAccordion(props) {
                                     p: 2,
                                     mr: 20,
                                 }}>
-                                <h6 style={{ color: 'gray' }}>Offer from {offer.brokerName}</h6>
+                                <h6 style={{ color: 'gray' }}>Offer</h6>
                             </Box>
 
                             <Box
@@ -187,7 +191,7 @@ function OfferAccordion(props) {
                                     }}>
                                     <h3>Broker </h3>
                                     <h6>Name: {offer.brokerName}</h6>
-                                    <h6>Liscence: {offer.brokerLiscence}</h6>
+                                    <h6>License: {offer.brokerLiscence}</h6>
                                     <h6>Agency: {offer.brokerAgency}</h6>
                                 </Box>
                                 <Box
@@ -219,9 +223,18 @@ function OfferAccordion(props) {
                                 display: 'flex',
                                 justifyContent: 'center'
                             }}>
-                                
-                                <AcceptBtn handleAccept={handleAccept} />
-                                <RejectBtn handleReject={handleReject} />
+
+                                {offer.status == 'Pending' && ( 
+                                    <div>
+                                        {offer.brokerID == decodedToken.brokerId && (
+                                            <React.Fragment>
+                                                <AcceptBtn handleAccept={handleAccept} />
+                                                <RejectBtn handleReject={handleReject} />
+                                            </React.Fragment>
+                                    
+                                        )}
+                                    </div>
+                                )}
                             </Box>
                         </Typography>
                     </AccordionDetails>

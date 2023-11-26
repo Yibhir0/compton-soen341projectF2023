@@ -74,6 +74,7 @@ const OfferForm = ({ property, decodedToken }) => {
       brokerName: broker.brokerName,
       brokerLiscence: broker.brokerLiscence,
       brokerAgency: broker.brokerAgency,
+      sentBrokerID: decodedToken.brokerId,
 
       brokerID: property.brokerID,
       propertyId: property._id,
