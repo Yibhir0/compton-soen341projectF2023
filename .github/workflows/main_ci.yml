@@ -16,6 +16,10 @@ jobs:
           npm install
           npm run build --if-present
           npm run test  --if-present
+          cd ../client
+          npm install
+          npm run build --if-present
+
       # Add ESLint setup
       - name: Install ESLint
         run: npm install eslint --save-dev
