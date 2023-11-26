@@ -2,6 +2,8 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import React from "react";
 import MortgageForm from "../components/mortgage/mortgageform";
 import userEvent from "@testing-library/user-event";
+import '@testing-library/jest-dom/extend-expect'
+
 
 
 //Form testing that allows to test testing-library as well
@@ -52,5 +54,7 @@ test('term years equal 0', () => {
 
     fireEvent.click(screen.getByRole("button"))
 
-    expect(screen.getByTestId("monthly-payment")).not.toBeInTheDocument();
+
+
+    expect(screen.queryByTestId("monthly-payment")).not.toBeInTheDocument();
 })
