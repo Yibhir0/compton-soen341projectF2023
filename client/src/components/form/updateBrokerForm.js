@@ -56,7 +56,7 @@ const UpdateBrokerForm = ({ id }) => {
       });
     };
     fetchData();
-  }, [id]);
+  }, [credentials, id]);
 
   const openModal = () => {
     setIsModalOpen(true);
