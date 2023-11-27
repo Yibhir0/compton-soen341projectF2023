@@ -30,7 +30,7 @@ function BrokerRegister() {
                 navigate('/login')
             })
             .catch((error) => {
-                console.log('Unable to register user');
+                console.log(error);
             })
     }
 
