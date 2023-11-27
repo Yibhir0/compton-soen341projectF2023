@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 
 const OfferList = ({ offers }) => {
 
-    return (
-      <Box
+  return (
+    <Box
       sx={{
         m: 1,
         display: "flex",
@@ -13,14 +13,14 @@ const OfferList = ({ offers }) => {
         justifyContent: "space-evenly",
         alignItems: "center",
       }}
-      >
-            {offers.map((offer, index) => (
-           <Offer offer={offer}/>
-          ))}
+    >
+      {offers.map((offer, index) => (
+        <Offer key={index} offer={offer} />
+      ))}
 
-          
-      </Box>
-    );
-  };
+
+    </Box>
+  );
+};
 
 export default OfferList;

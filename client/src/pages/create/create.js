@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
-import {initLocationAutocomplete} from '../../components/autocomplete/autocomplete'
+import { initLocationAutocomplete } from '../../components/autocomplete/autocomplete'
 
 /*This is the property creation pagee of the site.
 This would only be accesable by brokers to add a listing of a 
@@ -67,7 +67,7 @@ function CreateProperty() {
       images: uploadedImageIDs,
       geometry: {
         type: "Point",
-        coordinates: [coordinates.longitude,coordinates.latitude],
+        coordinates: [coordinates.longitude, coordinates.latitude],
       },
     };
 
@@ -154,8 +154,8 @@ function CreateProperty() {
                 <div className="d-flex">
                   <p>Images:</p>
                   <div className="card" style={{ width: '15rem' }}>
-                    {uploadedImageIDs.map((image) => (
-                      <img className="img-thumbnail" src={"https://res.cloudinary.com/dbhsjm5a2/image/upload/v1697488900/" + image} alt="Uploaded" />
+                    {uploadedImageIDs.map((image, index) => (
+                      <img className="img-thumbnail" key={index} src={"https://res.cloudinary.com/dbhsjm5a2/image/upload/v1697488900/" + image} alt="Uploaded" />
                     ))}
                   </div>
                 </div>
@@ -165,7 +165,7 @@ function CreateProperty() {
               <Box>
                 <button type="submit">Create</button>
               </Box>
-              
+
             </div>
 
           </div>

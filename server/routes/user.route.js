@@ -1,11 +1,10 @@
 const express = require("express");
 
 //This is the router for users
-const{
+const {
    getUsers,
    getBrokers,
    getUser,
-   getBroker,
    deleteUser,
    getNonVerifiedUsers,
    verifyUser,
@@ -18,7 +17,7 @@ router.get("/brokers", getBrokers);
 router.get("/users/nonverified", getNonVerifiedUsers);
 router.get("/users/:id", getUser);
 router.get("/users", getUsers);
-router.delete("/users/:id",  deleteUser);
+router.delete("/users/:id", deleteUser);
 router.put("/users/:id", verifyUser);
 
 module.exports = router;

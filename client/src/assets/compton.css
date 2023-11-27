@@ -20,14 +20,6 @@
     padding: 10px;
     text-shadow: 1px 1px 1px #fff;
 }
-.card {
-    width: auto;
-    height: 300px;
-    background: white;
-    border-radius: 10px;
-    transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    margin-bottom: 30px;
-}
 
 .broker-details{
     margin-left: 50px;

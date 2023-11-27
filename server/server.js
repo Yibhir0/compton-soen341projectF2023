@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-const { connectDB, disconnectDB } = require("./dbConn");
+const { connectDB } = require("./dbConn");
 
 
 const app = express();

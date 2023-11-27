@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-var GeoJSON = require('mongoose-geojson-schema');
-
 const Schema = mongoose.Schema;
 
 /* Creating a new schema for the property model. */

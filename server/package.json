@@ -25,5 +25,9 @@
     "nodemon": "^3.0.1",
     "supertest": "^6.3.3",
     "unidecode": "^0.1.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-plugin-react": "^7.33.2"
   }
 }

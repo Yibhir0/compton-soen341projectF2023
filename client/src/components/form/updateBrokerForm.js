@@ -6,7 +6,6 @@ import FilledInput from '@mui/material/FilledInput';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -57,7 +56,7 @@ const UpdateBrokerForm = ({ id }) => {
       });
     };
     fetchData();
-  }, [id]);
+  }, [credentials, id]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -75,6 +74,7 @@ const UpdateBrokerForm = ({ id }) => {
         closeModal();
       })
       .catch((e) => {
+        console.log(e)
         alert("Error");
       })
   };

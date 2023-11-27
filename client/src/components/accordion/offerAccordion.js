@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -27,18 +27,18 @@ function OfferAccordion(props) {
         if (confirmed) {
             offer.status = "Rejected"
             await fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offers/update/${offer._id}`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(offer),
-            })
-            .then(response => response.json())
-            .then((data) => {
-                ChangeOfferState(data);
-            })
-            .catch(console.error);
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(offer),
+                })
+                .then(response => response.json())
+                .then((data) => {
+                    ChangeOfferState(data);
+                })
+                .catch(console.error);
 
         }
     }
@@ -57,27 +57,27 @@ function OfferAccordion(props) {
         if (confirmed) {
             offer.status = "Accepted"
             await fetch(`${process.env.REACT_APP_BACKEND_URL}/offer/offers/update/${offer._id}`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(offer),
-            })
-            .then(response => response.json())
-            .then((data) => {
-                ChangeOfferState(data);
-            })
-            .catch(console.error);
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(offer),
+                })
+                .then(response => response.json())
+                .then((data) => {
+                    ChangeOfferState(data);
+                })
+                .catch(console.error);
 
             await fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/${offer.propertyId}`)
-            .then(response => response.json())
-            .then(pr => {
-                property = pr;
-            })
-            .catch(error => {
-                console.error('Failed to fetch property details:', error);
-            });
+                .then(response => response.json())
+                .then(pr => {
+                    property = pr;
+                })
+                .catch(error => {
+                    console.error('Failed to fetch property details:', error);
+                });
 
             property.propertyType = "Sold"
 
@@ -93,7 +93,7 @@ function OfferAccordion(props) {
                         alert('Changes successful.');
                     }
                 });
-        
+
         }
 
     }
@@ -224,14 +224,14 @@ function OfferAccordion(props) {
                                 justifyContent: 'center'
                             }}>
 
-                                {offer.status == 'Pending' && ( 
+                                {offer.status === 'Pending' && (
                                     <div>
-                                        {offer.brokerID == decodedToken.brokerId && (
+                                        {offer.brokerID === decodedToken.brokerId && (
                                             <React.Fragment>
                                                 <AcceptBtn handleAccept={handleAccept} />
                                                 <RejectBtn handleReject={handleReject} />
                                             </React.Fragment>
-                                    
+
                                         )}
                                     </div>
                                 )}

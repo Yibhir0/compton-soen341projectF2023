@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const Property = require("./models/property.model");
-
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
 const { server } = require("./server");

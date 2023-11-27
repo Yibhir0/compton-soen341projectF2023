@@ -56,7 +56,7 @@ const OfferForm = ({ property, decodedToken }) => {
       });
     };
     fetchData();
-  }, []);
+  }, [broker, decodedToken.brokerId]);
 
   const handleState = async () => {
 

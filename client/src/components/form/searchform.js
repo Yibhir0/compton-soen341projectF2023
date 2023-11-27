@@ -27,7 +27,7 @@ function SearchForm({ change }) {
 
   }
   // Handle search by city
-  const handleSearch = async (evt) => {
+  const handleSearch = async () => {
 
     let value = fields.city;
     let searchUrl = `${process.env.REACT_APP_BACKEND_URL}/properties/`
