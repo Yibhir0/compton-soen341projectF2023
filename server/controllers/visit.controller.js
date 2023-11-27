@@ -1,4 +1,5 @@
-const nodemailer = require('nodemailer');
+
+
 const Visit = require("../models/visit.model");
 
 
@@ -20,10 +21,6 @@ const addVisit = async (req, res) => {
   const visit = new Visit(req.body);
 
   try {
-    // Send the email notification for visit sent succefully (to homebuyer)
-    messageEmail = 'Your visit request is succefully sent ! \n The broker will contact you soon.';
-    await sendEmail(visit.email, messageEmail);
-
     const newVisit = await visit.save();
     res.status(201).json(newVisit);
   } catch (err) {
@@ -72,29 +69,5 @@ const deleteVisit = async (req, res) => {
 }
 
 
-//send email
-const sendEmail = async (email, messageEmail) => {
-  // Create a nodemailer transporter using your email provider's SMTP settings
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'comptonfall2023@gmail.com',
-      pass: 'kwes vzvj ozxt klkg',
-    },
-  });
-
-  // Setup email data with unicode symbols
-  const mailOptions = {
-    from: 'comptonfall2023@gmail.com', // sender address
-    to: email, // list of receivers
-    subject: 'Visit Notification', // Subject line
-    text: `${messageEmail}`, // plain text body
-  };
-  
-  // Send mail with defined transport object
-  await transporter.sendMail(mailOptions);
-
-  //console.log('Email sent successfully');
-};
 
 module.exports = { getVisits, addVisit, updateVisit, deleteVisit };

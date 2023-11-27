@@ -59,7 +59,7 @@ const sendCode = async(req, res) =>{
     res.status(500).json({ error: 'Internal server error' });
   }
 }
-//send email
+//send email // not working
 const sendResetCodeEmail = async (email, code) => {
   // Create a nodemailer transporter using your email provider's SMTP settings
   const transporter = nodemailer.createTransport({
