@@ -16,10 +16,10 @@ jobs:
           npm install
           npm run build --if-present
           npm run test  --if-present
-<<<<<<< HEAD
           cd ../client
           npm install
-          npm run build --if-present
+          CI="" npm run build --if-present
+          npm run test  --if-present
 
       # Add ESLint setup
       - name: Install ESLint
@@ -31,17 +31,3 @@ jobs:
       # Run ESLint with --fix and --quiet flags
       - name: Run ESLint
         run: npx eslint --fix --quiet .
-=======
-  front-end:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v2
-
-      - run: |
-          cd client
-          npm install
-          CI="" npm run build --if-present
-          npm run test  --if-present
-  
->>>>>>> b76be32546a1c5f56f692c06d63a5205fa1bf05e
