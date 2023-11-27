@@ -73,7 +73,7 @@ function About() {
   )
 }
 
-function Item({ props }) {
+function Item(props) {
   return (
     <Paper>
       <div className='about-card-container d-flex align-items-center justify-content-center text-center'>
