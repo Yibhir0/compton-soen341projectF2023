@@ -75,7 +75,7 @@ const MortgageForm = () => {
       {monthlyPayment !== null && (
         <div className="result-container">
           <h3>Result</h3>
-          <p>Monthly Payment: ${monthlyPayment}</p>
+          <p data-testid="monthly-payment">Monthly Payment: ${monthlyPayment}</p>
         </div>
       )}
     </div>
