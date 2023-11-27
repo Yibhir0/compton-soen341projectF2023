@@ -46,7 +46,13 @@ module.exports = {
         "getter-return":"off",
         "no-func-assign":"off",
         "no-sparse-arrays":"off",
-        "no-redeclare":"off"
+        "no-redeclare":"off",
+        "valid-typeof": "off",
+        "no-control-regex":"off",
+        "no-unsafe-finally":"off",
+        "react/display-name":"off",
+        "react/no-find-dom-node":"off",
+        "no-unsafe-finally":"off"
 
 
     }
