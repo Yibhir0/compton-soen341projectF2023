@@ -81,13 +81,13 @@ const PropertyMap = (props) => {
           height: "100vh",
         }}
         whenReady={(map) => {
-          map.target.on("drag", function (e) {
+          map.target.on("drag", function () {
             changeSelectedState(null);
           });
-          map.target.on("zoom", function (e) {
+          map.target.on("zoom", function () {
             changeSelectedState(null);
           });
-          map.target.on("click", function (e) {
+          map.target.on("click", function () {
             changeSelectedState(null);
           });
         }}
