@@ -32,9 +32,10 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "react/prop-types": 0,
-        "no-fallthrough": 0,
-        "semi": 0,
-        "quotes": 0,
+        "react/prop-types": "off",
+        "no-prototype-builtins": 'off',
+        "no-fallthrough": "off",
+        "semi": "off",
+        "quotes": "off",
     }
 }
