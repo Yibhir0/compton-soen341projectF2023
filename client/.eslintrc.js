@@ -37,5 +37,6 @@ module.exports = {
         "no-fallthrough": "off",
         "semi": "off",
         "quotes": "off",
+        "no-empty": "off"
     }
 }
