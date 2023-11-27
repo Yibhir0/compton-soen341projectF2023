@@ -13,7 +13,7 @@ module.exports = {
         {
             "env": {
                 "node": true,
-                "jest" : true
+                "jest": true
             },
             "files": [
                 ".eslintrc.{js,cjs}"
@@ -32,6 +32,6 @@ module.exports = {
     ],
     "rules": {
         "react/prop-types": 0,
-        'no-fallthrough': ['error', { 'commentPattern': 'break[\\s\\w]*omitted' }]
+        "no-fallthrough": ["error"]
     }
 }
