@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import MyProperties from "../properties/my-properties";
 import Users from "../user/users";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CreateBrokerForm from '../../components/form/createBrokerForm';
 import AvatarProfile from '../../components/avatar/avatar';
 import UpdateBrokerForm from '../../components/form/updateBrokerForm';
@@ -24,10 +24,10 @@ This would dislpay the profile of a given user
 */
 function Profile() {
 
-  const id = localStorage.getItem('id');
   const [user, setUser] = useState({
   });
 
+  const { id } = useParams();
 
   useEffect(() => {
 
@@ -89,8 +89,8 @@ function Profile() {
             Homebuyer profile page
           </Box>
 
-        ) : isAdmin() ?(
-          
+        ) : isAdmin() ? (
+
           <Box>
             <Box
               sx={{ display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: "space-between" }}>
