@@ -51,8 +51,7 @@ module.exports = {
         "no-control-regex":"off",
         "no-unsafe-finally":"off",
         "react/display-name":"off",
-        "react/no-find-dom-node":"off",
-        "no-unsafe-finally":"off"
+        "react/no-find-dom-node":"off"
 
 
     }
