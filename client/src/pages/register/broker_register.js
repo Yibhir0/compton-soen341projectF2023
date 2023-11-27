@@ -10,7 +10,7 @@ privelages to the site
 */
 function BrokerRegister() {
 
-    const [credentials, setCredentials] = useState({ email: '', password: '', accountType: 'broker', firstName: '', lastName: '', phoneNumber: '', licenseNumber:'', agency:'' });
+    const [credentials, setCredentials] = useState({ email: '', password: '', accountType: 'broker', firstName: '', lastName: '', phoneNumber: '', licenseNumber: '', agency: '' });
     const navigate = useNavigate();
 
     const handleRegister = (event) => {
@@ -26,11 +26,11 @@ function BrokerRegister() {
             .post(process.env.REACT_APP_BACKEND_URL + '/auth/register/', credentials)
             .then(() => {
                 alert('Registration Successful')
-                setCredentials({ email: '', password: '', accountType: 'broker', firstName: '', lastName: '', phoneNumber: '', licenseNumber:'', agency:'' });
+                setCredentials({ email: '', password: '', accountType: 'broker', firstName: '', lastName: '', phoneNumber: '', licenseNumber: '', agency: '' });
                 navigate('/login')
             })
             .catch((error) => {
-                console.log('Unable to register user');
+                console.log(error);
             })
     }
 
@@ -46,23 +46,23 @@ function BrokerRegister() {
                     <br></br>
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input required onChange={(e) => setCredentials({ ...credentials, email: e.target.value })} value={credentials.email} type="email" className="form-control" id="email" aria-describedby="emailHelp"></input>
-                    
+
                     <br></br>
                     <label htmlFor="password" className="form-label">Password</label>
                     <input required onChange={(e) => setCredentials({ ...credentials, password: e.target.value })} value={credentials.password} type="password" className="form-control " id="password"></input>
-                    
+
                     <br></br>
                     <label htmlFor="firstName" className="form-label">First Name</label>
                     <input required onChange={(e) => setCredentials({ ...credentials, firstName: e.target.value })} value={credentials.firstName} className="form-control" type='text' id="firstName"></input>
-                    
+
                     <br></br>
                     <label htmlFor="lastName" className="form-label">Last Name</label>
                     <input required onChange={(e) => setCredentials({ ...credentials, lastName: e.target.value })} value={credentials.lastName} className="form-control" type='text' id="lastName"></input>
-                    
+
                     <br></br>
                     <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
                     <input required onChange={(e) => setCredentials({ ...credentials, phoneNumber: e.target.value })} value={credentials.phoneNumber} className="form-control" type="tel" id="phoneNumber"></input>
-                    
+
                     <br></br>
                     <label htmlFor="licenseNumber" className="form-label">License Number</label>
                     <input required onChange={(e) => setCredentials({ ...credentials, licenseNumber: e.target.value })} value={credentials.licenseNumber} className="form-control" id="licenseNumber"></input>
@@ -76,7 +76,7 @@ function BrokerRegister() {
                     <div className='form-row text-center'>
                         Upon successfully registering, please wait for us to verify your account before signing in. This process may take up to 24 hours, depending on the volume of requests.
                     </div>
-                   
+
 
                     <br></br>
                     <div className='form-row text-center'>
