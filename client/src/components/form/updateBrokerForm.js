@@ -74,6 +74,7 @@ const UpdateBrokerForm = ({ id }) => {
         closeModal();
       })
       .catch((e) => {
+        console.log(e)
         alert("Error");
       })
   };
