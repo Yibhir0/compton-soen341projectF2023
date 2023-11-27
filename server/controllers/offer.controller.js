@@ -1,7 +1,4 @@
 const Offer = require("../models/offer.model");
-const nodemailer = require('nodemailer');
-const User = require("../models/user.model");
-
 //  GetOffer//
 const getOffers = async (req, res) => {
   try {
@@ -32,15 +29,8 @@ const addOffer = async (req, res) => {
   console.log(req.body)
   const offer = new Offer(req.body);
   try {
-
-    // Send the email notification for offer received (to homebuyer)
-    messageEmail = 'Your offer is succefully sent ! \n The broker will contact you soon.';
-
-    await sendEmail(offer.email, messageEmail);
-    
     const newOffer = await offer.save();
     res.status(201).json(newOffer);
-
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -60,32 +50,4 @@ const updateOffer = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 }
-
-
-//send email
-const sendEmail = async (email, messageEmail) => {
-  // Create a nodemailer transporter using your email provider's SMTP settings
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'comptonfall2023@gmail.com',
-      pass: 'kwes vzvj ozxt klkg',
-    },
-  });
-
-  // Setup email data with unicode symbols
-  const mailOptions = {
-    from: 'comptonfall2023@gmail.com', // sender address
-    to: email, // list of receivers
-    subject: 'Offer Notification', // Subject line
-    text: `${messageEmail}`, // plain text body
-  };
-  
-  // Send mail with defined transport object
-  await transporter.sendMail(mailOptions);
-
-  //console.log('Email sent successfully');
-};
-
-module.exports = { getOffers, addOffer, updateOffer, getMyOffers, sendEmail };
-
+module.exports = { getOffers, addOffer, updateOffer, getMyOffers };

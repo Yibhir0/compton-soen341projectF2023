@@ -27,11 +27,11 @@ describe('API User test', () => {
         it("should create a visit", async () => {
             const res = await request(app).post("/api/visit/visit").send({
                 brokerID: "22",
-                email: "comptonfall2023@gmail.com",
+                email: "test@gmail.com",
                 message: "Can I visit",
             });
             expect(res.statusCode).toBe(201);
-            expect(res.body.email).toBe("comptonfall2023@gmail.com");
+            expect(res.body.email).toBe("test@gmail.com");
         });
     });
 
